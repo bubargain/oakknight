@@ -1,0 +1,63 @@
+<header>
+	<section><a href="javascript:history.go(-1);"></a></section>
+	<section><div class="cWhite">待付款订单</div></section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content" id="content">
+		<div class="order">
+			<div class="order-top cGray">
+				<p>订单号：{{$info.order_sn}}<br>{{$info.order_time_txt}}{{$info.add_time|date_format:"%Y-%m-%d %H:%M:%S"}}</p>
+				<em></em>
+			</div>
+			<div class="order-pro">
+				<section><img src="{{$info.goods.goods_image}}"></section>
+				<section>
+					<div><p>{{$info.goods.goods_name}}</p><span {{if $info.coupon}}class="cGray"{{/if}}>￥{{$info.goods_amount}}</span></div>
+					<div><p class="cGray">x{{$info.goods.quantity}}</p>{{if $info.coupon}}<span class="cBlue">仅需支付￥{{$info.order_amount}}</span>{{/if}}</div>
+				</section>
+			</div>
+			<div class="order-tit">
+				<section class="fl">配送方式</section>
+				<section class="fr">快递 免运费</section>
+			</div>
+			<div class="order-tit">
+				<ul class="order-info">
+					<li><span>收货人信息</span></li>
+					<li><span>收货人姓名：</span><p>{{$info.address.consignee}}</p></li>
+					<li><span>收货人手机：</span><p>{{$info.address.phone_mob}}</p></li>
+					<li><span>收货人地址：</span><p>{{$info.address.region_name}}{{$info.address.address}}</p></li>
+				</ul>
+			</div>
+			<div class="order-tit">付款方式<br><input type="radio" checked=""><label>支付宝网页支付</label></div>
+		</div>
+		<a href="index.php?_c=payment&_a=payForm&type=alipay&id={{$info.order_id}}" class="cWhite order-btn">确认并付款</a>
+	</section>
+</section>
+<script type="text/javascript">
+(function(){
+	$("#content").find('em').click(function(){
+		if(confirm("您确定取消订单吗?")){
+			$.ajax({
+				type: 'GET',
+				url: 'index.php?_c=order&_a=cancel',
+				data: {order_id:'{{$info.order_id}}'},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG(data.ret.data);
+						setTimeout(function(){
+							window.location.href='index.php?_c=order&_a=orderList&status=unpay';
+						},1000);
+					}else{
+						alert(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alert('内部错误')
+				}
+		  });
+		}
+	});	
+})()
+</script>

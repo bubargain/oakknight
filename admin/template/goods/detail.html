@@ -1,0 +1,62 @@
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="10%">商品名称：</td>
+    <td width="25%">{{$info.goods_name}}</td>
+    <td align="right" width="10%">所属分类：</td>
+    <td width="20%">{{$info.cate_name}}</td>
+    <td align="right" width="10%">所属品牌：</td>
+    <td>{{$brand_name}}</td>
+  </tr>
+  <tr>
+    <td align="right">商品id：</td>
+    <td>{{$info.goods_id}}</td>
+    <td align="right">商品状态：</td>
+    <td> {{if $info.deleted}}已删除{{else}}
+      	{{if $info.if_show}}上架{{/if}}
+        {{if $info.approval}}已审核{{else}}待审核{{/if}}
+        {{if $info.closed}}禁售{{/if}}
+      {{/if}}
+    </td>
+    <td align="right">喜欢数：</td>
+    <td>{{$info.wishes}}&nbsp;&nbsp;<a href="index.php?_c=wishgoods&_a=index&goods_id={{$info.goods_id}}&is_delete=0">点击查看</a></td>
+  </tr>
+  <tr>
+    <td align="right">商品原价：</td>
+    <td>{{$info.market_price}}</td>
+    <td align="right">商品现价：</td>
+    <td>{{$info.price}}</td>
+    <td align="right">商品库存：</td>
+    <td>{{$info.stock}}</td>
+  </tr>
+  <tr>
+    <td align="right">货到付款：</td>
+    <td>{{if $info.if_codpay eq 1}} 是{{else}}否{{/if}}</td>
+    <td align="right">商品标签：</td>
+    <td colspan="3">{{$info.tags}}</td>
+  </tr>
+  <tr>
+    <td align="right">封面小图：</td>
+    <td><img src="{{$info.default_thumb}}" alt="封面图片" width="120px" style="border:1px #CCC solid; padding:1px;"/></td>
+    <td align="right">封面大图：</td>
+    <td colspan="3"><img src="{{$info.default_image}}" alt="封面图片" width="120px" style="border:1px #CCC solid; padding:1px;"/></td>
+  </tr>
+  {{if $images}}
+  <tr>
+    <td align="right">商品图片：</td>
+    <td colspan="5">
+        {{section name=n loop=$images}}
+        	<img src="{{$cdn_ymall}}{{$images[n].image_url}}" alt="商品图片" width="120px" style="border:1px #CCC solid; padding:1px;" />
+            {{if ($smarty.section.n.index gt 0) && ($smarty.section.n.index%4 eq 0)}}<br>{{/if}}
+        {{/section}}
+    </td>
+  </tr>
+  {{/if}}
+  <tr>
+    <td align="right">商品描述：</td>
+    <td colspan="5">{{$info.description}}</td>
+  </tr>
+  <tr>
+    <td align="center" colspan="6">
+    <input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>

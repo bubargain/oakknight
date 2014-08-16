@@ -1,0 +1,30 @@
+<header>
+	<section><a href="/index.php?_c=index"></a></section>
+	<section><div class="cWhite">用户中心</div></section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+		<div class="order_list">
+            <dl class="myTit">
+                <dt class="fl">HI,&nbsp;{{$user_name}}&nbsp;您好!</dt>
+                <dd class="fr"><a id="logout" href="javascript:;" class="btn">退出登录</a></dd>
+            </dl>
+            <ul class="myorder">
+                <li><a href="index.php?_c=love&_a=index">我的喜欢</a><ins></ins></li>
+                <li>{{if $unpayCnt}}<span>{{$unpayCnt}}</span>{{/if}}<a href="index.php?_c=order&_a=orderList&status=unpay">我的订单</a><ins></ins></li>
+                <li>{{if $couponCnt}}<span>{{$couponCnt}}</span>{{/if}}<a href="index.php?_c=coupon&_a=index&state=valid">我的优惠券</a><ins></ins></li>
+                <li><a href="index.php?_c=address&_a=index">收货地址管理</a><ins></ins></li>
+            </ul>
+         </div>
+	</section>
+</section>
+<script type="text/javascript">
+(function(){
+	$('#logout').click(function(){
+		if(confirm('确定退出登录?')){
+			window.location.href = 'index.php?_c=login&_a=logout';
+		}
+	});
+})()
+</script>

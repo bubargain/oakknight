@@ -1,0 +1,49 @@
+<div class="span10">
+<div class="well" id="content">
+<form method="GET" action="index.php">
+<p>
+<input type="hidden" name="_c" value="refund" />
+<input type="hidden" name="_a" value="index" />
+订单sn:<input type="text" name="order_sn" value="{{$smarty.get.order_sn}}" class="span1"/>
+手机:<input type="text" name="phone_mob" value="{{$smarty.get.phone_mob}}" class="span1"/>
+收货人:<input type="text" name="consignee" value="{{$smarty.get.consignee}}" class="span1"/>
+
+类型:<select name="refund_status">
+<option value="0">全部</option>
+{{html_options options=$status_options selected=$smarty.get.refund_status}}
+</select>
+<span  class="input-append">
+<input class="btn" type="submit" value="搜索"></span>
+</p>
+</form>
+<table class="table">
+<tr>
+	<th>ID</th>
+	<th class='span1'>订单SN</th>
+	<th>姓名</th>
+	<th>电话</th>
+	<th>订单金额</th>
+	<th>退款金额</th>
+	<th>退款状态</th>
+	<th>申请时间</th>
+	<th>操作</th>
+</tr>
+{{foreach from=$list item=item}}
+<tr>
+	<td>{{$item.refund_id}}</td>
+	<td>{{$item.order_sn}}</td>
+	<td>{{$item.consignee}}</td>
+	<td>{{$item.phone_mob}}</td>
+	<td>{{$item.order_amount}}</td>
+	<td>{{$item.refund_money}}</td>
+	<td>{{$item.refund_status_str}}</td>
+	<td>{{$item.ctime|date_format:"%D"}}</td>
+	<td><a href="index.php?_c=refund&_a=info&id={{$item.refund_id}}" class="btn btn-primary">修改/查看</a></td>
+</tr>
+{{/foreach}}
+</table>
+<p>{{$page_html}}</p>
+</div>
+</div>
+
+<!-- contents end -->

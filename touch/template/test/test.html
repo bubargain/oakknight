@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{$title}}</title>
+<meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="/css/m.css" rel="stylesheet" />
+<script type="application/javascript" src ='/js/j.js'></script>
+<style type="text/css">
+.t_detail-focus {
+	width: 640px;
+	height: 1136px;
+	padding-top: 10px;
+	position: relative
+}
+
+.t_detail-focus ul {
+	width: 5000px;
+	overflow: hidden
+}
+
+.t_detail-focus ul li {
+	float: left;
+	width: 640px;
+	height: 1136px
+}
+
+.t_detail-focus ul li img {
+	margin: 0 auto;
+	display: block;
+	height: auto;
+	width: auto;
+	max-height: 1136px
+}
+
+.t_detail-focus div {
+	position: absolute;
+	top: 1100px;
+	text-align: center;
+	width: 640px;
+	vertical-align: middle
+}
+
+.t_detail-focus div span {
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	background: #fff;
+	border-radius: 5em;
+	margin: 0 7px
+}
+
+.t_detail-focus div span.on {
+	background: #14B9D6;
+	height: 17px;
+	width: 17px
+}
+</style>
+</head>
+<body>
+<section class="main">
+	<section class="content">
+		<div class="t_detail-focus" id="f">
+			<ul>
+				<li><a href="http://m.ymall.com/api/goods/search?query=keyword%3D%25E4%25B8%2583%25E5%25A4%2595&title=bar%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E6%B5%8B%E8%AF%95"><img src="/img/ip5-1.png"></a></li>
+                <li><a href="http://m.ymall.com/api/goods/detail?goodsid=103913"><img src="/img/ip5-2.png"></a></li>
+			</ul>
+			<div>
+                <span></span><span></span>
+            </div>
+		</div>
+        <div class="detail-info">
+            <span class="fl cGray">
+                 <a href="http://m.ymall.com/api/goods/search?query=keyword%3D%25E4%25B8%2583%25E5%25A4%2595&title=bar%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E6%B5%8B%E8%AF%95" class="fr">按钮一</a>
+			</span>
+		</div>
+        <div class="detail-info">
+            <span class="fl cGray">
+                 <a href="http://m.ymall.com/api/goods/search?query=keyword%3D%25E4%25B8%2583%25E5%25A4%2595&title=bar%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E6%B5%8B%E8%AF%95" class="fr">按钮二</a>
+			</span>
+		</div>
+        <div class="detail-info">
+            <span class="fl cGray">
+                 <a href="http://m.ymall.com/api/goods/search?query=keyword%3D%25E4%25B8%2583%25E5%25A4%2595&title=bar%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E6%B5%8B%E8%AF%95" class="fr">按钮二</a>
+			</span>
+		</div>
+        <div class="detail-info">
+            <span class="fl cGray">
+                 <a href="http://m.ymall.com/api/goods/search?query=keyword%3D%25E4%25B8%2583%25E5%25A4%2595&title=bar%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E6%B5%8B%E8%AF%95" class="fr">按钮二</a>
+			</span>
+		</div>
+        <div class="detail-info">
+            <span class="fl cGray">
+                 <a href="http://m.ymall.com/api/goods/search?query=keyword%3D%25E4%25B8%2583%25E5%25A4%2595&title=bar%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E6%B5%8B%E8%AF%95" class="fr">按钮二</a>
+			</span>
+		</div>
+        <div class="detail-info">
+            <span class="fl cGray">
+                 <a href="http://m.ymall.com/api/goods/search?query=keyword%3D%25E4%25B8%2583%25E5%25A4%2595&title=bar%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E6%B5%8B%E8%AF%95" class="fr">按钮二</a>
+			</span>
+		</div>
+	</section>
+</section>
+
+<script>
+(function(){
+	var	e = $('#f'),
+		oLi = e.find('li'),
+		oUl = e.find('ul'),
+		span = e.find('span'),
+		len = oLi.length-1, 
+		width = oLi.eq(0).width(),
+		n = 0;
+	e.swipeLeft(function(){
+		n++;
+		n>len&&(n=len)
+		_move()
+	});
+	e.swipeRight(function(){
+		n--;
+		n<0&&(n = 0)
+		_move()
+	});
+	function _move(){
+		oUl.animate({"margin-left":-n*width});
+		span.removeClass('on').eq(n).addClass('on')
+	}
+	_move();
+})();
+//swipe swipeLeft swipeRight swipeUp swipeDown doubleTap tap singleTap longTap
+</script>
+</body>
+</html>

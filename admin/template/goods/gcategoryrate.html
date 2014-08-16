@@ -1,0 +1,42 @@
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="4">
+          <form id="tForm" name="tForm" action="index.php?_c=goods&_a=gcategoryRate" method="post" class="form-search">
+              <table width="100%" border="0" cellspacing="0" cellpadding="1">
+                <tr>
+                  <td align="center">类型：&nbsp;&nbsp;<select id="cntType" name="cntType" style="width:120px;">
+                          <option value="0">-全部商品-</option>
+                          <option value="1" {{if $cntType eq 1}} selected="selected"{{/if}}>-上架商品-</option>
+                      </select>&nbsp;&nbsp;<input type="submit" value="搜索" class="btn" /></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+    <th width="30%">一级分类</th>
+    <th width="20%">一级分类的商品数量占比</th>
+    <th width="30%">二级分类</th>
+    <th width="20%">二级分类的商品数量占比</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+  <tr>
+    <td align="center">{{$item.cate_name}}</td>
+    <td align="center">{{$item.goods_cnt_rate}}</td>
+    <td colspan="2">
+    	<table width="100%" border="1" cellspacing="0" cellpadding="5">
+    	{{if $item.child_cate}}
+        	{{foreach from = $item.child_cate item = item2}}
+            <tr>
+            	<td align="center" width="60%">{{$item2.cate_name}}</td>
+                <td align="center">{{$item2.goods_cnt_rate}}</td>
+            </tr>
+            {{/foreach}}
+        {{/if}}
+        </table>
+    </td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+</table>

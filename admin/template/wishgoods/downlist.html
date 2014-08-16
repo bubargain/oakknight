@@ -1,0 +1,22 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td align="center">
+          <form id="tForm" action="index.php?_c=wishgoods&_a=downList" method="post" class="form-search">
+              <table align="center" border="0" cellspacing="0">
+                <tr>
+                  <td align="right" width="50px">商品ID：</td>
+                  <td width="80px"><input type="text" name="goods_id" value="{{$goods_id}}" style="width:80%"></td>
+                  <td align="right" width="50px">日期：</td>
+				  <td width="250px"><input type="text" name="start_time" id="start_time" value="{{$start_time}}" style="width:42%;" class="Wdate"  
+					onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" value="{{$end_time}}" style="width:42%;" class="Wdate"  
+					onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+				  <td width="120px">在线商品：<input type="checkbox" value="1" name="all"></td>
+                  <td width="50px">
+                    <input type="submit" value="下载" class="btn"/>
+                  </td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+</table>

@@ -1,0 +1,28 @@
+<header>
+	<section><a href="/index.php?_c=order&_a=index"></a></section>
+	<section><div class="cWhite" style="padding-left:60px;">收货地址管理</div></section>
+	<section><a href="index.php?_c=address&_a=add" class="btn">增加新地址</a></section>
+</header>
+<section class="main">
+	<section class="content">
+        {{if $list}}
+        <div class="order_list">
+            <ul class="address_list">
+                {{foreach from = $list item = item}}
+                <li>
+                    <a href="index.php?_c=address&_a=detail&addr_id={{$item.addr_id}}">
+                        <div class="l">
+                            <span>{{$item.consignee}}&nbsp;&nbsp;{{$item.region_name}}<br>{{$item.address}}</span>
+                        </div>
+                        <div class="r">{{if $item.is_default}}√{{/if}}</div>
+                        <div class="clear"></div>
+                    </a>
+                </li>
+                {{/foreach}}
+            </ul>
+        </div>
+        {{else}}
+        <div class="address-no"></div>
+        {{/if}}
+	</section>
+</section>

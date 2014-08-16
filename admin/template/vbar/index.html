@@ -1,0 +1,56 @@
+<div id="content">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr>
+    <td align="center" colspan="8">
+    	<form id="tForm" name="tForm" method="GET" action="index.php" class="form-search">
+    	<table border="0" cellspacing="0" cellpadding="5">
+          <tr>
+            <td align="right" width="80px">
+            	<input type="hidden" name="_c" value="vbar" />
+        		<input type="hidden" name="_a" value="index" />类型：
+            </td>
+            <td>
+                <select name="type">
+                {{html_options options=$type_options selected=$smarty.get.type}}
+                </select>
+            </td>
+            <td><input class="btn" type="submit" value="搜索">&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php?_c=vbar&_a=add" class="btn btn-primary">增加新版bar</a> </td>
+          </tr>
+        </table>
+        </form>
+    </td>
+</tr>
+<tr>
+	<th align="center" class="pushItem" width="5%">id</th>
+	<th align="center" class="pushItem" width="15%">名称</th>
+	<th align="center" class="pushItem" width="20%">关键词</th>
+	<th align="center" class="pushItem" width="15%">开始时间</th>
+	<th align="center" class="pushItem" width="15%">截止时间</th>
+	<th align="center" class="pushItem" width="5%">状态</th>
+	<th align="center" class="pushItem" width="20%">操作</th>
+</tr>
+{{foreach from=$list item=item}}
+<tr>
+	<td align="center" class="pushItem">{{$item.bar_id}}</td>
+	<td align="center" class="pushItem">
+			<img alt="" src="{{$CDN_YMALL}}{{$item.img}}" width="100px">
+			<p title='title'>{{$item.title}}</p></td>
+	<td align="center" class="pushItem">{{$item.search}}</td>
+	<td align="center" class="pushItem">{{$item.start_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+	<td align="center" class="pushItem">{{$item.end_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+	<td align="center" class="pushItem">{{$item.status_str}}</td>
+	<td align="center" class="pushItem">
+	{{if $item.status eq 1}}
+	<a href="index.php?_c=vbar&_a=edit&bar_id={{$item.bar_id}}">修改</a>&nbsp;||&nbsp;<a href="index.php?_c=vbar&_a=delete&bar_id={{$item.bar_id}}">删除</a>
+	{{/if}}
+	<a href="index.php?_c=vbar&_a=info&bar_id={{$item.bar_id}}">查看</a>&nbsp;||&nbsp;<a href="index.php?_c=vbar&_a=userbar&bar_id={{$item.bar_id}}">查看用户</a>
+	</td>
+</tr>
+{{/foreach}}
+<tr>
+    <td align="center" colspan="8">{{$page_html}}</td>
+</tr>
+</table>
+</div>
+<!-- contents end -->

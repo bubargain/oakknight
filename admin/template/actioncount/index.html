@@ -1,0 +1,43 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td align="center" colspan="11">
+          <form id="tForm" name="tForm" action="index.php?_c=actioncount&_a=index" method="post" class="form-search">
+              <table border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="80px">查询日期：</td>
+                  <td><input type="text" name="start_time" id="start_time" style="width:120px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" style="width:120px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+                  <td><input type="submit" value="搜索" class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="导出" onclick="window.location.href='index.php?_c=actioncount&_a=leadingout';" class="btn btn-success"/></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+      <th align="center" class="pushItem">开始时间</th>
+      <th align="center" class="pushItem">结束时间</th>
+	  <th align="center" class="pushItem">通讯录好友总数</th>
+      <th align="center" class="pushItem">注册数</th>
+      <th align="center" class="pushItem">喜欢总数</th>      
+      <th align="center" class="pushItem">取消喜欢总数</th>
+      <th align="center" class="pushItem">分享点击UV(PV)</th>
+      <th align="center" class="pushItem">订单确认页UV(PV)</th>
+      <th align="center" class="pushItem">到货提醒点击UV(PV)</th>
+      <th align="center" class="pushItem">进详情页UV(PV)</th>
+  </tr>
+  {{if $list}}
+  <tr>
+      <td align="center" class="pushItem">{{$start_time}}</td>
+      <td align="center" class="pushItem">{{$end_time}}</td>
+	  <td align="center" class="pushItem">{{$list.linkers}}</td>
+      <td align="center" class="pushItem">{{$list.sub}}</td>
+      <td align="center" class="pushItem">{{$list.like}}</td>
+      <td align="center" class="pushItem">{{$list.unlike}}</td>
+      <td align="center" class="pushItem">{{$list.share_uv}}({{$list.share_pv}})</td>
+      <td align="center" class="pushItem">{{$list.buy_uv}}({{$list.buy_pv}})</td>
+      <td align="center" class="pushItem">{{$list.notify_uv}}({{$list.notify_pv}})</td>
+      <td align="center" class="pushItem">{{$list.goods_uv}}({{$list.goods_pv}})</td>
+  </tr>
+  {{/if}}
+</table>

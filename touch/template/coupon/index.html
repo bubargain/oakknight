@@ -1,0 +1,55 @@
+<header>
+	<section><a href="index.php?_c=order&_a=index"></a></section>
+	<section>
+		<div class="cWhite">我的优惠劵</div>
+	</section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+		<section class="coupon">
+			<br/>
+			<div class="tit cWhite">
+					{{if $state =='history'}}
+						<span><a href="index.php?_c=coupon&state=valid">有效</a></span><span>历史</span>
+						
+				    {{else}}
+				    	<span>有效</span><a href="index.php?_c=coupon&state=history">历史</a>
+					{{/if}}
+			</div>
+			{{if $coupons}}
+			<div class="coupon-content">
+                {{foreach from = $coupons item = item}}
+                <dl>
+                    <dt class="cWhite">
+                        <span>{{$item.title}}</span>
+                        <span>￥<i>{{$item.money}}</i></span>
+                        <span>{{$item.coupon_text}}</span>
+                        <span>{{$item.coupon_sn}}</span>
+                        {{if $state =='history'}}
+                        <span></span>
+                        {{/if}}
+                    </dt>
+                    <dd>有效期至<br>{{$item.end_time|date_format:"%Y/%m/%d"}}<br><br></dd>
+                </dl>
+                {{/foreach}}
+            </div>
+            <section class="page">
+                {{if $ret['prev']}}
+                <a class="cWhite p-btn" href="index.php?_c=coupon&state={{$state}}&page={{$ret['prev']}}">上一页</a>
+                {{else}}
+                <span class="cWhite p-btn p-btn-gray">上一页</span>
+                {{/if}}
+                 &nbsp;&nbsp;<span class="cGray">{{$ret.cur_page}}&nbsp;/&nbsp;{{$ret.pages}}</span>&nbsp;&nbsp;
+                {{if $ret['next']}}
+                <a class="cWhite p-btn" href="index.php?_c=coupon&state={{$state}}&page={{$ret['next']}}">下一页</a>
+                {{else}}
+                <span class="cWhite p-btn p-btn-gray">下一页</span>
+                {{/if}}
+            </section>
+			{{else }}
+				<div class="coupon-no"></div>
+			{{/if}}
+		</section>
+    </section>
+</section>

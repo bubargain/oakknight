@@ -1,0 +1,43 @@
+<header>
+	<section><a href="{{$refer}}"></a></section>
+	<section><div class="cWhite" style="padding-left:30px;">地址详情</div></section>
+	<section><a href="index.php?_c=address&_a=add&addr_id={{$info.addr_id}}" class="btn">修改地址</a></section>
+</header>
+<section class="main">
+	<section class="content" id="content">
+        <ul class="address_detail">
+			<li><div>{{$info.consignee}}</div></li>
+			<li><div>{{$info.phone_mob}}</div></li>
+            <li><div>{{$info.region_name}}</div></li>
+			<li><div>{{$info.address}}</div></li>
+		</ul>
+        <div class="address_operate">
+            <a href="javascript:if(confirm('您确定要删除该收货地址吗？')){window.location.href='index.php?_c=address&_a=delete&addr_id={{$info.addr_id}}';}" class="cWhite set-btn1">删除该收货地址</a>
+            <a href="javascript:;" class="cWhite set-btn2">设为默认地址<span class="hide">{{$info.addr_id}}</span></a>
+        </div>
+	</section>
+</section>
+<script type="text/javascript">
+(function(){
+	$("#content").find('a').eq(1).click(function(){
+		var _this = $(this), num = _this.find('span').eq(0);	
+		var addr_id = _this.find('span').eq(0).html();	
+		$.ajax({
+			type: 'GET',
+			url: 'index.php?_c=address&_a=setdefault',
+			data: {addr_id: addr_id},
+			dataType: 'json',
+			success: function(data){
+				if(data.ret.status == 200){
+					alertMSG(data.ret.data);
+				}else{
+					alertMSG(data.ret.data);
+				}
+			},
+			error: function(xhr, type){
+			  alertMSG('网速不给力哦～');
+			}
+	  });
+	});
+})();
+</script>

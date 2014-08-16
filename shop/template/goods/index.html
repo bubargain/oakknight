@@ -1,0 +1,120 @@
+<div class="span10">
+<div class="well" id="content">
+<form method="GET" action="index.php">
+<p>
+品牌id:<input type="text" name="brand_id" value="{{$smarty.get.brand_id}}" class="span1"/>
+分类id:<input type="text" name="cate_id" value="{{$smarty.get.cate_id}}" class="span1"/>
+商品ids:<input type="text" name="goods_id" value="{{$smarty.get.goods_id}}" class="span1"/>
+商品名称:<input type="text" name="goods_name" value="{{$smarty.get.goods_name}}" class="span3"/>
+<input type="hidden" name="_c" value="goods" />
+<input type="hidden" name="_a" value="index" />
+{{if $smarty.get.tag}}
+<input type="hidden" name="tag" value="store" />
+{{/if}}
+<span  class="input-append">
+<input class="btn" type="submit" value="搜索"></span>
+</p>
+</form>
+<table class="table">
+<tr>
+	<th><input type="checkbox" class="checkall"></th>
+	<th class='span2'>商品名称</th>
+	<th>所属分类</th>
+	<th>市场价</th>
+	<th>销售价</th>
+	<th>库存</th>
+	<th>状态</th>
+	<th>类型</th>
+	<th>更新时间</th>
+	<th class='span3'>操作</th>
+</tr>
+{{foreach from=$list item=item}}
+<tr>
+	<td><input type="checkbox" class="checkitem" value="{{$item.goods_id}}"></td>
+	<td>
+			<img alt="" src="{{$CDN_YMALL}}{{$item.default_image}}" width="100px">
+			<p title='goods_name'>{{$item.goods_name}}</p></td>
+	<td>{{$item.cate_name}}</td>
+	<td>{{$item.market_price}}</td>
+	<td>{{$item.price}}</td>
+	<td>{{$item.stock}}</td>
+	<td>
+	{{if $item.if_show}}上架{{/if}}
+	{{if $item.approval}}已审核{{else}}待审核{{/if}}
+	{{if $item.closed}}禁售{{/if}}
+	</td>
+	<td>{{$item.utime|date_format:"%D"}}</td>
+	<td>
+	{{if $item.sale_type eq 1}}<button type="button" class="btn">热卖</button>{{/if}}
+	{{if $item.sale_type eq 2}}<button type="button" class="btn">新品</button>{{/if}}
+	{{if $item.sale_type eq 3}}<button type="button" class="btn">促销</button>{{/if}}
+	</td>
+	<td>
+	<div class="btn-toolbar">
+	{{if $item.if_show}}
+	<a href="javascript:;" y-action="upStatus" y-data="status=unshow&ids={{$item.goods_id}}" class="btn btn-inverse">下架</a>
+	{{else}}
+	<a href="javascript:;" y-action="upStatus" y-data="status=show&ids={{$item.goods_id}}" class="btn btn-success">上架</a>
+	{{/if}}
+	<a href="index.php?_c=goods&_a=edit&id={{$item.goods_id}}" class="btn btn-primary">修改</a><a href="javascript:;" y-action="upStatus" y-data="status=delete&ids={{$item.goods_id}}" class="btn btn-danger">删除</a>
+	</div>
+	</td>
+</tr>
+{{/foreach}}
+</table>
+<p>
+	<div class="btn-toolbar">
+		<a href="javascript:;" y-action="batchUpStatus" y-data="status=show" class="btn btn-success">上架</a>
+		<a href="javascript:;" y-action="batchUpStatus" y-data="status=unshow" class="btn btn-inverse">下架</a>					
+		<a href="javascript:;" y-action="batchUpStatus" y-data="status=delete" class="btn btn-danger">删除</a>
+	</div>
+</p>
+<p>{{$page_html}}</p>
+</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".checkall").click( function () {
+		var flag = this.checked ? true : false;
+		$(".checkitem").each(function() {
+			$(this).attr("checked", flag);
+		});
+	});
+});
+	
+	(function(){
+	$("#content").delegate("div,a", "click", function(){
+		_this = $(this);		
+		switch(_this.attr("y-action")) {
+			case 'upStatus': 
+				upStatus(_this);
+				break;
+			case 'batchUpStatus': 
+				batchUpStatus(_this);
+				break;
+			default:
+			;
+		}
+	});
+	
+	function batchUpStatus(_this) {
+		var items = [];
+		$('.checkitem:checked').each(function(){items.push(this.value)});
+		if(items.length){
+			var url = "index.php?_c=goods&_a=batch&" + _this.attr("y-data") + "&ids=" + items.join();
+			$.getJSON(url, function(data) {			
+				window.location.reload();
+			});
+		}
+	}
+	
+	function upStatus(_this) {
+		var url = "index.php?_c=goods&_a=batch&" + _this.attr("y-data");
+		$.getJSON(url, function(data) {			
+			window.location.reload();
+		});
+	}	
+})();
+</script>
+<!-- contents end -->

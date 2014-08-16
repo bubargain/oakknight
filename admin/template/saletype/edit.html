@@ -1,0 +1,217 @@
+﻿<!--contents begin-->
+<style>
+.error {
+    display: inline-block;
+    padding-left: 5px;
+    vertical-align: middle;
+	color: #ff0000;
+}
+</style>
+
+<form id="post_form" class="form" method="post" action="index.php?_c=saletype&_a={{if $info.title}}edit&key={{$info.key}}{{else}}add{{/if}}">
+    <div class="control-group">
+		<label class="control-label" for="title">主题：</label>
+		<div class="controls">
+			<input type="text" name="title" value="{{$info.title}}" placeholder="请输入名称">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="key">key：</label>
+		<div class="controls">
+			<input type="text" name="key" value="{{$info.key}}" placeholder="请输入名称">
+		</div>
+    </div>
+    <div class="control-group">
+		<label class="control-label"><a href="#upload_modal_big" role="button" class="btn" data-toggle="modal">插入大图</a></label>
+		<div class="controls" id="thumb_image_big">
+			<img src="{{$CDN_YMALL}}{{$info.big.img}}">
+			<input type="hidden" name="b_img" value="{{$info.big.img}}">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label"><a href="#upload_modal_small" role="button" class="btn" data-toggle="modal">插入小图</a></label>
+		<div class="controls" id="thumb_image_small">
+			<img src="{{$CDN_YMALL}}{{$info.small.img}}">
+			<input type="hidden" name="s_img" value="{{$info.small.img}}">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="b_x">位置坐标(大)：</label>
+		<div class="controls">
+			X：<input type="text" name="b_x" value="{{$info.big.x}}">&nbsp;&nbsp; Y：<input type="text" name="b_y" value="{{$info.big.y}}">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="s_x">位置坐标(小)：</label>
+		<div class="controls">
+			X：<input type="text" name="s_x" value="{{$info.small.x}}">&nbsp;&nbsp; Y：<input type="text" name="s_y" value="{{$info.small.y}}">
+		</div>
+    </div>
+    <div class="control-group">
+    <div class="controls">
+		<button type="submit" class="btn btn-large btn-primary">保存</button>
+    </div>
+    </div>
+</form>
+
+<div id="upload_modal_big" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="image_upload_big" aria-hidden="true">
+	<form id="uploadForm_big" enctype="multipart/form-data" method="POST" action="index.php?_c=upload&belong=3">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="image_upload_big">上传图片</h3>
+	</div>
+	<div class="modal-body">
+		<p><input type="file" name="upfile"></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button href="javascript:;" class="btn btn-primary" id="upload_big_btn">上传</button>
+	</div>
+	</form>
+</div>
+
+<div id="upload_modal_small" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="image_upload_small" aria-hidden="true">
+	<form id="uploadForm_small" enctype="multipart/form-data" method="POST" action="index.php?_c=upload&belong=3">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="image_upload_small">上传图片</h3>
+	</div>
+	<div class="modal-body">
+		<p><input type="file" name="upfile"></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button href="javascript:;" class="btn btn-primary" id="upload_small_btn">上传</button>
+	</div>
+	</form>
+</div>
+
+<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+(function(){
+	$("#content").delegate("a", "click", function(){
+		_this = $(this);		
+		switch(_this.attr("y-action")) {
+			case 'drop_image': 
+				drop_image(_this);
+				break;
+			default:
+			;
+		}
+	});
+
+	function drop_image(_this) {
+		var url = "index.php?_c=upload&_a=drop&" + _this.attr("y-data");
+		$.getJSON(url, function(ret) {			
+			if(ret.status == 200) {
+				_this.parent().remove();
+			}
+			else {
+				alert('删除失败');
+			}
+		});
+	}
+})();
+
+$(document).ready(function() {
+
+	$('#upload_big_btn').click(function() {
+	
+		$('#uploadForm_big').ajaxForm({
+			success: function(ret) {				
+				if(ret.status == 200) {
+					var str = '<img src="' + ret.data.image_url + '">'
+									+ '<input type="hidden" name="b_img" value="' + ret.data.image_path + '">';
+					$("#thumb_image_big").html(str);
+					$('#upload_modal_big').modal('hide');
+				}
+				else {
+					alert("上传失败，请重试");
+				}
+			}
+		});
+	});
+	
+	$('#upload_small_btn').click(function() {
+	
+		$('#uploadForm_small').ajaxForm({
+			success: function(ret) {				
+				if(ret.status == 200) {
+					var str = '<img src="' + ret.data.image_url + '">'
+									+ '<input type="hidden" name="s_img" value="' + ret.data.image_path + '">';
+					$("#thumb_image_small").html(str);
+					$('#upload_modal_small').modal('hide');
+				}
+				else {
+					alert("上传失败，请重试");
+				}
+			}
+		});
+	});
+});
+
+$().ready(function() {
+	$("#post_form").validate({
+		rules: {
+			title: {
+				required: true,
+				minlength: 4,
+				maxlength: 15
+			},
+			key: {
+				required: true,
+				digits:true
+			},
+			b_img: "required",
+			s_img: "required",
+			b_x: {
+				required: true,
+				digits:true
+			},
+			b_y: {
+				required: true,
+				digits:true
+			},
+			b_x: {
+				required: true,
+				digits:true
+			},
+			b_y: {
+				required: true,
+				digits:true
+			}
+		},
+		messages: {			
+			title: {
+				required: "请输入标题",
+				minlength: "不少于4个汉字",
+				maxlength: "不超过15个汉字"
+			},
+			key: {
+				required: true,
+				digits:true
+			},
+			b_img: "请上传图片",
+			s_img: "请上传图片",
+			b_x: {
+				required: "请输入数值",
+				digits:"请输入整数"
+			},
+			b_y: {
+				required: "请输入数值",
+				digits:"请输入整数"
+			},
+			b_x: {
+				required: "请输入数值",
+				digits:"请输入整数"
+			},
+			b_y: {
+				required: "请输入数值",
+				digits:"请输入整数"
+			}
+		}
+	});
+});
+</script>
+<!-- contents end -->

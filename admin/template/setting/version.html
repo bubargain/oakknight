@@ -1,0 +1,39 @@
+<form id="sForm" name="sForm" action="index.php?_c=setting&_a=version" method="post" class="form-horizontal">
+<div class="container">
+<dl>
+<dd class="span2">版本号：</dd><dt class="span10"><input type="text" value="{{$version.no}}" name="version_no">&nbsp;&nbsp;
+		<input id="ck_must" type="checkbox" value="1"{{if $version.must}} checked="true"{{/if}} name="ck_must">强制必须更新&nbsp;&nbsp;
+		<input type="checkbox" value="1"{{if $version.show}} checked="true"{{/if}} name="ck_show">是否显示</dt>
+</dl>
+<dl>
+<dd class="span2">官网：</dd><dt class="span10"><input type="text" value="{{$version.companyWeb}}" name="companyWeb"></dt>
+</dl>
+<dl>
+<dd class="span2">QQ群：</dd><dt class="span10"><input type="text" value="{{$version.qqGroup}}" name="qqGroup"></dt>
+</dl>
+<dl>
+<dd class="span2">客服电话：</dd><dt class="span10"><input type="text" value="{{$version.serviceTel}}" name="serviceTel"></dt>
+</dl>
+<dl>
+<dd class="span2">公司名称：</dd><dt class="span10"><input type="text" value="{{$version.companyName}}" name="companyName"></dt>
+</dl>
+<dl>
+<dd class="span2">版权声明：</dd><dt class="span10"><input type="text" value="{{$version.copyright}}" name="copyright"></dt>
+</dl>
+<dl>
+<dd class="span2">版本说明：</dd>
+<dt class="span10"><textarea style="width:600px; height:100px;" name="version_desc">{{$version.desc}}</textarea></dt>
+</dl>
+<dl>
+<dd class="span2">分享标题：</dd>
+<dt class="span10"><input type="text" value="{{$version.shareTitle}}" name="shareTitle"></dt>
+</dl>
+<dl>
+<dd class="span2">分享描述：</dd>
+<dt class="span10"><textarea style="width:600px; height:100px;" name="shareBody">{{$version.shareBody}}</textarea></dt>
+</dl>
+<dl>
+<dd class="span2"><input type="submit" value="保&nbsp;存" class="btn" /></dd>
+</dl>
+</div>
+</form>

@@ -1,0 +1,32 @@
+<div id="content">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr>
+    <td align="right" colspan="8">
+    	<a href="index.php?_c=coupon&_a=add" class="btn btn-primary">增加优惠券</a>
+    </td>
+</tr>
+<tr>
+	<th align="center" class="pushItem" width="5%">id</th>
+	<th align="center" class="pushItem" width="15%">名称</th>
+	<th align="center" class="pushItem" width="15%">开始时间</th>
+	<th align="center" class="pushItem" width="15%">截止时间</th>
+	<th align="center" class="pushItem" width="5%">状态</th>
+	<th align="center" class="pushItem" width="20%">操作</th>
+</tr>
+{{foreach from=$list item=item}}
+<tr>
+	<td align="center" class="pushItem">{{$item.cpn_id}}</td>
+	<td align="center" class="pushItem">{{$item.title}}</td>
+	<td align="center" class="pushItem">{{$item.from_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+	<td align="center" class="pushItem">{{$item.end_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+	<td align="center" class="pushItem">{{$item.state_str}}</td>
+	<td align="center" class="pushItem"><a href="index.php?_c=coupon&_a=userCoupon&cpn_id={{$item.cpn_id}}" class="btn btn-primary">列表</a><a href="index.php?_c=coupon&_a=info&cpn_id={{$item.cpn_id}}" class="btn btn-primary">查看</a><a href="index.php?_c=coupon&_a=send&cpn_id={{$item.cpn_id}}" class="btn btn-primary">发送</a></td>
+</tr>
+{{/foreach}}
+<tr>
+    <td align="center" colspan="8">{{$page_html}}</td>
+</tr>
+</table>
+</div>
+<!-- contents end -->

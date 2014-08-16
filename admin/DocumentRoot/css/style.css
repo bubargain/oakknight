@@ -1,0 +1,26 @@
+@charset "utf-8";
+/********表格边框设置**********/
+table{ border:#CCC 1px solid;}
+th{ border:#CCC 1px solid;}
+td{ border:#CCC 1px solid;}
+/********设置表格边框为none**********/
+.borderNone table{ border:none;}
+.borderNone td{ border:none;}
+/*******文件上传input样式******/
+#file { position:relative; width:294px; height:25px; border:1px #CCC solid;}
+#file input {margin:0; padding:0; position:relative; vertical-align:middle; outline:none;}
+#file input[type="text"] {border:1px none; width:240px; z-index:4;}
+#file input[type="button"] {width:54px; height:25px; z-index:2;}
+#file input[type="file"] {position:absolute; right:0px;height:25px; opacity:0; z-index:3;}
+/**********商品列表搜索框设置***********/
+#tForm { margin:0px;}
+#tForm table{ border:none; }
+#tForm td { border:none; font-size:12px;}
+#sForm td {font-size:12px;}
+/**********商品列表左下角批量操作设置***********/
+.btnOperate {height:40px; line-height:40px;}
+.btnOperate span{float:left;}
+/***********分页***********************/
+#nowpage{ width:20px; height:20px;}
+/************PUSH列表项设置*************************/
+.pushItem{ font-size:12px; }

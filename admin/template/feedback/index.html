@@ -1,0 +1,44 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+	<tr>
+		<td colspan="9">
+			<form id="tForm" name="tForm" action="index.php" method="get" class="form-search">
+			<table width="100%" border="0" cellspacing="0" cellpadding="5">
+				<tr>
+					<td align="right" width="8%">类型：</td>
+					<td align="right" width="10%"><select name="type" style="width:95%">{{html_options options=$type_arr selected=$type}}</select></td>
+					<td align="right" width="8%">内容：</td>
+					<td width="10%"><input type="text" id="content" name="content" size="10" value="{{$content}}" style="width:80%;" /></td>
+					<td align="right" width="8%">联系方式：</td>
+					<td width="10%"><input type="text" id="contact" name="contact" size="12" value="{{$contact}}" style="width:80%;" /></td>
+					<td align="right" width="8%">日期：</td>
+					<td width="30%"><input type="text" name="start_time" id="start_time" style="width:40%;" class="Wdate"  
+					onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" style="width:40%;" class="Wdate"  
+					onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+					<td><input type="hidden" name="_c" value="feedback" /><input type="hidden" name="_a" value="index" /><input type="submit" value="搜索" class="btn"/></td>
+				</tr>
+			</table>  
+			</form>
+		</td>
+	</tr>
+	<tr>
+	  <th align="center" width="8%">id</th>
+	  <th align="center" width="16%">联系方式</th>
+	  <th align="center" width="60%">内容</th>
+	  <th align="center" width="10%">提交时间</th>
+	  <th align="center" width="6%">操作</th>
+	</tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+	<tr>
+		<td align="center">{{$item.id}}</td>
+		<td align="center">{{$item.contact}}</td>
+		<td>{{$item.content}}</td>
+		<td align="center">{{if $item.ctime}}{{$item.ctime|date_format:"%Y-%m-%d %H:%M:%S"}}{{/if}}</td>
+		<td align="center"><a href="index.php?_c=feedback&_a=delete&id={{$item.id}}" onclick="return window.confirm('确定删除?')">删除</a></td>
+	</tr>
+  {{/foreach}}
+  {{/if}}
+	<tr>
+		<td align="center" colspan="9">{{$page}}</td>
+	</tr>
+</table>

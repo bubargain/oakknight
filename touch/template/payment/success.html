@@ -1,0 +1,24 @@
+<header>
+	<section><a href="/index.php?_c=order&_a=orderList&status=payed"></a></section>
+	<section><div class="cWhite">成功购买</div></section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+		<div class="order">
+        	<a href="/index.php?_c=order&_a=orderDetail&status=payed&order_id={{$order.order_id}}">
+			<div class="order-pro">
+				<section><img src="{{$order.goods.goods_image}}" style="width:100px; height:100px;"></section>
+				<section>
+                    <div><p>{{$order.goods.goods_name}}</p><span>￥{{$order.order_amount}}</span></div>
+					<div><p class="cGray">x1</p></div>
+				</section>
+			</div>
+            </a>
+		</div>
+		<div class="order-tip cGray">
+			<section>这个礼物将为您闪电发出，敬请期待~</section>
+			<p>欢迎加入官方QQ群：102643446<br>客服电话：400-080-1888</p>
+		</div>
+	</section>
+</section>

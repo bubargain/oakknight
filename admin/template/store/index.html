@@ -1,0 +1,25 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="6"><div style="float:right;"><a href="index.php?_c=store&_a=add">添加店铺</a></div></td>
+  </tr>
+  <tr>
+      <th width="20%">店铺名称</th>
+      <th align="center" width="15%">店铺电话</th>
+      <th align="center" width="10%">店铺邮编</th>
+      <th align="center" width="30%">店铺地址</th>
+      <th align="center" width="8%">信用等级</th>
+      <th align="center" width="17%">操作</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = items}}
+  <tr>
+      <td>{{$items.store_name}}</td>
+      <td align="center">{{$items.tel}}</td>
+      <td align="center">{{$items.zipcode}}</td>
+      <td>{{$items.address}}</td>
+      <td align="center">{{$items.credit_value}}</td>
+      <td align="center"><a href="index.php?_c=store&_a=detail&store_id={{$items.store_id}}">查看</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="index.php?_c=store&_a=edit&store_id={{$items.store_id}}">修改</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="index.php?_c=store&_a=delete&store_id={{$items.store_id}}" onclick="return window.confirm('确定删除?')">删除</a></td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+</table>

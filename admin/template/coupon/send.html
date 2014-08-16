@@ -1,0 +1,85 @@
+﻿<!--contents begin-->
+<style>
+.error {
+    display: inline-block;
+    padding-left: 5px;
+    vertical-align: middle;
+	color: #ff0000;
+}
+</style>
+<form id="coupon_form" class="form" method="post" action="index.php?_c=coupon&_a=send">
+    <div class="control-group">
+		<label class="control-label">标题：</label>
+		<div class="controls">
+			<p>{{$coupon.title}}</p>
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label">优惠面额：</label>
+		<div class="controls">
+			<p>{{$coupon.amount}}</p>
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label">起止时间：</label>
+		<div class="controls">
+			<p>{{$coupon.from_time|date_format:"%Y-%m-%d %H:%M:%S"}} -- {{$coupon.end_time|date_format:"%Y-%m-%d %H:%M:%S"}}</p>
+		</div>
+    </div>
+	
+	<div class="control-group">
+		<label class="control-label" for="title">类型：</label>
+		<div class="controls">
+			<select name="type" id="op_type">
+			<option>请选择</option>
+			<option value="reg">注册</option>
+			<option value="names">用户名</option>
+			</select>
+		</div>
+    </div>
+	<div class="control-group" id="op_box">
+		
+    </div>
+    <div class="control-group">
+    <div class="controls"><input type="hidden" name="cpn_id" value="{{$coupon.cpn_id}}">
+		<button type="submit" class="btn btn-large btn-primary">保存</button>
+    </div>
+    </div>
+</form>
+<script src="/js/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$().ready(function() {
+	$("#op_type").change(function(){
+		var type = $(this).val();
+		
+		html = '';
+		if(type == 'reg') {
+			html = regTemplate();
+		}
+		else if(type = 'names') {
+			html = namesTemplate();
+		}
+		
+		if(!html) 
+			alert("请输入选择条件");
+		
+		$("#op_box").html(html);
+	});
+	
+	function regTemplate() {
+	return '<label class="control-label" for="times">注册时间：</label>'
+			+ '<div class="controls">'		
+			+ '<input id="start_time" class="Wdate" type="text" placeholder="开始时间" onclick="WdatePicker({dateFmt:\'yyyy-M-d\',skin:\'whyGreen\',maxDate:\'#F{$dp.$D(\'end_time\')}\'})" style="width:200px;" value="" name="start_time">'
+			+ '<input id="end_time" class="Wdate" type="text" placeholder="截止时间" onclick="WdatePicker({dateFmt:\'yyyy-M-d\',skin:\'whyGreen\',minDate:\'#F{$dp.$D(\'start_time\')}\'})" style="width:200px;" value="" name="end_time">';
+			+ '</div>';
+	}
+	
+	function namesTemplate() {
+		return '<label class="control-label" for="times">用户名称：</label>'
+			+ '<div class="controls">'
+			+ '<textarea class="span5" name="names"></textarea>';
+		+ '</div>';
+	}
+});
+</script>
+<!-- contents end -->

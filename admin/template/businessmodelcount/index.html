@@ -1,0 +1,51 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td align="center" colspan="13">
+          <form id="tForm" name="tForm" action="index.php?_c=businessmodelcount&_a=index" method="post" class="form-search">
+              <table border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="80px">查询日期：</td>
+                  <td><input type="text" name="start_time" id="start_time" style="width:120px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" style="width:120px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+                  <td><input type="submit" value="搜索" class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="导出" onclick="window.location.href='index.php?_c=businessmodelcount&_a=leadingout';" class="btn btn-success"/></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+      <th align="center" class="pushItem">开始时间</th>
+      <th align="center" class="pushItem">结束时间</th>
+      <th align="center" class="pushItem">APP成交订单数</th>
+      <th align="center" class="pushItem">TOUCH成交订单数</th>
+      <th align="center" class="pushItem">APP成交件数</th>
+      <th align="center" class="pushItem">TOUCH成交件数</th>
+	  <th align="center" class="pushItem">净营业收入</th>
+	  <th align="center" class="pushItem">平均客单价</th>
+	  <th align="center" class="pushItem">平均件单价</th>
+	  <th align="center" class="pushItem">重复购买用户</th>
+	  <th align="center" class="pushItem">重复购买件数</th>
+	  <th align="center" class="pushItem">重复购买用户贡献</th>
+	  <th align="center" class="pushItem">重复购买下单件数</th>
+
+  </tr>
+
+  {{if $list}}
+  <tr>
+      <td align="center" class="pushItem">{{$start_time}}</td>
+      <td align="center" class="pushItem">{{$end_time}}</td>
+      <td align="center" class="pushItem">{{$list.order_app}}</td>
+      <td align="center" class="pushItem">{{$list.order_touch}}</td>
+      <td align="center" class="pushItem">{{$list.order_app_quantity}}</td>
+      <td align="center" class="pushItem">{{$list.order_touch_quantity}}</td>
+      <td align="center" class="pushItem">{{$list.order_amount}}</td>
+      <td align="center" class="pushItem">{{$list.user_amount_avg}}</td>
+      <td align="center" class="pushItem">{{$list.order_amount_avg}}</td>
+      <td align="center" class="pushItem">{{$list.re_buyer}}</td>
+      <td align="center" class="pushItem">{{$list.re_quantity}}</td>
+      <td align="center" class="pushItem">{{$list.re_buyer_rate}}</td>
+      <td align="center" class="pushItem">{{$list.re_buyer_quantity}}</td>
+  </tr>
+  {{/if}}
+</table>

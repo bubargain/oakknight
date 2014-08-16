@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>欢乐着烦恼</title>
+<meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="css/layout.css" rel="stylesheet" />
+<script src="/js/zepto/zepto.js"></script>
+<script src="/js/zepto/event.js"></script>
+<script src="/js/zepto/touch.js"></script>  
+<script src="/js/zepto/fx.js"></script>
+</head>
+<body>
+<section class="main">
+	<section class="content">
+        <div class="topic-focus" id="tf">
+            <ul>
+                <li>
+                    <div class="detail-topic">
+                    	<img src="img/topic_detail_1.jpg">
+                        <div class="detail-topic-text">
+                            <span>.1</span>
+                            <p>Hey，我们是彼此房间里最甜的糖，虽然你有些黏、爱融化、臭美还有小脾气，但我好像一点也不打算不理你。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+                        <img _src="img/topic_detail_2.jpg">
+                        <div class="detail-topic-text">
+                            <span>.2</span>
+                            <p>心情好，相约去撒野，我们的性格相似又不同，但凑在一起时就是分不开的好姐妹。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+						<img _src="img/topic_detail_3.jpg">
+                        <div class="detail-topic-text">
+                            <span>.3</span>
+                            <p>心情差，随时要你陪我吃大餐、看无聊的通宵电影，我们肆无忌惮地邪恶评论一切，然后把不开心丢在脑后。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+						<img _src="img/topic_detail_4.jpg">
+                        <div class="detail-topic-text">
+                            <span>.4</span>
+                            <p>我们知道彼此的爱好与口味，互赠并不昂贵但称心如意的礼物，不管开心或难过，至少我们还有对方的肩膀。你的欢乐、烦恼，都归ME。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                	<div class="more-topic">
+                        <p>更多关于我们的礼物等您品鉴</p>
+                        <a href="http://m.ymall.com/api/goods/search?query=tags%3D%E6%AC%A2%E4%B9%90%E7%9D%80%E7%83%A6%E6%81%BC&title=欢乐着烦恼" class="cWhite more-btn1">查看更多相关礼物</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+	</section>
+</section>
+<script type="text/javascript">
+(function() {
+	var a = $("#tf"), b = a.find("li"), c = a.find("ul"), e = a.find("img"), f = b.length - 1, g = b.eq(0).width(), h = 0;
+	$('#tf').bind('touchmove', function(e) { e.preventDefault() });
+	listen_to('#tf')
+
+    function listen_to(el) {
+      $(el).swipeLeft(function(){
+		h++, h > f && (h = f), i();
+      })
+      .swipeRight(function(){
+		h--, h < 0 && (h = 0), i();		
+      })
+      .swipeUp(function(){
+		h++, h > f && (h = f), i();
+      })
+      .swipeDown(function(){
+		h--, h < 0 && (h = 0), i();
+      })
+    }
+    
+	function i() {
+        c.animate({
+            "margin-left":-h * g
+        }), e.eq(h).attr("src", e.eq(h).attr("_src"));
+    }
+})();
+</script>
+<img src="http://hm.baidu.com/hm.gif?si=01a63d97e20ae495f99ac7e53b572d1b&amp;et=0&amp;nv=1&amp;st=1&amp;v=wap-0-0.2&amp;rnd=6295301921" width="0" height="0" />
+</body>
+</html>

@@ -1,0 +1,191 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<head>
+<title>订单确认</title>
+<meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="/web/m.css" rel="stylesheet" />
+</head>
+<body>
+<header>
+	<section><a href="javascript:history.go(-1);"></a></section>
+	<section>
+		<div class="cWhite">订单确认</div>
+	</section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+		<div class="order">
+			<div class="order-pro" id="proSize">
+				<section><a href="#"><img src="img/100_100.png"></a></section>
+				<section>
+					<div>
+						<p><a href="#">简约个性小钱夹创意钱包</a></p>
+						<span>￥50.03</span></div>
+					<div>
+						<p>购买数量：
+							<select>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+							</select>
+						</p>
+						<span class="cBlue"></span> </div>
+				</section>
+			</div>
+			<div class="order-tit">
+				<section>使用优惠券：
+					<select></select>
+				</section>
+			</div>
+			<div class="order-tit">
+				<section>配送方式</section>
+				<section>快递 免运费</section>
+			</div>
+			<div class="order-tit">
+				<section>收货人信息</section>
+				<section></section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">收货人姓名</section>
+				<section>
+					<input type="text">
+				</section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">收货人手机</section>
+				<section>
+					<input type="text">
+				</section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">所在省份</section>
+				<section>
+					<select>
+						<option>所在省份</option>
+					</select>
+				</section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">所在城市</section>
+				<section>
+					<select>
+						<option>所在城市</option>
+					</select>
+				</section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">所在区县</section>
+				<section>
+					<select>
+						<option>所在区县</option>
+					</select>
+				</section>
+			</div>
+			<div class="order-tit">北京市海淀区北京大学</div>
+			<div class="order-form">
+				<section class="cGray">详细地址</section>
+				<section>
+					<textarea></textarea>
+				</section>
+			</div>
+			<div class="order-tit">付款方式<br>
+				<input type="radio" checked name="pay" id="pay1">
+				<label for="pay1">支付宝快捷支付</label>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="pay" id="pay2">
+				<label for="pay2">支付宝钱包支付</label>
+			</div>
+		</div>
+		<a href="login.html" class="cWhite order-btn">确定并付款</a> </section>
+</section>
+<!-- footer -->
+<footer>
+	<div><ins class="cGray">|</ins><a href="">关于礼物店</a><ins class="cGray">|</ins></div>
+	<p>Copyright 2013 版权所有 m.ymall.com</p>
+</footer>
+<script src ='img/j.js'></script> 
+<script>
+(function(){
+	var proData = {
+		price : 50.034,
+		coupon : []		
+	};
+	var element = $("#proSize"), 
+		_select = element.find('select').eq(0), 
+		span = element.find('span'), 
+		couponElement = element.next(), 
+		couponSelect = couponElement.find('select').eq(0);
+	
+	var cur_price = _select.val() * proData.price, couponId = null;
+	
+	_select.bind('change',function(){
+		cur_price = this.value * proData.price;
+		span.eq(0).html('￥' + cur_price.toFixed(2));
+		check(cur_price);
+	});
+	
+	function check(price){
+		if(proData.coupon.length>0){
+			if(couponId){
+				var arr = couponSelect.val().split('|');
+				if(arr[2]>price){
+					alert('亲，购物金额满' + arr[2] + '才能使用当前优惠券哦')
+				}
+			}
+			
+			var _theselect = couponSelect.get(0).options, status = false;
+			_theselect.length = 0;
+			_theselect.add(new Option('未使用优惠券','0|0|0'));
+			$.each(proData.coupon,function(n,o){
+				var value = o.money + '|' + o.id + '|' + o.use;
+				if(o.id == couponId && price > o.use){
+					var option = new Option(o.title,value, true, true);
+				}else{
+					var option = new Option(o.title,value);
+				}
+				price<o.use ? option.disabled = true : status = true;
+				_theselect.add(option);
+			});
+						
+			if(status){
+				change();
+			}else{
+				span.eq(1).html('');
+			}
+		}else{
+			couponElement.hide();
+		}
+	}
+	
+	couponSelect.bind('change',change);
+	
+	function change(){
+		var arr = couponSelect.val().split('|'), 
+		price = cur_price - arr[0];
+		console.log(arr,price)
+		if(price < cur_price){
+			span.eq(1).html('仅需支付￥' + (cur_price - arr[0]).toFixed(2));
+			span.eq(0).addClass('cGray');
+		}else{
+			span.eq(1).html('');
+			span.eq(0).removeClass('cGray');
+		}
+		couponId = arr[0]>0 ? arr[1] : null;
+	}
+	
+	check(proData.price)
+})();
+</script>
+</body>
+</html>

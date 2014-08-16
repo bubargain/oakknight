@@ -1,0 +1,47 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td align="center" colspan="10">
+          <form id="tForm" name="tForm" action="index.php?_c=goodsordercount&_a=index" method="post" class="form-search">
+              <table border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="80px">商品id：</td>
+                  <td><input type="text" id="goods_id" name="goods_id" style="width:120px" /></td>
+                  <td align="right" width="80px">查询日期：</td>
+                  <td><input type="text" name="start_time" id="start_time" style="width:120px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" style="width:120px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+                  <td><input type="submit" value="搜索" class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="导出" onclick="window.location.href='index.php?_c=goodsordercount&_a=leadingout';" class="btn btn-success"/></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+      <th align="center" class="pushItem">pid</th>
+      <th align="center" class="pushItem" width="25%">商品名称</th>
+      <th align="center" class="pushItem">开始时间</th>
+      <th align="center" class="pushItem">结束时间</th>
+      <th align="center" class="pushItem">待付款订单数</th>
+      <th align="center" class="pushItem">已支付订单数</th>
+      <th align="center" class="pushItem">已取消订单数（无支付）</th>
+      <th align="center" class="pushItem">已取消订单数（有支付）</th>
+      <th align="center" class="pushItem">净销售金额</th>
+      <th align="center" class="pushItem" width="5%">库存</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+  <tr>
+      <td align="center" class="pushItem">{{$item.goods_id}}</td>
+      <td class="pushItem">{{$item.goods_name}}</td>
+      <td align="center" class="pushItem">{{$start_time}}</td>
+      <td align="center" class="pushItem">{{$end_time}}</td>
+      <td align="center" class="pushItem">{{$item.add_time}}</td>
+      <td align="center" class="pushItem">{{$item.pay_time}}</td>
+      <td align="center" class="pushItem">{{$item.uppay_colsed_time}}</td>
+      <td align="center" class="pushItem">{{$item.pay_colsed_time}}</td>
+      <td align="center" class="pushItem">{{$item.order_amount}}</td>
+      <td align="center" class="pushItem">{{$item.stock}}</td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+</table>

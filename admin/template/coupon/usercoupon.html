@@ -1,0 +1,61 @@
+<div id="content">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr>
+    <td align="center" colspan="8">
+    	<form id="tForm" name="tForm" method="GET" action="index.php" class="form-search">
+    	<table border="0" cellspacing="0" cellpadding="1">
+          <tr>
+            <td align="right" width="80px">
+            	<input type="hidden" name="_c" value="coupon" />
+        		<input type="hidden" name="_a" value="userCoupon" />优惠券id：
+            </td>
+			<td>
+                <input type="text" name="cpn_id" class="span1" value="{{$smarty.get.cpn_id}}" placeholder="优惠券id">
+            </td>
+			<td align="right" width="80px">优惠券sn：</td>
+			<td>
+                <input type="text" class="span2" name="coupon_sn" value="{{$smarty.get.coupon_sn}}" placeholder="优惠券sn">
+            </td>
+            <td align="right" width="80px">user_name：</td>
+			<td>
+                <input type="text" class="span2" name="user_name" value="{{$smarty.get.user_name}}" placeholder="手机号码">
+            </td>			
+            <td><input class="btn" type="submit" value="搜索">&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php?_c=coupon&_a=add" class="btn btn-primary">增加优惠券</a></td>
+          </tr>
+        </table>
+        </form>
+    </td>
+</tr>
+<tr>
+	<th align="center" class="pushItem" width="5%">id</th>
+	<th align="center" class="pushItem" width="15%">优惠券sn</th>
+	<th align="center" class="pushItem" width="15%">名称</th>
+	<th align="center" class="pushItem" width="15%">用户名</th>
+	<th align="center" class="pushItem" width="15%">开始时间</th>
+	<th align="center" class="pushItem" width="15%">截止时间</th>
+	<th align="center" class="pushItem" width="10%">状态</th>
+	<th align="center" class="pushItem">order_id</th>
+</tr>
+{{foreach from=$list item=item}}
+<tr>
+	<td align="center" class="pushItem">{{$item.ucpn_id}}</td>
+	<td align="center" class="pushItem">{{$item.coupon_sn}}</td>
+	<td align="center" class="pushItem">{{$item.title}}</td>
+	<td align="center" class="pushItem"><a href="index.php?_c=user&_a=detail&user_id={{$item.user_id}}">{{$item.user_name}}</a></td>
+	<td align="center" class="pushItem">{{$item.from_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+	<td align="center" class="pushItem">{{$item.end_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+	<td align="center" class="pushItem">{{$item.state_str}}</td>
+	<td align="center" class="pushItem">{{if $item.order_id}}<a href="index.php?_c=order&_a=detail&order_id={{$item.order_id}}">查看订单{{if $item.state eq 3}}（已支付）{{/if}}</a>{{/if}}</td>
+</tr>
+{{/foreach}}
+<tr>
+    <td align="center" colspan="8">优惠券数量：{{$total_info.total}} ，订单数量：{{$total_info.order_count}} ，订单金额：{{$total_info.order_amount}} ，订单优惠金额：{{$total_info.amount}} 
+	支付数量：{{$total_info.pay_order_count}} ，订单支付金额：{{$total_info.pay_order_amount}} ，优惠支付金额：{{$total_info.pay_amount}}</td>
+</tr>
+<tr>
+    <td align="center" colspan="8">{{$page_html}}</td>
+</tr>
+</table>
+</div>
+<!-- contents end -->

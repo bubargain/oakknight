@@ -1,0 +1,18 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="center" colspan="4">
+    	<form id="tForm" name="tForm" action="index.php?_c=order&_a=reBuyOrder" method="post" class="form-search">
+            <table border="0" cellspacing="0" cellpadding="5">
+              <tr>
+                <td align="right" width="60px">用户名：</td>
+                <td align="right" width="60px"><input type="text" name="phone_mob" style="width:120px;"></td>
+                <td><input type="text" name="start_time" id="start_time" style="width:120px;" value="{{$start_time|date_format:'%Y-%m-%d'}}" class="Wdate"  
+  onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" style="width:120px;" value="{{$end_time|date_format:'%Y-%m-%d'}}" class="Wdate"  
+  onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+                <td><input type="submit" value="搜索" class="btn"/></td>
+              </tr>
+            </table>  
+        </form>
+    </td>
+  </tr>
+</table>

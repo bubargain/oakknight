@@ -1,0 +1,60 @@
+<header>
+	<section><a href="javascript:history.go(-1);"></a></section>
+	<section>
+		<div class="cWhite">意见反馈</div>
+	</section>
+	<section><a id="sumitForm" href="javascript:;" class="btn">提交</a></section>
+</header>
+<section class="main">
+	<section class="content">
+		<form id="feedBackForm" action="index.php?_c=feedback&_a=index" method="post">
+        <div class="guest" id="feedback">
+			<input type="text" id="contact" name="contact" value="{{if $contact}}{{$contact}}{{else}}留下联系方式方便联系噢~{{/if}}" bak="留下联系方式方便联系噢~" class="cGray"/>
+			<textarea id="content" name="content" bak="请输入您的宝贵意见~" class="cGray">请输入您的宝贵意见~</textarea>
+		</div>
+        </form>
+	</section>
+</section>
+<script type="text/javascript">
+(function(){
+	var element = $("#feedback");
+	element.delegate('input','focus',function(){
+		var _this = $(this);
+		if(_this.val()==_this.attr('bak')){
+			_this.val('').addClass('on')
+		}
+	}).delegate('input','blur',function(){
+		var _this = $(this);
+		if(_this.val()==''){
+			_this.val(_this.attr('bak')).removeClass('on')
+		}
+	});
+	//
+	element.delegate('textarea','focus',function(){
+		var _this = $(this);
+		if(_this.val()==_this.attr('bak')){
+			_this.val('').addClass('on')
+		}
+	}).delegate('textarea','blur',function(){
+		var _this = $(this);
+		if(_this.val()==''){
+			_this.val(_this.attr('bak')).removeClass('on')
+		}
+	});
+	
+	$('#sumitForm').click(function(){
+		if(!$("#contact").val() || $("#contact").val()== '留下联系方式方便联系噢~'){
+			alertMSG('请填写联系方式');
+		}else if(!(/^0?(13|15|18|14)[0-9]{9}$/.test($('#contact').val()))){
+			alertMSG('请输入正确的手机号');
+		}else if(!$("#content").val() || $("#content").val() == '请输入您的宝贵意见~'){
+			alertMSG('请填写内容');	
+		}else{
+			alertMSG('提交成功');
+			setTimeout(function(){
+				$('#feedBackForm').submit();
+				},1000);
+		}
+	});
+})()
+</script>

@@ -1,0 +1,26 @@
+<div id="content">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="9">
+<tr>
+	<th align="center" class="pushItem" width="5%">id</th>
+	<th align="center" class="pushItem" width="20%">大图片</th>
+	<th align="center" class="pushItem" width="15%">big </th>
+	<th align="center" class="pushItem" width="20%">小图片</th>
+	<th align="center" class="pushItem" width="15%">small </th>
+	<th align="center" class="pushItem">操作 <a href="index.php?_c=saletype&_a=add">新增</a></th>
+</tr>
+{{foreach from=$list item=item}}
+<tr>
+	<td align="center" class="pushItem">{{$item.key}}</td>
+	<td align="center" class="pushItem"><img src="{{$CDN_YMALL}}{{$item.big.img}}"><p>{{$item.title}}</p></td>
+	<td align="center" class="pushItem">X:{{$item.big.x}}, Y:{{$item.big.y}}</td>
+	<td align="center" class="pushItem"><img src="{{$CDN_YMALL}}{{$item.small.img}}"></td>
+	<td align="center" class="pushItem">X:{{$item.small.x}}, Y:{{$item.small.y}}</td>
+	<td align="center" class="pushItem">
+	<a href="index.php?_c=saletype&_a=edit&key={{$item.key}}">修改</a>
+	</td>
+</tr>
+{{/foreach}}
+</table>
+</div>
+<!-- contents end -->

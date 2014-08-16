@@ -1,0 +1,45 @@
+<header>
+	<section><a href="{{if $style eq 'forgetPass'}}index.php?_c=login&_a=index{{else}}javascript:window.history.go(-1);{{/if}}"></a></section>
+	<section><div class="cWhite">登录</div></section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+		<div class="order_list">
+            <form id="loginForm" action="index.php?_c=login&_a=index" method="post">
+            <div class="login" id="login">
+                <dl>
+                    <dt><input type="text" id="phone" name="phone" value="{{if $phone}}{{$phone}}{{/if}}" class="cGray" /><span class="cGray">您本人的手机号</span><p><input type="checkbox"> 已阅读<a href="index.php?_c=help&_a=agreement" class="cBlue">《使用条款和隐私政策》</a></p></dt>
+                    <dd>
+                    <input type="hidden" name="style" value="{{$style}}" />
+                    <a id="sumitForm" name="sumitForm" href="javascript:;" class="cWhite set-btn1">下一步</a>
+                    </dd>
+                </dl>
+            </div>
+            </form>
+        </div>
+	</section>
+</section>
+<script type="text/javascript">
+(function(){
+	
+	$(".login").delegate('input','blur',function(){
+		var _this = $(this);
+		if(_this.val()=='') _this.next().show();
+	}).find('span').click(function(){
+		$(this).hide().prev().focus();
+	})
+	
+	var element = $(".login").find('input').eq(0);
+	
+	element.val() ? element.next().hide():element.next().show();
+	
+	$('#sumitForm').click(function(){
+		if(!(/^0?(13|15|18|14)[0-9]{9}$/.test($('#phone').val()))){
+			alertMSG('请输入正确的手机号');	
+		}else{
+			$('#loginForm').submit();
+		}
+	});
+})();
+</script>

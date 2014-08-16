@@ -1,0 +1,210 @@
+﻿<!--contents begin-->
+<style>
+.error {
+    display: inline-block;
+    padding-left: 5px;
+    vertical-align: middle;
+	color: #ff0000;
+}
+</style>
+<p>跳转范例：http://m.ymall.com/index.php?_c=bar&_a=show&bar_id=68</p>
+<form id="bar_form" class="form" method="post" action="index.php?_c=bar&_a={{if $info.bar_id}}edit&id={{$info.bar_id}}{{else}}add{{/if}}">
+    <div class="control-group">
+		<label class="control-label" for="title">主题：</label>
+		<div class="controls">
+			<input type="text" name="title" id="title" value="{{$info.title}}" placeholder="请输入名称">
+		</div>
+    </div>
+    <div class="control-group">
+		<label class="control-label"><a href="#upload_modal" role="button" class="btn" data-toggle="modal">插入图片</a></label>
+		<div class="controls" id="thumb_image">
+			<img src="{{$CDN_YMALL}}{{$info.img}}">
+			<input type="hidden" name="img" value="{{$info.img}}" id="img">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="form_search">专题关键词：</label>
+		<div class="controls">
+			<input type="text" id="form_search" name="search" value="{{$info.search}}">
+			<span class="input-append">
+			<a href="#keywrod_modal" role="button" class="btn" data-toggle="modal">生成关键词</a>
+			</span>
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="url">跳转地址：</label>
+		<div class="controls">
+			<input type="text" type="text" name="url" id="url" value="{{$info.url}}" placeholder="跳转地址">
+		</div>
+    </div>
+	<div class="control-group">
+		<div class="controls">
+			<input type="text" name="start_time" id="start_time" value="{{$info.start_time|date_format:'%Y-%m-%d %H:%M:%S'}}" style="width:200px;" class="Wdate"  
+    onClick="WdatePicker({dateFmt:'yyyy-M-d H:mm:ss',skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})" placeholder="开始时间" />
+			<input type="text" name="end_time" id="end_time" value="{{$info.end_time|date_format:'%Y-%m-%d %H:%M:%S'}}" style="width:200px;" class="Wdate"  
+    onClick="WdatePicker({dateFmt:'yyyy-M-d H:mm:ss',skin:'whyGreen',minDate:'#F{$dp.$D(\'start_time\')}'})" placeholder="截止时间">
+		</div>
+    </div>	
+	<div class="control-group">
+		<label class="control-label" for="times">显示次数：</label>
+		<div class="controls">
+			<input type="text" type="text" name="times" id="times" value="{{$info.times}}" placeholder="次数">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="type">选择人群：</label>
+		<div class="controls">
+			<select name="type">
+			{{html_options options=$type_options selected=$info.type}}
+		</select>
+		</div>
+    </div>	
+	<div class="control-group">
+		<label class="control-label" for="extra">选择人群：</label>
+		<div class="controls">
+			<textarea name="extra" class="span7" id="extra">{{$info.extra}}</textarea>
+		</div>
+    </div>
+    <div class="control-group">
+    <div class="controls">
+		<button type="submit" class="btn btn-large btn-primary">保存</button>
+    </div>
+    </div>
+</form>
+
+<div id="upload_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="image_upload" aria-hidden="true">
+	<form id="uploadForm" enctype="multipart/form-data" method="POST" action="index.php?_c=upload&belong=3">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="image_upload">上传图片</h3>
+	</div>
+	<div class="modal-body">
+		<p><input type="file" name="upfile"></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button href="javascript:;" class="btn btn-primary" id="upload_btn">上传</button>
+	</div>
+	</form>
+</div>
+
+<div id="keywrod_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="image_upload_2" aria-hidden="true">
+<button class="btn btn-default" title="" data-placement="bottom" data-toggle="tooltip" type="button" data-original-title="Tooltip on bottom">Tooltip on bottom</button>
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3>生成关键词</h3>
+	</div>
+	<div class="modal-body">
+		<p><b class="span1">关键词：</b><input type="text" id="make_keyword" value="" placeholder="请输入关键词"></p>
+		<p><b class="span1">tags：</b><input type="text" id="make_tag" value="" placeholder="请输入tag"></p>
+		<p><b class="span1">cate_id：</b><input type="text" id="make_cate_id" value="" placeholder="请输入分类id"></p>
+		<p><b class="span1">price：</b><input type="text" id="make_price_start" value="" class="span1" placeholder="起始价格">-<input type="text" id="make_price_end" class="span1" value="" placeholder="终止价格"></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button href="javascript:;" class="btn btn-primary" id="make_submit">生成</button>
+	</div>
+</div>
+<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+(function(){
+	$("#content").delegate("a", "click", function(){
+		_this = $(this);		
+		switch(_this.attr("y-action")) {
+			case 'drop_image': 
+				drop_image(_this);
+				break;
+			default:
+			;
+		}
+	});
+
+	function drop_image(_this) {
+		var url = "index.php?_c=upload&_a=drop&" + _this.attr("y-data");
+		$.getJSON(url, function(ret) {			
+			if(ret.status == 200) {
+				_this.parent().remove();
+			}
+			else {
+				alert('删除失败');
+			}
+		});
+	}
+})();
+
+$(document).ready(function() {
+
+	$('#upload_btn').click(function() {
+	
+		$('#uploadForm').ajaxForm({
+			success: function(ret) {				
+				if(ret.status == 200) {
+					var str = '<img src="' + ret.data.image_url + '">'
+									+ '<input type="hidden" name="img" value="' + ret.data.image_path + '">';
+					$("#thumb_image").html(str);
+					$('#upload_modal').modal('hide');
+				}
+				else {
+					alert("上传失败，请重试");
+				}
+			}
+		});
+	});
+	
+	
+	$("#make_submit").click(function(){
+		//make_keyword make_tag make_cate_id make_price_start make_price_end
+		var query = [], pre = '';
+		var keyword = $("#make_keyword").val();
+		var tag = $("#make_tag").val();
+		var cate_id = $("#make_cate_id").val();
+		var price_start = $("#make_price_start").val();
+		var price_end = $("#make_price_end").val();
+		if(keyword) {
+			query.push('keyword=' + keyword);
+		}
+		if(tag) {
+			query.push('tags=' + tag);
+		}
+		if(cate_id) {
+			query.push('cate_id=' + cate_id);
+		}
+		if(price_start && price_end) {
+			query.push('price=' + price_start + ':' + price_end);
+		}
+		$("#form_search").val(query.join('&'));
+		$('#keywrod_modal').modal('hide');
+	});
+});
+
+$().ready(function() {
+	$("#bar_form").validate({
+		rules: {
+			title: {
+				required: true,
+				minlength: 4,
+				maxlength: 15
+			},
+			img: "required",
+			start_time: "required",
+			end_time: "required",
+			times: "required",
+			//extra: "required",
+		},
+		messages: {			
+			title: {
+				required: "请输入标题",
+				minlength: "不少于4个汉字",
+				maxlength: "不超过15个汉字"
+			},
+			img: "请上传图片",
+			start_time: "请输入开始时间",
+			end_time: "请输入结束时间",
+			times: "请输入次数"
+		}
+	});
+});
+
+</script>
+<!-- contents end -->

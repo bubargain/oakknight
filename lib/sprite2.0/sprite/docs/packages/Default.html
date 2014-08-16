@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » Default</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+<li><a href="../namespaces/sprite.html"><i class="icon-th"></i> sprite</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/FirePHPCore.html"><i class="icon-folder-open"></i> FirePHPCore</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">218</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">2</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
+<li>
+<a href="../packages/Default.html" title="Default"><i class="icon-folder-open"></i>Default</a><ul class="nav nav-list nav-packages"></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-interface"></i> Interfaces</li>
+<li><a href="#iView" title="">iView</a></li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#BaseDao" title="">BaseDao</a></li>
+<li><a href="#PDOext" title="扩展了的pdo">PDOext</a></li>
+<li><a href="#PDOManager" title="">PDOManager</a></li>
+<li><a href="#SqlUtil" title="">SqlUtil</a></li>
+<li><a href="#BizException" title="业务异常">BizException</a></li>
+<li><a href="#DataAssert" title="对数据异常断言">DataAssert</a></li>
+<li><a href="#area" title="">area</a></li>
+<li><a href="#ArraySort" title="">ArraySort</a></li>
+<li><a href="#Auth" title="简单身份验证
+页面简单debug身份验证">Auth</a></li>
+<li><a href="#Config" title="">Config</a></li>
+<li><a href="#Cookie" title="">Cookie</a></li>
+<li><a href="#Crypt" title="">Crypt</a></li>
+<li><a href="#Debug" title="">Debug</a></li>
+<li><a href="#Imagick" title="">Imagick</a></li>
+<li><a href="#Ip" title="获取ip">Ip</a></li>
+<li><a href="#IpLocation" title="查ip位置信息">IpLocation</a></li>
+<li><a href="#Registry" title="注册类，可用于存取全局信息">Registry</a></li>
+<li><a href="#Roll" title="按权重随机取元素">Roll</a></li>
+<li><a href="#ThumbImg" title="图片缩略服务，前提得有php Imagick 扩展">ThumbImg</a></li>
+<li><a href="#Tree" title="">Tree</a></li>
+<li><a href="#UString" title="">UString</a></li>
+<li><a href="#App" title="简单的mvc实现">App</a></li>
+<li><a href="#Controller" title="简单的控制器基类">Controller</a></li>
+<li><a href="#JsonView" title="">JsonView</a></li>
+<li><a href="#PhpView" title="">PhpView</a></li>
+<li><a href="#Request" title="">Request</a></li>
+<li><a href="#Response" title="">Response</a></li>
+<li><a href="#Router" title="">Router</a></li>
+<li><a href="#SimpleRouter" title="">SimpleRouter</a></li>
+<li><a href="#SmartyView" title="">SmartyView</a></li>
+<li><a href="#StringView" title="">StringView</a></li>
+<li><a href="#PageNav" title="">PageNav</a></li>
+<li><a href="#FB" title="">FB</a></li>
+</ul>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li class="active"><a href="../packages/Default.html">Default</a></li>
+</li></ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="iView" class="element ajax clickable interface">
+<h1>iView<a href="../classes/sprite.mvc.iView.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.iView.html" class="more">« More »</a>
+</div>
+<div id="FB" class="element ajax clickable class">
+<h1>FB<a href="../classes/FB.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/FB.html" class="more">« More »</a>
+</div>
+<div id="BaseDao" class="element ajax clickable class">
+<h1>BaseDao<a href="../classes/sprite.db.BaseDao.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.db.BaseDao.html" class="more">« More »</a>
+</div>
+<div id="PDOManager" class="element ajax clickable class">
+<h1>PDOManager<a href="../classes/sprite.db.PDOManager.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.db.PDOManager.html" class="more">« More »</a>
+</div>
+<div id="PDOext" class="element ajax clickable class">
+<h1>PDOext<a href="../classes/sprite.db.PDOext.html">¶</a>
+</h1>
+<p class="short_description">扩展了的pdo</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.db.PDOext.html" class="more">« More »</a>
+</div>
+<div id="SqlUtil" class="element ajax clickable class">
+<h1>SqlUtil<a href="../classes/sprite.db.SqlUtil.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.db.SqlUtil.html" class="more">« More »</a>
+</div>
+<div id="BizException" class="element ajax clickable class">
+<h1>BizException<a href="../classes/sprite.exception.BizException.html">¶</a>
+</h1>
+<p class="short_description">业务异常</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.exception.BizException.html" class="more">« More »</a>
+</div>
+<div id="DataAssert" class="element ajax clickable class">
+<h1>DataAssert<a href="../classes/sprite.exception.DataAssert.html">¶</a>
+</h1>
+<p class="short_description">对数据异常断言</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.exception.DataAssert.html" class="more">« More »</a>
+</div>
+<div id="ArraySort" class="element ajax clickable class">
+<h1>ArraySort<a href="../classes/sprite.lib.ArraySort.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.ArraySort.html" class="more">« More »</a>
+</div>
+<div id="Auth" class="element ajax clickable class">
+<h1>Auth<a href="../classes/sprite.lib.Auth.html">¶</a>
+</h1>
+<p class="short_description">简单身份验证
+页面简单debug身份验证</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Auth.html" class="more">« More »</a>
+</div>
+<div id="Config" class="element ajax clickable class">
+<h1>Config<a href="../classes/sprite.lib.Config.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Config.html" class="more">« More »</a>
+</div>
+<div id="Cookie" class="element ajax clickable class">
+<h1>Cookie<a href="../classes/sprite.lib.Cookie.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Cookie.html" class="more">« More »</a>
+</div>
+<div id="Crypt" class="element ajax clickable class">
+<h1>Crypt<a href="../classes/sprite.lib.Crypt.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Crypt.html" class="more">« More »</a>
+</div>
+<div id="Debug" class="element ajax clickable class">
+<h1>Debug<a href="../classes/sprite.lib.Debug.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Debug.html" class="more">« More »</a>
+</div>
+<div id="Imagick" class="element ajax clickable class">
+<h1>Imagick<a href="../classes/sprite.lib.Imagick.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Imagick.html" class="more">« More »</a>
+</div>
+<div id="Ip" class="element ajax clickable class">
+<h1>Ip<a href="../classes/sprite.lib.Ip.html">¶</a>
+</h1>
+<p class="short_description">获取ip</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Ip.html" class="more">« More »</a>
+</div>
+<div id="IpLocation" class="element ajax clickable class">
+<h1>IpLocation<a href="../classes/sprite.lib.IpLocation.html">¶</a>
+</h1>
+<p class="short_description">查ip位置信息</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.IpLocation.html" class="more">« More »</a>
+</div>
+<div id="Registry" class="element ajax clickable class">
+<h1>Registry<a href="../classes/sprite.lib.Registry.html">¶</a>
+</h1>
+<p class="short_description">注册类，可用于存取全局信息</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Registry.html" class="more">« More »</a>
+</div>
+<div id="Roll" class="element ajax clickable class">
+<h1>Roll<a href="../classes/sprite.lib.Roll.html">¶</a>
+</h1>
+<p class="short_description">按权重随机取元素</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Roll.html" class="more">« More »</a>
+</div>
+<div id="ThumbImg" class="element ajax clickable class">
+<h1>ThumbImg<a href="../classes/sprite.lib.ThumbImg.html">¶</a>
+</h1>
+<p class="short_description">图片缩略服务，前提得有php Imagick 扩展</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.ThumbImg.html" class="more">« More »</a>
+</div>
+<div id="Tree" class="element ajax clickable class">
+<h1>Tree<a href="../classes/sprite.lib.Tree.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.Tree.html" class="more">« More »</a>
+</div>
+<div id="UString" class="element ajax clickable class">
+<h1>UString<a href="../classes/sprite.lib.UString.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.UString.html" class="more">« More »</a>
+</div>
+<div id="area" class="element ajax clickable class">
+<h1>area<a href="../classes/sprite.lib.area.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.lib.area.html" class="more">« More »</a>
+</div>
+<div id="App" class="element ajax clickable class">
+<h1>App<a href="../classes/sprite.mvc.App.html">¶</a>
+</h1>
+<p class="short_description">简单的mvc实现</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.App.html" class="more">« More »</a>
+</div>
+<div id="Controller" class="element ajax clickable class">
+<h1>Controller<a href="../classes/sprite.mvc.Controller.html">¶</a>
+</h1>
+<p class="short_description">简单的控制器基类</p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.Controller.html" class="more">« More »</a>
+</div>
+<div id="JsonView" class="element ajax clickable class">
+<h1>JsonView<a href="../classes/sprite.mvc.JsonView.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.JsonView.html" class="more">« More »</a>
+</div>
+<div id="PhpView" class="element ajax clickable class">
+<h1>PhpView<a href="../classes/sprite.mvc.PhpView.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.PhpView.html" class="more">« More »</a>
+</div>
+<div id="Request" class="element ajax clickable class">
+<h1>Request<a href="../classes/sprite.mvc.Request.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.Request.html" class="more">« More »</a>
+</div>
+<div id="Response" class="element ajax clickable class">
+<h1>Response<a href="../classes/sprite.mvc.Response.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.Response.html" class="more">« More »</a>
+</div>
+<div id="Router" class="element ajax clickable class">
+<h1>Router<a href="../classes/sprite.mvc.Router.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.Router.html" class="more">« More »</a>
+</div>
+<div id="SimpleRouter" class="element ajax clickable class">
+<h1>SimpleRouter<a href="../classes/sprite.mvc.SimpleRouter.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.SimpleRouter.html" class="more">« More »</a>
+</div>
+<div id="SmartyView" class="element ajax clickable class">
+<h1>SmartyView<a href="../classes/sprite.mvc.SmartyView.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.SmartyView.html" class="more">« More »</a>
+</div>
+<div id="StringView" class="element ajax clickable class">
+<h1>StringView<a href="../classes/sprite.mvc.StringView.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.mvc.StringView.html" class="more">« More »</a>
+</div>
+<div id="PageNav" class="element ajax clickable class">
+<h1>PageNav<a href="../classes/sprite.plugin.PageNav.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sprite.plugin.PageNav.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-10T13:47:44+08:00.<br></footer></div>
+</div>
+</body>
+</html>

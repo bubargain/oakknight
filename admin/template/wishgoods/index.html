@@ -1,0 +1,56 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td align="center" colspan="5">
+          <form id="tForm" action="index.php" method="get" class="form-search">
+              <table align="center" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="50px">商品ID：</td>
+                  <td width="80px"><input type="text" name="goods_id" value="{{$goods_id}}" style="width:80%"></td>
+                  <td align="right" width="70px">用户手机：</td>
+                  <td width="110px"><input type="text" name="user_name" value="{{$user_name}}" style="width:100%">
+                  <input type="hidden" name="user_id" value="{{$user_id}}">
+                  </td>
+                  <td align="right" width="50px">日期：</td>
+				  <td width="250px"><input type="text" name="start_time" id="start_time" value="{{$start_time}}" style="width:42%;" class="Wdate"  
+					onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" value="{{$end_time}}" style="width:42%;" class="Wdate"  
+					onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+                  <td align="right" width="40px">状态：</td>
+                  <td width="90px">
+                  	<select id="is_delete" name="is_delete" style="width:100%">
+                        <option value="">-状态-</option>
+                        <option value="0" {{if $is_delete eq '0'}} selected="selected"{{/if}}>-已喜欢-</option>
+                        <option value="1" {{if $is_delete eq '1'}} selected="selected"{{/if}}>-已取消-</option>
+                    </select>
+                  </td>
+                  <td width="50px">
+                    <input type="hidden" name="_c" value="wishgoods" />
+                    <input type="hidden" name="_a" value="index" />
+                    <input type="submit" value="查看" class="btn"/>
+                  </td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  {{if $list}}
+    <tr>
+        <th align="center" class="pushItem" width="20%">商品ID</th>
+        <th align="center" class="pushItem" width="40%">商品名称</th>
+        <th align="center" class="pushItem" width="15%">用户手机</th>
+        <th align="center" class="pushItem" width="10%">状态</th>
+        <th align="center" class="pushItem" width="15%">添加时间</th>
+    </tr>
+  {{foreach from=$list item=item}}
+  <tr>
+      <td align="center" class="pushItem">{{$item.goods_id}}</td>
+      <td align="center" class="pushItem"><a href="index.php?_c=goods&_a=detail&goods_id={{$item.goods_id}}">{{$item.goods_name}}</a></td>
+      <td align="center" class="pushItem"><a href="index.php?_c=user&_a=detail&user_id={{$item.user_id}}">{{$item.user_name}}</a></td>
+            <td align="center" class="pushItem">{{if $item.is_delete neq 0}}<span style="color:#F00;">已取消</span>{{else}}已喜欢{{/if}}</td>
+      <td align="center" class="pushItem">{{$item.ctime|date_format:'%Y-%m-%d'}}</td>
+  </tr>
+  {{/foreach}}
+  <tr>
+      <td align="center" class="pushItem" colspan="5">{{$page}}</td>
+  </tr>
+  {{/if}}
+</table>

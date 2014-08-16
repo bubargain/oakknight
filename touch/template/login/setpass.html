@@ -1,0 +1,70 @@
+<header>
+	<section><a href="javascript:history.go(-1);"></a></section>
+	<section><div class="cWhite">设置密码</div></section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+        <div class="order_list">
+            <form id="pwdForm" method="post">
+                <div class="login">
+                    <p class="cGray">亲，为了您下次方便登录，<br>请为您的账号设置一个登录密码。</p>
+                    <dl>
+                        <dt>
+                            <input type="password" id="pwd" name="pwd" class="cGray" />
+                            <span class="cGray">密码：6-12位数字或英文字母组成</span>
+                        </dt>
+                        <dd>
+                            <input type="hidden" id="phone" name="phone" value="{{$phone}}" />
+                            <a id="sumitForm" name="sumitForm" href="javascript:;" class="cWhite order-btn">确认设置，并登录</a>
+                        </dd>
+                    </dl>
+                </div>
+            </form>
+        </div>
+	</section>
+</section>
+<script type="text/javascript">
+(function(){
+	$(".login").delegate('input','blur',function(){
+		var _this = $(this);
+		if(_this.val()=='') _this.next().show();
+	}).find('span').click(function(){
+		$(this).hide().prev().focus();
+	})
+	
+	var element = $(".login").find('input').eq(0);
+	
+	element.val() ? element.next().hide():element.next().show();
+	
+	$('#sumitForm').click(function(){
+		if(!$("#pwd").val() || $("#pwd").val() == '密码：6-12位数字或英文字母组成'){
+			alertMSG('请输入密码');
+		}else if(!(/^[a-zA-Z0-9]{6,12}$/.test($('#pwd').val()))){
+			alertMSG('请输入6-12位数字或英文字母的密码');
+		}else{
+			var phone = $('#phone').val();
+			var pwd = $('#pwd').val();
+			$.ajax({
+				type: 'POST',
+				url: 'index.php?_c=login&_a=setPass',
+				data: {phone: phone,pwd:pwd},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG(data.ret.data);
+						setTimeout(function(){
+							window.location.href=data.ret.back_url;
+						},1000);
+					}else{
+						alertMSG(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alertMSG('网速不给力哦～');
+				}
+		    });
+		}
+	});
+})();
+</script>

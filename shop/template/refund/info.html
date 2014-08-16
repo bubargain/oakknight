@@ -1,0 +1,37 @@
+﻿
+<!--contents begin-->
+<div class="span10" id="content">
+<form class="form" method="post" action="index.php?_c=refund&_a=info&id={{$info.refund_id}}">
+<div class="well">
+	<h2 class="form-signin-heading">退款订单详细</h2>
+	<dl>
+		<dd class="span8"><span class="span2">订单号：{{$info.order_sn}}</span><span class="span2">姓名：{{$info.consignee}}</span><span class="span2">申请退款次数：{{$refund_times}}</span></dd>
+	</dl>
+	<dl>
+		<dd class="span8"><span class="span2">电话：{{$info.phone_mob}}</span><span class="span2">商品名：<img src="{{$order_goods.goods_image}}"><br />{{$order_goods.goods_name}}</span></dd>
+	</dl>
+	<dl>
+		<dd class="span8"><span>退款时间：{{$info.ctime|date_format:"%D"}}</span></dd>
+	</dl>
+	<dl>
+		<dd class="span8"><span>退款卡号：{{$info.card_no}}</span></dd>
+	</dl>
+	<dl>
+		<dd class="span8"><span>退款理由：{{$info.refund_desc}}</span></dd>
+	</dl>
+	<dl>
+		<dd class="span8">状态：<select name="refund_status">
+{{html_options options=$status_options selected=$info.refund_status}}
+</select></dd>
+	</dl>
+	<dl>
+		<dd class="span8"><span class="span2">订单金额：{{$info.order_amount}}</span><span class="span2">实退金额：<input type="text" name="refund_money" value="{{$info.refund_money}}" class="span1"/></span></dd>
+	</dl>
+	<dl>
+		<dd class="span8"><span class="span1">描述：</span><textarea name="admin_desc" class="span7">{{$info.admin_desc}}</textarea></dd><dt>&nbsp;</dt>
+	</dl>
+	<dl class="clearfix"><dd class="span8"><button type="submit" class="btn btn-large btn-primary">保存</button></dd></dl>
+</div>
+</form>
+</div>
+<!-- contents end -->

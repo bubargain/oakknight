@@ -1,0 +1,457 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \lib_image_imagick</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+<li><a href="../namespaces/sprite.html"><i class="icon-th"></i> sprite</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/FirePHPCore.html"><i class="icon-folder-open"></i> FirePHPCore</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">218</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">2</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
+        </span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method___destruct" title="__destruct :: "><span class="description">__destruct()
+        </span><pre>__destruct()</pre></a></li>
+<li class="method public "><a href="#method_add_noise" title="add_noise :: "><span class="description">add_noise()
+        </span><pre>add_noise()</pre></a></li>
+<li class="method public "><a href="#method_add_text" title="add_text :: "><span class="description">add_text()
+        </span><pre>add_text()</pre></a></li>
+<li class="method public "><a href="#method_add_watermark" title="add_watermark :: "><span class="description">add_watermark()
+        </span><pre>add_watermark()</pre></a></li>
+<li class="method public "><a href="#method_blur" title="blur :: "><span class="description">blur()
+        </span><pre>blur()</pre></a></li>
+<li class="method public "><a href="#method_border" title="border :: "><span class="description">border()
+        </span><pre>border()</pre></a></li>
+<li class="method public "><a href="#method_charcoal" title="charcoal :: "><span class="description">charcoal()
+        </span><pre>charcoal()</pre></a></li>
+<li class="method public "><a href="#method_crop" title="crop :: "><span class="description">crop()
+        </span><pre>crop()</pre></a></li>
+<li class="method public "><a href="#method_flip" title="flip :: "><span class="description">flip()
+        </span><pre>flip()</pre></a></li>
+<li class="method public "><a href="#method_flop" title="flop :: "><span class="description">flop()
+        </span><pre>flop()</pre></a></li>
+<li class="method public "><a href="#method_gaussian_blur" title="gaussian_blur :: "><span class="description">gaussian_blur()
+        </span><pre>gaussian_blur()</pre></a></li>
+<li class="method public "><a href="#method_get_height" title="get_height :: "><span class="description">get_height()
+        </span><pre>get_height()</pre></a></li>
+<li class="method public "><a href="#method_get_type" title="get_type :: "><span class="description">get_type()
+        </span><pre>get_type()</pre></a></li>
+<li class="method public "><a href="#method_get_width" title="get_width :: "><span class="description">get_width()
+        </span><pre>get_width()</pre></a></li>
+<li class="method public "><a href="#method_is_image" title="is_image :: "><span class="description">is_image()
+        </span><pre>is_image()</pre></a></li>
+<li class="method public "><a href="#method_level" title="level :: "><span class="description">level()
+        </span><pre>level()</pre></a></li>
+<li class="method public "><a href="#method_modulate" title="modulate :: "><span class="description">modulate()
+        </span><pre>modulate()</pre></a></li>
+<li class="method public "><a href="#method_motion_blur" title="motion_blur :: "><span class="description">motion_blur()
+        </span><pre>motion_blur()</pre></a></li>
+<li class="method public "><a href="#method_oil_paint" title="oil_paint :: "><span class="description">oil_paint()
+        </span><pre>oil_paint()</pre></a></li>
+<li class="method public "><a href="#method_open" title="open :: "><span class="description">open()
+        </span><pre>open()</pre></a></li>
+<li class="method public "><a href="#method_output" title="output :: "><span class="description">output()
+        </span><pre>output()</pre></a></li>
+<li class="method public "><a href="#method_radial_blur" title="radial_blur :: "><span class="description">radial_blur()
+        </span><pre>radial_blur()</pre></a></li>
+<li class="method public "><a href="#method_resize_to" title="resize_to :: "><span class="description">resize_to()
+        </span><pre>resize_to()</pre></a></li>
+<li class="method public "><a href="#method_save_to" title="save_to :: "><span class="description">save_to()
+        </span><pre>save_to()</pre></a></li>
+<li class="method public "><a href="#method_set_type" title="set_type :: "><span class="description">set_type()
+        </span><pre>set_type()</pre></a></li>
+<li class="method public "><a href="#method_thumbnail" title="thumbnail :: "><span class="description">thumbnail()
+        </span><pre>thumbnail()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="property private "><a href="#property_image" title="$image :: "><span class="description">$image</span><pre>$image</pre></a></li>
+<li class="property private "><a href="#property_type" title="$type :: "><span class="description">$type</span><pre>$type</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\lib_image_imagick"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/lib_image_imagick.html">lib_image_imagick</a>
+</li>
+</ul>
+<div class="element class"><div class="details">
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>__construct()
+        </h2>
+<pre>__construct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method___destruct"></a><div class="element clickable method public method___destruct" data-toggle="collapse" data-target=".method___destruct .collapse">
+<h2>__destruct()
+        </h2>
+<pre>__destruct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_add_noise"></a><div class="element clickable method public method_add_noise" data-toggle="collapse" data-target=".method_add_noise .collapse">
+<h2>add_noise()
+        </h2>
+<pre>add_noise($type) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$type</h4></div>
+</div></div>
+</div>
+<a id="method_add_text"></a><div class="element clickable method public method_add_text" data-toggle="collapse" data-target=".method_add_text .collapse">
+<h2>add_text()
+        </h2>
+<pre>add_text($text, $x, $y, $angle, $style) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$text</h4></div>
+<div class="subelement argument"><h4>$x</h4></div>
+<div class="subelement argument"><h4>$y</h4></div>
+<div class="subelement argument"><h4>$angle</h4></div>
+<div class="subelement argument"><h4>$style</h4></div>
+</div></div>
+</div>
+<a id="method_add_watermark"></a><div class="element clickable method public method_add_watermark" data-toggle="collapse" data-target=".method_add_watermark .collapse">
+<h2>add_watermark()
+        </h2>
+<pre>add_watermark($path, $x, $y) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$path</h4></div>
+<div class="subelement argument"><h4>$x</h4></div>
+<div class="subelement argument"><h4>$y</h4></div>
+</div></div>
+</div>
+<a id="method_blur"></a><div class="element clickable method public method_blur" data-toggle="collapse" data-target=".method_blur .collapse">
+<h2>blur()
+        </h2>
+<pre>blur($radius, $sigma) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$radius</h4></div>
+<div class="subelement argument"><h4>$sigma</h4></div>
+</div></div>
+</div>
+<a id="method_border"></a><div class="element clickable method public method_border" data-toggle="collapse" data-target=".method_border .collapse">
+<h2>border()
+        </h2>
+<pre>border($width, $height, $color) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$width</h4></div>
+<div class="subelement argument"><h4>$height</h4></div>
+<div class="subelement argument"><h4>$color</h4></div>
+</div></div>
+</div>
+<a id="method_charcoal"></a><div class="element clickable method public method_charcoal" data-toggle="collapse" data-target=".method_charcoal .collapse">
+<h2>charcoal()
+        </h2>
+<pre>charcoal($radius, $sigma) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$radius</h4></div>
+<div class="subelement argument"><h4>$sigma</h4></div>
+</div></div>
+</div>
+<a id="method_crop"></a><div class="element clickable method public method_crop" data-toggle="collapse" data-target=".method_crop .collapse">
+<h2>crop()
+        </h2>
+<pre>crop($x, $y, $width, $height) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$x</h4></div>
+<div class="subelement argument"><h4>$y</h4></div>
+<div class="subelement argument"><h4>$width</h4></div>
+<div class="subelement argument"><h4>$height</h4></div>
+</div></div>
+</div>
+<a id="method_flip"></a><div class="element clickable method public method_flip" data-toggle="collapse" data-target=".method_flip .collapse">
+<h2>flip()
+        </h2>
+<pre>flip() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_flop"></a><div class="element clickable method public method_flop" data-toggle="collapse" data-target=".method_flop .collapse">
+<h2>flop()
+        </h2>
+<pre>flop() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_gaussian_blur"></a><div class="element clickable method public method_gaussian_blur" data-toggle="collapse" data-target=".method_gaussian_blur .collapse">
+<h2>gaussian_blur()
+        </h2>
+<pre>gaussian_blur($radius, $sigma) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$radius</h4></div>
+<div class="subelement argument"><h4>$sigma</h4></div>
+</div></div>
+</div>
+<a id="method_get_height"></a><div class="element clickable method public method_get_height" data-toggle="collapse" data-target=".method_get_height .collapse">
+<h2>get_height()
+        </h2>
+<pre>get_height() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_get_type"></a><div class="element clickable method public method_get_type" data-toggle="collapse" data-target=".method_get_type .collapse">
+<h2>get_type()
+        </h2>
+<pre>get_type() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_get_width"></a><div class="element clickable method public method_get_width" data-toggle="collapse" data-target=".method_get_width .collapse">
+<h2>get_width()
+        </h2>
+<pre>get_width() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_is_image"></a><div class="element clickable method public method_is_image" data-toggle="collapse" data-target=".method_is_image .collapse">
+<h2>is_image()
+        </h2>
+<pre>is_image() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_level"></a><div class="element clickable method public method_level" data-toggle="collapse" data-target=".method_level .collapse">
+<h2>level()
+        </h2>
+<pre>level($black_point, $gamma, $white_point) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$black_point</h4></div>
+<div class="subelement argument"><h4>$gamma</h4></div>
+<div class="subelement argument"><h4>$white_point</h4></div>
+</div></div>
+</div>
+<a id="method_modulate"></a><div class="element clickable method public method_modulate" data-toggle="collapse" data-target=".method_modulate .collapse">
+<h2>modulate()
+        </h2>
+<pre>modulate($brightness, $saturation, $hue) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$brightness</h4></div>
+<div class="subelement argument"><h4>$saturation</h4></div>
+<div class="subelement argument"><h4>$hue</h4></div>
+</div></div>
+</div>
+<a id="method_motion_blur"></a><div class="element clickable method public method_motion_blur" data-toggle="collapse" data-target=".method_motion_blur .collapse">
+<h2>motion_blur()
+        </h2>
+<pre>motion_blur($radius, $sigma, $angle) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$radius</h4></div>
+<div class="subelement argument"><h4>$sigma</h4></div>
+<div class="subelement argument"><h4>$angle</h4></div>
+</div></div>
+</div>
+<a id="method_oil_paint"></a><div class="element clickable method public method_oil_paint" data-toggle="collapse" data-target=".method_oil_paint .collapse">
+<h2>oil_paint()
+        </h2>
+<pre>oil_paint($radius) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$radius</h4></div>
+</div></div>
+</div>
+<a id="method_open"></a><div class="element clickable method public method_open" data-toggle="collapse" data-target=".method_open .collapse">
+<h2>open()
+        </h2>
+<pre>open($path) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$path</h4></div>
+</div></div>
+</div>
+<a id="method_output"></a><div class="element clickable method public method_output" data-toggle="collapse" data-target=".method_output .collapse">
+<h2>output()
+        </h2>
+<pre>output($header) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$header</h4></div>
+</div></div>
+</div>
+<a id="method_radial_blur"></a><div class="element clickable method public method_radial_blur" data-toggle="collapse" data-target=".method_radial_blur .collapse">
+<h2>radial_blur()
+        </h2>
+<pre>radial_blur($radius) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$radius</h4></div>
+</div></div>
+</div>
+<a id="method_resize_to"></a><div class="element clickable method public method_resize_to" data-toggle="collapse" data-target=".method_resize_to .collapse">
+<h2>resize_to()
+        </h2>
+<pre>resize_to($width, $height, $fit, $fill_color) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$width</h4></div>
+<div class="subelement argument"><h4>$height</h4></div>
+<div class="subelement argument"><h4>$fit</h4></div>
+<div class="subelement argument"><h4>$fill_color</h4></div>
+</div></div>
+</div>
+<a id="method_save_to"></a><div class="element clickable method public method_save_to" data-toggle="collapse" data-target=".method_save_to .collapse">
+<h2>save_to()
+        </h2>
+<pre>save_to($path) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$path</h4></div>
+</div></div>
+</div>
+<a id="method_set_type"></a><div class="element clickable method public method_set_type" data-toggle="collapse" data-target=".method_set_type .collapse">
+<h2>set_type()
+        </h2>
+<pre>set_type($type) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$type</h4></div>
+</div></div>
+</div>
+<a id="method_thumbnail"></a><div class="element clickable method public method_thumbnail" data-toggle="collapse" data-target=".method_thumbnail .collapse">
+<h2>thumbnail()
+        </h2>
+<pre>thumbnail($width, $height, $fit) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$width</h4></div>
+<div class="subelement argument"><h4>$height</h4></div>
+<div class="subelement argument"><h4>$fit</h4></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_image"> </a><div class="element clickable property private property_image" data-toggle="collapse" data-target=".property_image .collapse">
+<h2>$image</h2>
+<pre>$image </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_type"> </a><div class="element clickable property private property_type" data-toggle="collapse" data-target=".property_type .collapse">
+<h2>$type</h2>
+<pre>$type </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-10T13:34:18+08:00.<br></footer></div>
+</div>
+</body>
+</html>

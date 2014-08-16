@@ -1,0 +1,48 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td align="center" colspan="12">
+          <form id="tForm" name="tForm" action="index.php?_c=salecount&_a=index" method="post" class="form-search">
+              <table border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="100px">库存范围：</td>
+                  <td><input type="text" name="start" id="start" style="width:120px;"/>  
+    <input type="text" name="end" id="end" style="width:120px;" /></td>
+                  <td><input type="submit" value="搜索" class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="导出" onclick="window.location.href='index.php?_c=salecount&_a=leadingout';" class="btn btn-success"/></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+  	  <th align="center" class="pushItem">开始时间</th>
+  	  <th align="center" class="pushItem">结束时间</th>
+      <th align="center" class="pushItem">待付款订单数</th>
+      <th align="center" class="pushItem">已支付订单数</th>
+      <th align="center" class="pushItem">已取消订单数(无支付)</th>
+      <th align="center" class="pushItem">已取消订单数(有支付)</th>
+      <th align="center" class="pushItem">净销售金额</th>
+      <th align="center" class="pushItem">已支付订单数(过往)</th>
+      <th align="center" class="pushItem">已取消订单数(无支付|过往)</th>
+      <th align="center" class="pushItem">已取消订单数(有支付|过往)</th>
+      <th align="center" class="pushItem">净销售金额(过往)</th>
+      <th align="center" class="pushItem">净销售总金额</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+  <tr>
+      <td align="center" class="pushItem">{{$item.time}}</td>
+      <td align="center" class="pushItem">{{$item.time}}</td>
+      <td align="center" class="pushItem">{{$item.add_time}}</td>
+      <td align="center" class="pushItem">{{$item.pay_time}}</td>
+      <td align="center" class="pushItem">{{$item.uppay_colsed_time}}</td>
+      <td align="center" class="pushItem">{{$item.pay_colsed_time}}</td>
+      <td align="center" class="pushItem">{{$item.order_amount}}</td>
+      <td align="center" class="pushItem">{{$item.pass_pay_time}}</td>
+      <td align="center" class="pushItem">{{$item.pass_uppay_colsed_time}}</td>
+      <td align="center" class="pushItem">{{$item.pass_pay_colsed_time}}</td>
+      <td align="center" class="pushItem">{{$item.pass_order_amount}}</td>
+      <td align="center" class="pushItem">{{$item.order_amount + $item.pass_order_amount}}</td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+</table>

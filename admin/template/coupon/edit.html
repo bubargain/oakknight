@@ -1,0 +1,133 @@
+﻿<!--contents begin-->
+<style>
+.error {
+    display: inline-block;
+    padding-left: 5px;
+    vertical-align: middle;
+	color: #ff0000;
+}
+</style>
+<form id="coupon_form" class="form" method="post" action="index.php?_c=coupon&_a={{if $info.cpn_id}}edit&id={{$info.cpn_id}}{{else}}add{{/if}}">
+    <div class="control-group">
+		<label class="control-label" for="title">优惠券名称：</label>
+		<div class="controls">
+			<input type="text" name="title" value="{{$info.title}}" placeholder="优惠券名称">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="alt">优惠券别名：</label>
+		<div class="controls">
+			<input type="text" name="alt" value="{{$info.alt}}" placeholder="优惠券别名">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="amount">优惠券金额：</label>
+		<div class="controls">
+			<input type="text" name="amount" value="{{$info.amount}}" placeholder="0.00">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="min_order_amount">订单最小金额：</label>
+		<div class="controls">
+			<input type="text" id="min_order_amount" name="min_order_amount" value="{{$info.min_order_amount}}" placeholder="0.00">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label">优惠券使用起止时间：</label>
+		<div class="controls">
+			<input type="text" name="from_time" id="start_time" value="{{$info.start_time|date_format:'%Y-%m-%d %H:%M:%S'}}" style="width:200px;" class="Wdate"  
+    onClick="WdatePicker({dateFmt:'yyyy-M-d H:mm:ss',skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')}'})" placeholder="开始时间" />
+			<input type="text" name="end_time" id="end_time" value="{{$info.end_time|date_format:'%Y-%m-%d %H:%M:%S'}}" style="width:200px;" class="Wdate"  
+    onClick="WdatePicker({dateFmt:'yyyy-M-d H:mm:ss',skin:'whyGreen',minDate:'#F{$dp.$D(\'start_time\')}'})" placeholder="截止时间">
+		</div>
+    </div>
+
+	<div class="control-group">
+		<label class="control-label" for="url">专题地址：</label>
+		<div class="controls">
+			<input type="text" type="text" name="url" value="{{$info.url}}" placeholder="专题地址">
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="coupon_text">使用说明：</label>
+		<div class="controls">
+			<input type="text" type="text" name="coupon_text" value="{{$info.coupon_text}}" placeholder="优惠券使用说明">
+		</div>
+    </div>
+	
+    <!--
+	<div class="control-group">
+		<label class="control-label" for="times">有效使用次数：</label>
+		<div class="controls">
+			<input type="text" type="text" name="times" value="{{$info.times}}" placeholder="次数">
+		</div>
+    </div>
+    -->
+    <div class="control-group">
+    <div class="controls">
+		<button type="submit" class="btn btn-large btn-primary">保存</button>
+    </div>
+    </div>
+</form>
+<script src="/js/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+$().ready(function() {
+	$("#coupon_form").validate({
+		submitHandler: function(form) { 
+			if(type_confirm()) {
+				form.submit();
+			}
+			
+			function type_confirm() {
+				if($("#min_order_amount").val() <= 0) {
+					if(confirm("你没有填写订单最小金额，确定要创建A类优惠券吗？")) {
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+				return true;
+			}
+		},
+		rules: {
+			title: {
+				required: true,
+				minlength: 4,
+				maxlength: 15
+			},
+			alt: {
+				required: true,
+				minlength: 4,
+				maxlength: 20
+			},
+			amount: {
+				required: true,
+				number: true
+			},
+			start_time: "required",
+			end_time: "required"
+		},
+		messages: {
+			title: {
+				required: "请输入标题",
+				minlength: "不少于4个汉字",
+				maxlength: "不超过15个汉字"
+			},
+			alt: {
+				required: "请输入标题",
+				minlength: "不少于4个汉字",
+				maxlength: "不超过20个汉字"
+			},
+			amount: {
+				required: "请输入优惠券金额",
+				number: "请输入金额"
+			},
+			start_time: "请输入开始时间",
+			end_time: "请输入结束时间"
+		}
+	});
+});
+</script>
+<!-- contents end -->

@@ -1,0 +1,54 @@
+﻿<!--contents begin-->
+<style>
+.error {
+    display: inline-block;
+    padding-left: 5px;
+    vertical-align: middle;
+	color: #ff0000;
+}
+</style>
+    <div class="control-group">
+		<label class="control-label" for="title">优惠券名称：</label>
+		<div class="controls">
+			{{$info.title}}
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="alt">优惠券别名：</label>
+		<div class="controls">
+			{{$info.alt}}
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="amount">优惠券金额：</label>
+		<div class="controls">
+			{{$info.amount}}
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label" for="min_order_amount">订单最小金额：</label>
+		<div class="controls">
+			{{$info.min_order_amount}}
+		</div>
+    </div>
+	<div class="control-group">
+		<label class="control-label">优惠券使用起止时间：</label>
+		<div class="controls">
+		{{$info.start_time|date_format:'%Y-%m-%d %H:%M:%S'}} -- {{$info.end_time|date_format:'%Y-%m-%d %H:%M:%S'}}
+		</div>
+    </div>
+{{if $info.url}}
+	<div class="control-group">
+		<label class="control-label" for="url">专题地址：</label>
+		<div class="controls">
+			{{$info.url}}
+		</div>
+    </div>
+	{{/if}}
+	<div class="control-group">
+		<label class="control-label" for="coupon_text">使用说明：</label>
+		<div class="controls">
+			{{$info.coupon_text}}
+		</div>
+    </div>
+<!-- contents end -->

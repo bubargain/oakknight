@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{$title}}</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<form action="index.php?_c=test&_a=goods_likes" method="post">
+<div class="wrap">
+    <div class="content">
+    	<div class="item" style="text-align:center;">{{$notice}}</div>
+    </div>
+    {{if $goodsList}}
+    <div class="content">
+        <ul>
+          {{foreach from = $goodsList item = item}}
+          <li>
+              <a href="index.php?_c=test&_a=goods_detail&id={{$item.goods_id}}" target="_blank" title="点击图片查看详情"><img src="{{$cdn_ymall}}{{$item.default_thumb}}" alt="{{$item.goods_name}}"></a>
+              <span><input type="checkbox" id="goods_ids[]" name="goods_ids[]" value="{{$item.goods_id}}" />&nbsp;{{$item.goods_name}}</span>
+          </li>
+          {{/foreach}}
+        </ul>
+        <div class="clear"></div>
+    </div>
+    <div class="content">
+    	<p class="title">
+        	<input type="hidden" id="user_id" name="user_id" value="{{$user_id}}" />
+            <input type="hidden" id="type" name="type" value="{{$type}}" />
+            <input type="submit" value="{{$btn}}" /></p>
+    </div>
+    {{/if}}
+</div>
+</form>
+</body>
+</html>

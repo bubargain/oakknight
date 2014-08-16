@@ -1,0 +1,30 @@
+﻿<!--contents begin-->
+<div>
+	<dl>
+		<dd class="span10"><b class="span2">主题：</b>{{$info.title}}</dd>
+	</dl>
+	<dl>
+		<p class="span6 offset2"><img src="{{$CDN_YMALL}}{{$info.img}}"></p>
+	</dl>
+	<dl>
+		<dd class="span10"><b class="span2">专题关键词：</b>{{$info.search}}</dd>
+	</dl>
+	<dl>
+		<dd class="span10"><b class="span2">跳转地址：</b>{{$info.url}}</dd>
+	</dl>
+	<dl>
+		<dd class="span5"><b class="span2">开始：</b>{{$info.start_time|date_format:"%D"}}</dd>
+		<dd class="span4"><b class="span1">截止：</b>{{$info.end_time|date_format:"%D"}}</dd>
+	</dl>
+	<dl>
+		<dd class="span10"><b class="span2">显示次数：</b>{{$info.times}}</dd>
+	</dl>
+	<dl>
+		<dd class="span10"><b class="span2">选择人群：</b>{{$info.type_txt}}
+		</dd>
+	</dl>
+	<dl>
+		<dd class="span10"><b class="span2"></b>{{$info.extra}}</dd>
+	</dl>
+</div>
+<!-- contents end -->

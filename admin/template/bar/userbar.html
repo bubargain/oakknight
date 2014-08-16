@@ -1,0 +1,42 @@
+<div id="content">
+<form method="GET" action="index.php">
+<p>
+<input type="hidden" name="_c" value="bar" />
+<input type="hidden" name="_a" value="userbar" />
+类型:<select name="type">
+{{html_options options=$type_options selected=$smarty.get.type}}
+</select>
+bar_id:<input type="text" name="bar_id" value="{{$smarty.get.bar_id}}" class="span1"/>
+<span  class="input-append">
+<input class="btn" type="submit" value="搜索"></span>
+</p>
+</form>
+<table class="table">
+<tr>
+	<th></th>
+	<th class='span2'>名称</th>
+	<th class='span2'>user_id/uuid</th>
+	<th>开始时间</th>
+	<th>开始时间</th>
+	<th>次数</th>
+	<th>剩余次数</th>
+	<th>状态</th>
+</tr>
+{{foreach from=$list item=item}}
+<tr>
+	<td><input type="checkbox" class="checkitem" value="{{$item.id}}"></td>
+	<td>
+			<img alt="" src="{{$CDN_YMALL}}{{$item.img}}" width="100px">
+			<p title='goods_name'>{{$item.title}}</p></td>
+	<td>user_id:{{$item.user_id}}<br />uuid:{{$item.uuid}}</td>
+	<td>{{$item.start_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+	<td>{{$item.end_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+	<td>{{$item.times}}</td>
+	<td>{{$item.left}}</td>
+	<td>{{$item.status_str}} : {{if $item.left}}用户未完成{{else}}用户已完成{{/if}}</td>
+</tr>
+{{/foreach}}
+</table>
+<p>{{$page_html}}</p>
+</div>
+<!-- contents end -->

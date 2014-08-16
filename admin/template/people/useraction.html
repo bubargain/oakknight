@@ -1,0 +1,56 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="9">
+          <form id="tForm" action="index.php?_c=people&_a=useraction" method="post" class="form-search">
+              <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right">推广时间：</td>
+                  <td colspan="2"><input type="text" name="new_start" id="new_start" style="width:28%;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'new_end\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="new_end" id="new_end" style="width:28%;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'new_start\')}'})">
+                  </td>
+				  <td align="right"></td>
+                </tr>
+				<tr>
+                  <td align="right">统计时间：</td>
+                  <td colspan="2"><input type="text" name="tui_start" id="tui_start" style="width:28%;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'tui_end\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="tui_end" id="tui_end" style="width:28%;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'tui_start\')}'})">
+                  </td>
+				  <td align="right"><input type="submit" value="确定"></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+</table>
+{{if $return}}
+<div><ul>
+<li>推广开始时间:{{$smarty.post.new_start}}</li>
+<li>推广结束时间:{{$smarty.post.new_end}}</li>
+<li>统计开始时间:{{$smarty.post.tui_start}}</li>
+<li>统计结束时间:{{$smarty.post.tui_end}}</li>
+<li>激活数:{{$return.active}}</li>
+<li>留存激活:{{$return.uuid_curr}}</li>
+<li>留存注册:{{$return.user_curr}}</li>
+<li>详情页UV(PV):{{$return.goods_uv}}({{$return.goods_pv}})</li>
+<li>分享点击UV(PV):{{$return.share_uv}}({{$return.share_pv}})</li>
+<li>注册数:{{$return.reg}}</li>
+<li>喜欢总数:{{$return.like}}</li>
+<li>取消喜欢总数:{{$return.unlike}}</li>
+<li>到货提醒UV(PV):{{$return.notify_uv}}({{$return.notify_pv}})</li>
+<li>订单确认页UV(PV):{{$return.buy_uv}}({{$return.buy_pv}})</li>
+<li>订单用户数:{{$return.order_users}}</li>
+<li>总订单数:{{$return.orders}}</li>
+<li>购买用户数:{{$return.order_buyers}}</li>
+<li>支付订单数:{{$return.payed}}</li>
+<li>支付件数:{{$return.quantity}}</li>
+<li>成交金额:{{$return.payed_amount}}</li>
+<li>客单价:{{$return.payed_avg}}</li>
+<li>重复购买用户数:{{$return.rebuyers}}</li>
+<li>重复购买件数:{{$return.re_quantity}}</li>
+<li>代付款订单数:{{$return.unpay}}</li>
+<li>取消订单数:{{$return.closed}}</li>
+</ul>
+</div>
+{{/if}}

@@ -1,0 +1,31 @@
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="3">
+          <form id="tForm" name="tForm" action="index.php?_c=goods&_a=gcategorySaleRate" method="post" class="form-search">
+              <table align="center" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="100px">查询日期：</td>
+                  <td><input type="text" name="start_time" id="start_time" value="{{$start_time|date_format:'%Y-%m-%d'}}" style="width:200px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time"  value="{{$end_time|date_format:'%Y-%m-%d'}}" style="width:200px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+                  <td><input type="submit" value="搜索" class="btn"/></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+    <th width="50%">一级分类</th>
+    <th width="25%">销售量占比</th>
+    <th width="25%">销售额占比</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+  <tr>
+    <td align="center">{{$item.cate_name}}</td>
+    <td align="center">{{$item.quantity}}</td>
+    <td align="center">{{$item.amout}}</td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+</table>

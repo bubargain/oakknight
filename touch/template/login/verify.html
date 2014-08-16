@@ -1,0 +1,50 @@
+<header>
+	<section><a href="javascript:if(confirm('确定取消并返回？')){window.history.go(-1);}"？></a></section>
+	<section><div class="cWhite">填写验证码</div></section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+    	<div class="order_list">
+            <form id="loginForm" action="index.php?_c=login&_a=verify" method="post">
+            <div class="login">
+                <p class="cGray">您的手机号：{{$phone}}<br>我们给您发送了一条短信<br>请将短信中的数字作为验证码填写在下面</p>
+                <dl>
+                    <dt>
+                        <input type="text" id="code" name="code" class="cGray code" />
+                        <span class="cGray">请输入验证码</span>
+                    </dt>
+                    <dd>
+                        <input type="hidden" id="type" name="type" value="{{$type}}" />
+                        <input type="hidden" id="phone" name="phone" value="{{$phone}}" />
+                        <a id="sumitForm" name="sumitForm" href="javascript:;" class="cWhite order-btn">下一步</a>
+                    </dd>
+                </dl>
+                <div><a href="index.php?_c=login&_a=index&phone={{$phone}}&style=forgetPass" class="cBlue">没有收到验证码？</a></div>
+            </div>
+            </form>
+        </div>
+	</section>
+</section>
+<script type="text/javascript">
+(function(){
+	$(".login").delegate('input','blur',function(){
+		var _this = $(this);
+		if(_this.val()=='') _this.next().show();
+	}).find('span').click(function(){
+		$(this).hide().prev().focus();
+	})
+	
+	var element = $(".login").find('input').eq(0);
+	
+	element.val() ? element.next().hide():element.next().show();
+	
+	$('#sumitForm').click(function(){
+		if(!(/^\d*$/.test($('#code').val()))){
+			alertMSG('验证码格式有误');	
+		}else{
+			$('#loginForm').submit();
+		}
+	});
+})();
+</script>

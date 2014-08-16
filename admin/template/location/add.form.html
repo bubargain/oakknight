@@ -1,0 +1,29 @@
+<form id="sForm" name="sForm" action="index.php?_c=location&_a=add" method="post" class="form-search">
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="20%">标识：</td>
+    <td width="25%"><input type="text" name="ukey" value="{{$info.ukey}}" style="width:90%" /></td>
+    <td width="10%" align="right">类型：</td>
+    <td width="15%">
+    	<select name="type" style="width:70%">
+            <option value="list" {{if $info.type eq 'list'}} selected="selected"{{/if}}>-列表-</option>
+            <option value="info" {{if $info.type eq 'info'}} selected="selected"{{/if}}>-内容-</option>
+        </select>
+    </td>
+    <td width="10%" align="right">状态：</td>
+    <td>
+    	<select name="status" style="width:50%">
+            <option value="1" {{if $info.status eq '1'}} selected="selected"{{/if}}>-开启-</option>
+            <option value="0" {{if $info.status eq '0'}} selected="selected"{{/if}}>-关闭-</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">描述：</td>
+    <td colspan="5"><input type="text" name="info" value="{{$info.info}}" style="width:70%" /></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><input type="hidden" name="loc_id" value="{{$info.loc_id}}" /><input type="submit" value="提&nbsp;交" class="btn" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>
+</form>

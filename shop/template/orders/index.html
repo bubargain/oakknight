@@ -1,0 +1,188 @@
+<div name="maindiv" class="span10">
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#selectCon").change(
+				function(){
+					if($(this).attr('value') == 'datetime')
+						{
+							$("#input_date").show();
+							$('#input').hide();
+						}
+					else
+						{
+						$("#input_date").hide();
+						$('#input').show();
+						}
+				});	
+			});
+		</script>
+	
+		<div class="span10 text-center text-info"><h3>{{$status}}列表</h3></div>
+		<div name="searchTab">
+			<form method='post' class="form-inline">
+				
+				<select id="selectCon" name='searchBox' class='span2'>
+					<option value='order_sn' selected>按订单号</option>
+					<option value='buyer_name'>按用户名号码</option>
+					<option value='telephone'>按手机号</option>
+					<option value='datetime'>按订单生成时间</option>
+				</select>
+				<input class='span4 search-query' name="searchContent" id='input' type='text' placeholder='查询内容' />
+				<bt id='input_date' style="display:none">
+					<input type="text" name="start_time" id="start_time" style="width:100px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" style="width:100px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})">
+				</bt>
+				<button type="submit" class="btn btn-error">条件检索</button>
+			 </form>
+		</div>
+		
+		<table id='mainTable' class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>订单标号</th>
+					<th>用户名（手机号）</th>
+					<th>订单金额</th>
+					<th>ERP SN</th>
+					<th>来源</th>
+					<th>付款方式</th>
+					<th>下单时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+				{{foreach from=$tableCon item=oneRow }}
+					<tr>
+						<td id='orderId'>{{$oneRow.order_sn}}&nbsp</td>
+						<td>{{$oneRow.buyer_name}}&nbsp</td>
+						<td>{{$oneRow.order_amount}}&nbsp</td>
+						<td>{{$oneRow.erp_sn}}&nbsp</td>
+						<td>{{$oneRow.type}}&nbsp</td>
+						<td>{{$oneRow.payment_name}}&nbsp </td>
+						<td class='span2'>{{$oneRow.add_time|date_format:"%y年%m月%d日 %H点%M分"}}</td>
+						<td>
+							<button class='btn btn-order_detail btn-primary' id="order_detail" y-data="{{$oneRow.order_id}}">详情</button>
+							{{if $btn == '取消订单'}} | <button   class='btn btn-info' y-data="order_id={{$oneRow.order_id}}&user_id={{$oneRow.buyer_id}}">{{$btn}}</button> {{/if}}
+							{{if $btn =='发货'}} | <button class='btn btn-warning' y-data="{{$oneRow.order_id}}">{{$btn}}</button> {{/if}}
+							
+						</td>
+					</tr>
+				{{/foreach}}
+		
+		</table> 
+		<style type="text/css">
+		.carInfo {width:800px;height:56px;border-top:1px #e1e1e1 solid;overflow:hidden;margin:0 auto;}
+		.carInfo dt {float:left;padding:16px 0 0 3px;color:#323232;}
+		.carInfo i {padding-right:30px;}
+		.carInfo dd {float:right;padding-top:13px;}
+		</style>
+		<table>
+		<tr>
+      		<td align="center" colspan="8">{{$page}}</td>
+  		</tr>
+		</table>
+		
+</div>
+	
+
+
+
+<!-- 删除订单确认框 -->
+    <div id="deleteOrderModal" class="modal hide fade" aria-hidden="true">
+	    <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	    <h3>删除订单</h3>
+	    </div>
+	    <div class="modal-body">
+	    <p>删除后订单状态将变为“已取消”，是否删除？</p>
+	    </div>
+	    <div class="modal-footer">
+	    <a href="#" id="cancelOrder" class="btn btn-primary">确认</a>
+	    <a href="#" type="button" class="btn" data-dismiss="modal" aria-hidden="true">取消</a>
+	    <input type="hidden" id="cancel_order_info"/>
+	    </div>
+    </div>
+	
+  <!-- 发货页输入框 -->
+  <form id="shipping_form" method="POST" action="index.php?_c=orders&_a=set_shipping_order">
+   <div id="sendModal" class="modal hide fade" aria-hidden="true">
+   	  
+	    <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		    <h3>发货商品</h3>
+	    </div>
+	    <div class="modal-body">
+	    	<table class='table'>
+				<tr>
+					<th>物流公司：</th>
+					<td>
+						<select name="shipping_co" id="shipping_co">
+							<option value="">—请选择—</option>
+							<option value="EMS">EMS</option><option value="AAE">AAE</option><option value="安信达">安信达</option><option value="百福东方">百福东方</option><option value="BHT">BHT</option><option value="希伊艾斯">希伊艾斯</option><option value="大田物流">大田物流</option><option value="德邦物流">德邦物流</option><option value="DHL">DHL</option><option value="D速物流">D速物流</option><option value="飞康达">飞康达</option><option value="港中能达">港中能达</option><option value="广东邮政">广东邮政</option><option value="汇通快递">汇通快递</option><option value="佳吉快运">佳吉快运</option><option value="佳怡物流">佳怡物流</option><option value="京广物流">京广物流</option><option value="急先达">急先达</option><option value="快捷快递">快捷快递</option><option value="联邦快递">联邦快递</option><option value="联昊通">联昊通</option><option value="龙邦快递">龙邦快递</option><option value="全晨快递">全晨快递</option><option value="全峰快递">全峰快递</option><option value="全日通">全日通</option><option value="全一快递">全一快递</option><option value="如风达">如风达</option><option value="三态速递">三态速递</option><option value="申通快递">申通快递</option><option value="顺丰快递">顺丰快递</option><option value="速尔快递">速尔快递</option><option value="华宇物流">华宇物流</option><option value="海航天天">海航天天</option><option value="UPS">UPS</option><option value="新邦物流">新邦物流</option><option value="星晨急便">星晨急便</option><option value="鑫飞鸿">鑫飞鸿</option><option value="亚风快递">亚风快递</option><option value="一邦快递">一邦快递</option><option value="优速快递">优速快递</option><option value="邮政国内包裹/挂号信">邮政国内包裹/挂号信</option><option value="远成物流">远成物流</option><option value="圆通快递">圆通快递</option><option value="源伟丰">源伟丰</option><option value="元智捷诚">元智捷诚</option><option value="越丰快递">越丰快递</option><option value="韵达快递">韵达快递</option><option value="运通快递">运通快递</option><option value="宅急送">宅急送</option><option value="中铁快运">中铁快运</option><option value="中通快递">中通快递</option><option value="中邮物流">中邮物流</option>		
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>订单号：</th>
+					<td><input type="text" name="shipping_order_sn" class="span4" name="Order_id"/></td>
+				</tr>
+			</table>
+			
+	    </div>
+	    <div class="modal-footer">
+		    <input type="hidden" id="shipping_order_id" name="shipping_order_id" value="0">
+		    <button id="setDelivery" class="btn btn-primary">确认</button>
+		    <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">取消</button>    
+	    </div>
+	  
+    </div>
+    </form>
+<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".btn-warning").click(function(){
+		$("#shipping_order_id").val($(this).attr("y-data"));
+		$('#sendModal').modal('show');
+	});
+	
+	$(".btn-info").click(function(){
+		$("#cancel_order_info").val($(this).attr('y-data'));	
+		$('#deleteOrderModal').modal('show');
+	});
+	
+	$('#setDelivery').click(function() {
+		$('#shipping_form').ajaxForm({
+			success: function(ret) {				
+				window.location.reload();
+			}
+		});
+	});	
+		
+	
+	$("#cancelOrder").click(function(){
+		var url = "index.php?_c=orders&_a=cancel_order&" + $("#cancel_order_info").val();
+		//alert(url);
+		$.getJSON(url, function(data) {			
+			window.location.reload();
+		});
+		
+	});
+	
+	
+	$(".btn-order_detail").click(function(){
+		$("#shipping_order_id").val($(this).attr("y-data"));
+		
+		var url = "index.php?_c=orders&_a=orderinfo&order_id=" + $(this).attr("y-data")+"&ran="+Math.random();
+		window.open(url, 'newwindow', 'width=750, top=150,left=450, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no,status=no');
+		//$.getJSON(url, function(data) {			
+			//data.goods_name
+			//alert('goods_name: ' + data.goods_name);
+		//	var html='';
+		//	$('#myModal').modal('show');
+		
+		//$(this).attr("href", "#myModal").attr("data-toggle", "modal");
+
+	});
+		
+});
+</script>
+<script type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>

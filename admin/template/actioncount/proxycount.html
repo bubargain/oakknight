@@ -1,0 +1,35 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td align="center" colspan="12">
+          <form id="tForm" name="tForm" action="index.php?_c=actioncount&_a=proxycount" method="post" class="form-search">
+              <table border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="100px">查询日期：</td>
+                  <td><input type="text" name="start_time" id="start_time" value="{{$start_time|date_format:'%Y-%m-%d'}}" style="width:200px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time"  value="{{$end_time|date_format:'%Y-%m-%d'}}" style="width:200px;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+    <td><input type="hidden" name="do" value="search" /><input type="submit" value="搜索" class="btn"/></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+  	  <th width="200px" align="center" class="pushItem">开始时间</th>
+  	  <th width="200px" align="center" class="pushItem">结束时间</th>
+	  <th align="center" class="pushItem">渠道</th>
+      <th align="center" class="pushItem">类型</th>
+      <th align="center" class="pushItem">次数</th>
+  </tr>
+  {{if $list}}
+  {{foreach name=mylist from=$list item=item}}
+  <tr>
+      <td align="center" class="pushItem">{{$start_time|date_format:'%Y-%m-%d'}}</td>
+      <td align="center" class="pushItem">{{$end_time|date_format:'%Y-%m-%d'}}</td>
+	  <td align="center" class="pushItem">{{$item.type}}</td>
+      <td align="center" class="pushItem">{{$item.action}}</td>
+      <td align="center" class="pushItem">{{$item.num}}</td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+</table>

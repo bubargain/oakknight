@@ -1,12 +1,17 @@
-<?php
+ <?php
 /**
   * wechat php test
   */
 
 //define your token
 define("TOKEN", "weixin");
-$wechatObj = new wechatCallbackapiTest();
-$wechatObj->valid();
+//$wechatObj = new wechatCallbackapiTest();
+//$wechatObj->valid();
+//output data into data.d
+/*	$file = fopen("data.txt","a+");
+	echo fwrite($file,"123123");
+	fclose($file);
+*/
 
 class wechatCallbackapiTest
 {
@@ -47,13 +52,16 @@ class wechatCallbackapiTest
               		$msgType = "text";
                 	$contentStr = "Welcome to wechat world!";
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+					
+					
+					
                 	echo $resultStr;
                 }else{
                 	echo "Input something...";
                 }
 
         }else {
-        	echo "";
+        	echo " no data";
         	exit;
         }
     }

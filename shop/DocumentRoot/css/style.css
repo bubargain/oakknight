@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+table{ border:#CCC 1px solid;}
+th{ font-size:14px; border:#CCC 1px solid;}
+td{ font-size:14px; border:#CCC 1px solid;}
+.title{ padding-right:20px;}
+.content table{ border:none;}
+.content td{ border:none;}
+

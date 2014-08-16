@@ -1,0 +1,58 @@
+<form id="sForm" name="sForm" action="index.php?_c=store&_a=add" method="post" class="form-search">
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="15%">店铺名称：</td>
+    <td width="35%"><input type="text" id="store_name" name="store_name" style="width:80%;" value="{{$info.store_name}}" /></td>
+    <td align="right" width="15%">电话：</td>
+    <td width="35%"><input type="text" id="tel" name="tel" style="width:60%;" value="{{$info.tel}}" /></td>
+  </tr>
+  <tr>
+    <td align="right">店铺地址：</td>
+    <td><input type="text" id="address" name="address" style="width:80%;" value="{{$info.address}}" /></td>
+    <td align="right">邮编：</td>
+    <td><input type="text" id="zipcode" name="zipcode" style="width:60%;" value="{{$info.zipcode}}" /></td>
+  </tr>
+  <tr>
+    <td align="right">店铺返点：</td>
+    <td><input type="text" id="praise_rate" name="praise_rate" style="width:20%;" value="{{$info.praise_rate}}" /><span style="font-size:12px; color:#F00; padding-right:10px;">&nbsp;&nbsp;(精确到小数点后两位)</span></td>
+    <td align="right">店铺等级：</td>
+    <td><input type="text" id="credit_value" name="credit_value" style="width:20%;" value="1" readonly="readonly" /></td>
+  </tr>
+  <tr>
+    <td align="right">店铺状态：</td>
+    <td>
+    	<select id="state" name="state" style="width:30%;">
+        	<option value="1" {{if $info.state eq 1}} selected="selected"{{/if}}>--正常--</option>
+            <option value="0" {{if $info.state neq '' && $info.state eq 0}} selected="selected"{{/if}}>--关闭--</option>
+        </select>
+    </td>
+    <td align="right">排序：</td>
+    <td><input type="text" id="sort_order" name="sort_order" style="width:20%;" value="{{$info.sort_order}}" /></td>
+  </tr>
+  <tr>
+    <td align="right">关闭原因：</td>
+    <td><textarea id="close_reason" name="close_reason" rows="4">{{$info.close_reason}}</textarea><br />
+<span style="font-size:12px; color:#F00; padding-right:10px;">(关闭店铺时填写)</span></td>
+    <td align="right">店铺描述：</td>
+    <td><textarea id="description" name="description" rows="5" cols="35">{{$info.description}}</textarea></td>
+  </tr>
+  <tr>
+    <td align="right">订单自动关闭天数：</td>
+    <td><input type="text" id="auto_closed_time" name="auto_closed_time" style="width:20%;" value="{{$info.auto_closed_time}}" />&nbsp;天</td>
+    <td align="right">是否支持货到付款：</td>
+    <td>
+    	<select id="if_codpay" name="if_codpay" style="width:30%;">
+        	<option value="1" {{if $info.if_codpay eq 1}} selected="selected"{{/if}}>--是--</option>
+            <option value="0" {{if $info.if_codpay neq '' && $info.if_codpay eq 0}} selected="selected"{{/if}}>--否--</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="4">
+    <input type="hidden" id="store_id" name="store_id" value="{{$info.store_id}}" />
+    <input type="hidden" id="type" name="type" value="saveStore" />
+    <input type="hidden" id="isEdit" name="isEdit" value="{{$isEdit}}" />
+    <input type="submit" value="提&nbsp;交" class="btn" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>
+</form>

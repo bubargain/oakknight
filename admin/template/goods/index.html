@@ -1,0 +1,269 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5" id="content">
+  <tr>
+      <td colspan="11">
+          <form id="tForm" name="tForm" action="index.php?_c=goods&_a=index" method="post" class="form-search">
+              <table width="100%" border="0" cellspacing="0" cellpadding="1">
+                <tr>
+                  <td align="right" width="6%">商品id：</td>
+                  <td width="10%"><input type="text" id="goods_id" name="goods_id" style="width:80%" value="{{$goods_id}}" /></td>
+                  <td align="right" width="8%">商品名称：</td>
+                  <td width="11%"><input type="text" id="goods_name" name="goods_name" style="width:80%" value="{{$goods_name}}" /></td>
+                  <td align="right" width="8%">所属分类：</td>
+                  <td width="12%">
+                      <select id="cate_id" name="cate_id" style="width:100%">
+                          {{$gcategoryOptionList}}
+                      </select>
+                  </td>
+                  <td align="right" width="8%">所属品牌：</td>
+                  <td width="12%">
+                      <select id="brand_id" name="brand_id" style="width:100%">
+                          {{$brandOptionList}}
+                      </select>
+                  </td>
+                  <td align="right" width="6%">状态：</td>
+                  <td width="12%">
+                      <select id="status" name="status" style="width:100%">
+                          <option value="">-选择状态-</option>
+                          <option value="1" {{if $status eq 1}} selected="selected"{{/if}}>-待审核-</option>
+                          <option value="2" {{if $status eq 2}} selected="selected"{{/if}}>-已审核-</option>
+                          <option value="3" {{if $status eq 3}} selected="selected"{{/if}}>-禁售-</option>
+                          <option value="4" {{if $status eq 4}} selected="selected"{{/if}}>-可售-</option>
+                          <option value="0" {{if $statusType}} selected="selected"{{/if}}>-已删除-</option>
+                      </select>
+                  </td>
+                  <td><input type="submit" value="搜索" class="btn" /></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+  	  <th align="center" width="3%" class="pushItem"><input type="checkbox" class="checkall"></th>
+      <th align="center" width="7%" class="pushItem">id</th>
+	  <th width="12%" class="pushItem">sku</th>
+      <th width="20%" class="pushItem">商品名称</th>
+      <th align="center" width="8%" class="pushItem">所属分类</th>
+      <th align="center" width="8%" class="pushItem">原价</th>
+      <th align="center" width="8%" class="pushItem">价格</th>
+      <th align="center" width="5%" class="pushItem">库存</th>
+      <th align="center" width="8%" class="pushItem">状态</th>
+      <th align="center" width="10%" class="pushItem">更新时间</th>
+      <th align="center" class="pushItem">操作</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+  <tr>
+      <td align="center" class="pushItem"><input type="checkbox" class="checkitem" value="{{$item.goods_id}}"></td>
+      <td align="center" class="pushItem">{{$item.goods_id}}</td>
+	  <td align="center" class="pushItem">{{$item.sku}}</td>
+      <td class="pushItem">{{$item.goods_name}}</td>
+      <td align="center" class="pushItem">{{$item.cate_name}}</td>
+      <td align="center" class="pushItem">{{$item.market_price}}</td>
+      <td align="center" class="pushItem">{{$item.price}}</td>
+      <td align="center" class="pushItem">{{$item.stock}}</td>
+      <td align="center" class="pushItem">
+      {{if $item.deleted}}<p>已删除</p>{{else}}
+      	{{if $item.if_show}}<p>{{if $item.sale_time}}{{$item.sale_time|date_format:"%Y-%m-%d %H:%M"}}{{/if}}上架</p>{{/if}}
+        {{if $item.approval}}<p>已审核</p>{{else}}待审核</p>{{/if}}
+        {{if $item.closed}}<p>禁售</p>{{/if}}
+      {{/if}}
+      </td>
+      <td align="center" class="pushItem">{{$item.utime|date_format:"%Y-%m-%d"}}</td>
+      <td align="center" class="pushItem">
+      {{if $item.deleted}}-{{else}}
+          <a href="javascript:;" y-action="detail" y-data="goods_id={{$item.goods_id}}" class="">查看</a>
+          {{if $item.approval}}<a href="javascript:;" y-action="upStatus" y-data="status=disapproval&goods_ids={{$item.goods_id}}" class="">驳回</a>{{else}}<a href="javascript:;" y-action="ajaxApproval" y-data="{{$item.goods_id}}" class="">通过</a>{{/if}}
+          {{if $item.closed}}<a href="javascript:;" y-action="upStatus" y-data="status=open&goods_ids={{$item.goods_id}}" class="">可售</a>{{else}}<a href="javascript:;" y-action="upStatus" y-data="status=closed&goods_ids={{$item.goods_id}}" class="">禁售</a>{{/if}}
+      {{/if}}
+	  <a href="index.php?_c=notify&goods_id={{$item.goods_id}}">到货提醒</a>
+      </td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+  <tr>
+      <td align="center" colspan="10" class="pushItem">
+      <div class="btnOperate">
+          <span>
+              <a href="javascript:;" y-action="ajaxBatchApproval" class="btn btn-success btn-small">通过</a>
+              <a href="javascript:;" y-action="batchUpStatus" y-data="status=disapproval" class="btn btn-inverse btn-small">驳回</a>
+              <a href="javascript:;" y-action="batchUpStatus" y-data="status=open" class="btn btn-success btn-small">可售</a>
+              <a href="javascript:;" y-action="batchUpStatus" y-data="status=closed" class="btn btn-inverse btn-small">禁售</a>
+			  <a href="javascript:;" y-action="ajaxBatchCost" class="btn btn-inverse btn-small">填充价格</a>
+          </span>
+          {{$page}}
+      </div>
+      </td>
+  </tr>
+</table>
+
+<div id="modal_approval" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="thumb_upload" aria-hidden="true">
+    <form id="approval_Form" method="POST" action="index.php?_c=goods&_a=ajaxBatchApproval">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3>审核商品</h3>
+        </div>
+        <div class="modal-body">
+            <ul id="goods_approval_list">
+
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+            <button class="btn btn-primary" id="approval_bnt">保存</button>
+        </div>
+    </form>
+</div>
+
+<div id="modal_cost" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="thumb_upload" aria-hidden="true">
+	<form id="cost_Form" method="POST" action="index.php?_c=goods&_a=ajaxBatchCost">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3>录入商品单价</h3>
+	</div>
+	<div class="modal-body">
+		<ul id="goods_cost_list">
+		
+		</ul>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button class="btn btn-primary" id="cost_btn">保存</button>
+	</div>
+	</form>
+</div>
+<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script language="javascript">
+	$().ready(function() {
+        $(".checkall").click( function () {
+            var flag = this.checked ? true : false;
+            $(".checkitem").each(function() {
+                $(this).attr("checked", flag);
+            });
+        });
+    });
+	(function(){
+		$("#content").delegate("div,a", "click", function(){
+			_this = $(this);	
+			switch(_this.attr("y-action")) {
+				case 'upStatus': 
+					upStatus(_this);
+					break;
+				case 'batchUpStatus': 
+					batchUpStatus(_this);
+					break;
+				case 'detail': 
+					detail(_this);
+					break;
+				case 'ajaxBatchCost': 
+					ajaxBatchCost(_this);
+					break;
+                case 'ajaxBatchApproval':
+                    ajaxBatchApproval(_this);
+                    break;
+                case 'ajaxApproval':
+                    ajaxApproval(_this);
+                    break;
+				default:
+				;
+			}
+		});
+		
+		function ajaxBatchCost(_this) {
+			var items = [];
+			$('.checkitem:checked').each(function(){items.push(this.value)});
+			if(items.length){
+				var url = "index.php?_c=goods&_a=ajaxBatchCost&ids=" + items.join();
+				$("#goods_cost_list").html('');
+				$.getJSON(url, function(data) {			
+					if( data.status ) {
+						var html = '<p><i>同步处理订单</i><label class="checkbox span1"><input type="checkbox" value="1" name="order"></label></p>';
+						for(var i in data.retval) {
+							html += '<li><span class="span2"><input type="hidden" name="ids[]" value="'+data.retval[i].goods_id+'">' + data.retval[i].goods_name + '</span><input type="text" placeholder="0.00" value="" name="cost[]"></li>';
+						}
+						
+						$("#goods_cost_list").html(html);
+						$('#modal_cost').modal('show');
+					}
+				});
+			}
+		}
+
+        function ajaxBatchApproval(_this) {
+            var items = [];
+            
+            $('.checkitem:checked').each(function(){items.push(this.value)});
+            if(items.length){
+                var url = "index.php?_c=goods&_a=ajaxBatchApproval&ids=" + items.join();
+                $("#goods_approval_list").html('');
+                $.getJSON(url, function(data) {
+                    if( data.status ) {
+                        var html = '';
+                        for(var i in data.retval) {
+                            html += '<li><span class="span2"><input type="hidden" name="ids[]" value="'+data.retval[i].goods_id+'">' + data.retval[i].goods_name + '</span><input type="text" placeholder="上架时间" value="' + data.retval[i].sale_time + '" name="sale_time[]"></li>';
+                        }
+
+                        $("#goods_approval_list").html(html);
+                        $('#modal_approval').modal('show');
+                    }
+                });
+            }
+        }
+
+        function ajaxApproval(_this) {
+            var url = "index.php?_c=goods&_a=ajaxBatchApproval&ids=" + _this.attr("y-data");
+            $("#goods_approval_list").html('');
+			$.getJSON(url, function(data) {
+				if( data.status ) {
+					var html = '';
+					for(var i in data.retval) {
+						html += '<li><span class="span2"><input type="hidden" name="ids[]" value="'+data.retval[i].goods_id+'">' + data.retval[i].goods_name + '</span><input type="text" placeholder="上架时间" value="' + data.retval[i].sale_time + '" name="sale_time[]"></li>';
+					}
+
+					$("#goods_approval_list").html(html);
+					$('#modal_approval').modal('show');
+				}
+			});
+        }
+
+		function upStatus(_this) {
+			var url = "index.php?_c=goods&_a=status&" + _this.attr("y-data");
+			$.getJSON(url, function(data) {			
+				window.location.reload();
+			});
+		}
+
+		function batchUpStatus(_this) {
+			var items = [];
+			$('.checkitem:checked').each(function(){items.push(this.value)});
+			if(items.length){
+				var url = "index.php?_c=goods&_a=status&" + _this.attr("y-data") + "&goods_ids=" + items.join();
+				$.getJSON(url, function(data) {			
+					window.location.reload();
+				});
+			}
+		}
+		function detail(_this) {
+			var url = "index.php?_c=goods&_a=detail&" + _this.attr("y-data");
+			window.location.href=url;
+		}
+	})();
+	
+$(document).ready(function() {
+	$('#approval_bnt').click(function() {
+		$('#approval_Form').ajaxForm({
+			success: function(ret) {
+				$('#modal_approval').modal('hide');
+			}
+		}); 
+	});
+
+    $('#cost_btn').click(function() {
+        $('#cost_Form').ajaxForm({
+            success: function(ret) {
+                $('#modal_cost').modal('hide');
+            }
+        });
+    });
+});
+
+</script>

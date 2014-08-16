@@ -1,0 +1,56 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="10">
+          <form id="tForm" name="tForm" action="index.php?_c=user&_a=index" method="post" class="form-search">
+              <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="5%">id：</td>
+                  <td width="11%"><input type="text" id="user_id" name="user_id" size="10" value="{{$user_id}}" style="width:80%;" /></td>
+                  <td align="right" width="8%">用户名：</td>
+                  <td width="11%"><input type="text" id="user_name" name="user_name" size="12" value="{{$user_name}}" style="width:80%;" /></td>
+                  <td align="right" width="6%">昵称：</td>
+                  <td width="11%"><input type="text" id="nick_name" name="nick_name" size="12" value="{{$nick_name}}" style="width:80%;" /></td>
+                  <td align="right" width="8%">注册日期：</td>
+                  <td width="25%"><input type="text" name="start_time" id="start_time" style="width:38%;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" style="width:38%;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+                  <td><input type="submit" value="搜索" class="btn"/>&nbsp;&nbsp;<input type="button" value="导入" onclick="window.location.href='index.php?_c=user&_a=leadingin';" class="btn btn-success"/></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+      <th align="center" width="8%">id</th>
+      <th align="center" width="13%">用户名</th>
+      <th align="center" width="13%">昵称</th>
+      <th align="center" width="7%">下单数</th>
+      <th align="center" width="7%">支付数</th>
+      <th align="center" width="7%">心盒数</th>
+      <th align="center" width="12%">注册日期</th>
+      <th align="center">更新日期</th>
+      <th align="center">操作</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+  <tr>
+      <td align="center">{{$item.user_id}}</td>
+      <td align="center">{{$item.user_name}}</td>
+      <td>{{$item.nick_name}}</td>
+      <td align="center">{{$item.orders}}</td>
+      <td align="center">{{$item.sales}}</td>
+      <td align="center">{{$item.wishes}}</td>
+      <td align="center">{{if $item.ctime}}{{$item.ctime|date_format:"%Y-%m-%d"}}{{/if}}</td>
+      <td align="center">{{if $item.utime}}{{$item.utime|date_format:"%Y-%m-%d"}}{{/if}}</td>
+      <td align="center"><a href="index.php?_c=user&_a=detail&user_id={{$item.user_id}}">查看</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="index.php?_c=user&_a=delete&user_id={{$item.user_id}}" onclick="return window.confirm('确定删除?')">删除</a></td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+  <tr>
+      <td align="center" colspan="10">
+      <div class="btnOperate">
+          {{$page}}
+      </div>
+      </td>
+  </tr>
+</table>

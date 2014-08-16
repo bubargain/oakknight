@@ -1,0 +1,19 @@
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="center">
+        <form id="tForm" name="tForm" action="index.php?_c=order&_a=postscript" method="post" class="form-search">
+        <table width="50%" border="1" cellspacing="0" cellpadding="5">
+          <tr>
+            <td align="center"><textarea id="postscript" name="postscript" rows="10" style="width:300px;" placeholder="填写订单备注...">{{$info.postscript}}</textarea></td>
+          </tr>
+          <tr>
+            <td align="center">
+            <input type="hidden" id="order_id" name="order_id" value="{{$info.order_id}}" />
+            <input type="hidden" id="type" name="type" value="savePostscript" />
+            <input type="submit" value="提&nbsp;交" class="btn" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+          </tr>
+        </table>
+        </form>
+    </td>
+  </tr>
+</table>

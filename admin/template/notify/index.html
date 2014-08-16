@@ -1,0 +1,37 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td align="center" colspan="12">
+          <form id="tForm" action="index.php" method="get" class="form-search">
+              <table border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="100px">商品ID：</td>
+                  <td><input type="text" name="goods_id" value="{{$smarty.get.goods_id}}"><input type="hidden" name="_c" value="notify"> </td>
+                  <td><input type="submit" value="查看" class="btn"/></td>
+				  <td><a class="btn btn-primary" href="index.php?_c=notify&_a=down{{if $smarty.get.goods_id}}&goods_id={{$smarty.get.goods_id}}{{/if}}">下载数据</a></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  {{if $list}}
+    <tr>
+        <td align="center" class="pushItem">商品ID</td>
+        <td align="center" class="pushItem">商品名称</td>
+        <td align="center" class="pushItem">库存</td>
+        <td align="center" class="pushItem">用户手机</td>
+        <td align="center" class="pushItem">添加时间</td>
+    </tr>
+  {{foreach from=$list item=item}}
+  <tr>
+      <td align="center" class="pushItem">{{$item.goods_id}}</td>
+      <td align="center" class="pushItem">{{$item.goods_name}}</td>
+      <td align="center" class="pushItem">{{$item.stock}}</td>
+      <td align="center" class="pushItem">{{$item.user_name}}</td>
+      <td align="center" class="pushItem">{{$item.ctime|date_format:'%Y-%m-%d'}}</td>
+  </tr>
+  {{/foreach}}
+  <tr>
+      <td align="center" colspan="5">{{$page}}</td>
+  </tr>
+  {{/if}}
+</table>

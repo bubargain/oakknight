@@ -1,0 +1,32 @@
+<header>
+	<section><a href="javascript:history.go(-1);"></a></section>
+	<section>
+		<div class="cWhite">物流详情</div>
+	</section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+		<div class="order">
+			<div class="order-pro">
+				<section><img src="{{$order.goods.goods_image}}"></section>
+				<section>
+					<div><p>{{$order.goods.goods_name}}</p><span>￥{{$order.goods.price}}</span></div>
+					<div><p class="cGray">x{{$order.goods.quantity}}</p><span>免运费</span></div>
+				</section>
+			</div>
+			<div class="order-tit">
+				<section class="fl">配送方式：{{$order.shipping_name}}<br>快递单号：{{$order.shipping_code}}</section>
+			</div>
+            <div class="order-tit">
+				<ul class="order-logis cGray">
+                	{{if $list}}
+        			{{foreach key=key from = $list item = item}}
+					<li {{if $item@first}}class="on"{{/if}}><span><em></em><br>{{$item.time|date_format:"%d / %m"}}</span><p>{{$item.time|date_format:"%H:%M"}}  {{$item.context}}</p></li>
+                    {{/foreach}}
+        			{{/if}}
+				</ul>
+			</div>
+		</div>
+	</section>
+</section>

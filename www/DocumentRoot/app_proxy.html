@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>努力加载中...</title>
+<meta name="description" content="m.ymall.com" />
+<meta name="keywords" content="m.ymall.com" />
+</head>
+<body>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript">
+(function(){
+	var mrTimeoutFunction;
+	var mrDeviceAgent = navigator.userAgent.toLowerCase();
+	var mrAgentID = mrDeviceAgent.match(/(iphone|ipod|ipad)/);
+	
+	var url = location.search;
+	var params = [];
+	if(url.indexOf('?')>=0) {  
+		var tmp = url.substring(1).split("&");
+		for(var i=0; i<tmp.length; i++) {
+			var t = tmp[i].split('=');
+			params[t[0]] = t[1];
+		}
+	}
+
+    var data_str, timestamp = Date.parse(new Date()) / 1000;
+    var goods_id = params['goods_id'] ? params['goods_id'] : 0;
+
+	if (mrAgentID != null){
+		if (mrAgentID.indexOf("iphone") >= 0 || mrAgentID.indexOf("ipod") >= 0 || mrAgentID.indexOf("ipad") >=0) {
+            data_str = '[{"type":"proxy", "action":"apple", "goods_id":"'+ goods_id.toString() +'", "extra":"", "timestamp":'+timestamp.toString()+' }]';
+            $.post("index.php", { "_c": "stat", "_a": "logs", "data": data_str});
+            document.location.href = params['goods_id'] ? "ymall663://" + params['goods_id'] : 'ymall663://';
+			mrTimeoutFunction = setTimeout(function () {
+				document.location.href = "https://itunes.apple.com/cn/app/mei-wu-fa-xian-yong-you-shu/id638143733?ls=1&mt=8";
+				}, 2000);
+		}
+		else {
+            data_str = '[{"type":"proxy", "action":"touch", "goods_id":"'+ goods_id.toString() +'", "extra":"", "timestamp":'+timestamp.toString()+' }]';
+            $.post("index.php", { "_c": "stat", "_a": "logs", "data": data_str});
+            document.location.href = params['goods_id'] ? 'http://touch.ymall.com/index.php?_c=goods&_a=detail&id=' + params['goods_id'] : 'http://t.ymall.com/';
+		}
+	}
+	else {
+        data_str = '[{"type":"proxy", "action":"touch", "goods_id":"'+ goods_id.toString() +'", "extra":"", "timestamp":'+timestamp.toString()+' }]';
+        $.post("index.php", { "_c": "stat", "_a": "logs", "data": data_str});
+        document.location.href = params['goods_id'] ? 'http://touch.ymall.com/index.php?_c=goods&_a=detail&id=' + params['goods_id'] : 'http://t.ymall.com/';
+	}
+})();
+</script>
+</body>
+</html>

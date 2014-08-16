@@ -1,0 +1,103 @@
+<header>
+	<section><a href="index.php?_c=index"></a></section>
+	<section><div class="cWhite">{{$title}}</div></section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content" id="content">
+    	{{if $smarty.get.tags}}        
+        <ul class="price_limit cWhite">
+        	<li class="{{if not $params.price}}on{{/if}}"><a href="index.php?_c=goods&_a=search&tags={{$params.tags}}&price=0">所有</a></li>
+            <li class="{{if $params.price eq '0:299'}}on{{/if}}"><a href="index.php?_c=goods&_a=search&tags={{$params.tags}}&price=0:299">0-299元</a></li>
+            <li class="{{if $params.price eq '300:599'}}on{{/if}}"><a href="index.php?_c=goods&_a=search&tags={{$params.tags}}&price=300:599">300-599元</a></li>
+            <li class="{{if $params.price eq '600:999'}}on{{/if}}"><a href="index.php?_c=goods&_a=search&tags={{$params.tags}}&price=600:999">600-999元</a></li>
+            <li class="{{if $params.price eq '1000:1000000'}}on{{/if}}"><a href="index.php?_c=goods&_a=search&tags={{$params.tags}}&price=1000:1000000">1000元上</a></li>
+        </ul>
+        {{else}}        
+        <ul class="price_limit cWhite">
+        	<li class="{{if not $params.cate_id}}on{{/if}}"><a href="index.php?_c=goods&_a=search&cate_id=0">所有</a></li>
+            <li class="{{if $params.cate_id eq 1043}}on{{/if}}"><a href="index.php?_c=goods&_a=search&cate_id=1043">包袋</a></li>
+            <li class="{{if $params.cate_id eq 1049}}on{{/if}}"><a href="index.php?_c=goods&_a=search&cate_id=1049">家居</a></li>
+            <li class="{{if $params.cate_id eq 1062}}on{{/if}}"><a href="index.php?_c=goods&_a=search&cate_id=1062">配饰</a></li>
+            <li class="{{if $params.cate_id eq 1057}}on{{/if}}"><a href="index.php?_c=goods&_a=search&cate_id=1057">创意</a></li>
+        </ul>
+        {{/if}}
+        <section class="home_pro" id="content_list">
+        	{{if $ret.list}}
+			{{foreach from=$ret.list item=item}}
+			<div class="pro">
+				<div>{{if $item.sale_type_info.key}}<span style="top:{{$item.sale_type_info.small.y}}px; right:{{$item.sale_type_info.small.x}}px;">{{if $item.sale_type_info.small.img}}<img src="{{$item.sale_type_info.small.img}}">{{/if}}</span>{{/if}}<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img class="lazy" data-original="http://thumb2.yokacdn.com/p?w=200&h=200&f={{$item.default_thumb}}" src="img/default_img.png"></a></div>
+                <em class="cGray {{if $item.liked}}like{{/if}}"><span>{{$item.wishes}}</span>个人喜欢<span style="display:none;">{{$item.goods_id}}</span></em>
+				<p><a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}">{{$item.cate_name}}{{if $item.tags}} • {{$item.tags}}{{/if}} • {{$item.brand_name}}</a></p>
+			</div>
+			{{/foreach}}
+            {{/if}}
+		</section>
+        <section class="page">
+       		{{if $ret.prev}}
+            <a class="cWhite p-btn" href="{{$cur_url}}&page={{$ret.prev}}">上一页</a>
+            {{else}}
+            <span class="cWhite p-btn p-btn-gray">上一页</span>
+            {{/if}}
+            &nbsp;&nbsp;<span class="cGray">{{$ret.cur_page}}&nbsp;/&nbsp;{{$ret.pages}}</span>&nbsp;&nbsp;
+            {{if $ret.next}}
+            <a class="cWhite p-btn" href="{{$cur_url}}&page={{$ret.next}}">下一页</a>
+            {{else}}
+            <span class="cWhite p-btn p-btn-gray">下一页</span>
+            {{/if}}
+        </section>
+	</section>
+</section>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/jquery_lazy.js"></script>
+<script type="text/javascript">
+(function(){
+	$("#content").delegate('em','click',function(){
+		var _this = $(this), num = _this.find('span').eq(0);	
+		var goods_id = _this.find('span').eq(1).eq(0).html();
+		if(_this.hasClass('like')){//取消喜欢	
+			$.ajax({
+				type: 'GET',
+				url: 'index.php?_c=love&_a=wishes',
+				data: {goods_id: goods_id},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG('已取消喜欢');
+						_this.removeClass('like');
+						num.html(data.ret.data);
+					}else{
+						alertMSG(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alertMSG('网速不给力哦～');
+				}
+		  });
+		}else{//添加喜欢
+			$.ajax({
+				type: 'GET',
+				url: 'index.php?_c=love&_a=wishes',
+				data: {type:'love',goods_id: goods_id},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG('已喜欢');
+						_this.addClass('like');
+						num.html(data.ret.data);
+					}else if(data.ret.status == 300){
+						window.location.href = data.ret.data;
+					}else{
+						alertMSG(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alertMSG('网速不给力哦～');
+				}
+		  });
+		}
+	});
+	
+	$("img.lazy").lazyload();
+})();
+</script>

@@ -1,0 +1,43 @@
+<header>
+	<section><a href="index.php?_c=order&_a=index"></a></section>
+	<section>
+		<div class="cWhite">已发货</div>
+	</section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+		<div class="order-menu cWhite">
+			<ul>
+				<li><a href="index.php?_c=order&_a=orderList&status=unpay">待付款</a></li>
+				<li><a href="index.php?_c=order&_a=orderList&status=payed">待发货</a></li>
+				<li class="on"><a href="index.php?_c=order&_a=orderList&status=shipped">已发货</a></li>
+				<li><a href="index.php?_c=order&_a=orderList&status=finished">已完成</a></li>
+				<li><a href="index.php?_c=order&_a=orderList&status=closed">已取消</a></li>
+			</ul>
+		</div>
+        {{if $params.list}}
+        <div class="order_list">
+            {{foreach from = $params.list item = item}}
+            <div class="order">
+                <a href="index.php?_c=order&_a=orderDetail&status=shipped&order_id={{$item.order_id}}">
+                <div class="order-pro">
+                    <section><img src="{{$item.goods_image}}"></section>
+                    <section>
+                        <div><p>{{$item.goods_name}}</p><span>￥{{$item.order_amount}}</span></div>
+                        <div><p class="cGray">x{{$item.quantity}}</p></div>
+                    </section>
+                </div>
+                </a>
+                <div class="order-tit">
+                    <section class="fl cGray">{{$item.shipping_name}}单号：{{$item.shipping_code}}</section>
+                    <section class="fr cWhite"><a href="index.php?_c=transfer&_a=info&order_id={{$item.order_id}}&shipping_name={{$item.shipping_name}}&shipping_code={{$item.shipping_code}}" class="btn">查看物流</a></section>
+                </div>
+            </div>
+            {{/foreach}}
+        </div>
+        {{else}}
+        <div class="order-no"></div>
+        {{/if}}
+	</section>
+</section>

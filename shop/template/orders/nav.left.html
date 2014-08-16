@@ -1,0 +1,26 @@
+<div class="span3 bs-docs-sidebar">
+	<ul class="nav nav-list bs-docs-sidenav affix"  data-spy="affix" data-offset-top="20">
+		<li{{if $smarty.get.status eq 'warning'}} class="active"{{/if}}><a href="index.php?_c=orders&status=warning">
+        <i class="icon-star"></i> E同步失败</a>
+        </li>
+		<li{{if $smarty.get.status eq 'unpay'}} class="active"{{/if}}><a href="index.php?_c=orders&status=unpay">
+			<i class="icon-star"></i> 待付款订单</a>
+		</li>
+		<li{{if $smarty.get.status eq 'unsend'}} class="active"{{/if}}><a href="index.php?_c=orders&status=unsend">
+			<i class="icon-star"></i> 待发货订单</a>
+		</li>
+		<li{{if $smarty.get.status eq 'sended'}} class="active"{{/if}}><a href="index.php?_c=orders&status=sended">
+			<i class="icon-star"></i> 已发货订单</a>
+		</li>
+		<li{{if $smarty.get.status eq 'finished'}} class="active"{{/if}}><a href="index.php?_c=orders&status=finished">
+			<i class="icon-star"></i> 已完成订单</a>
+		</li>
+		<li{{if $smarty.get.status eq 'canceled'}} class="active"{{/if}}><a href="index.php?_c=orders&status=canceled">
+			<i class="icon-star"></i> 已取消订单</a>
+		</li>
+		<li{{if $smarty.get._a eq 'saledown'}} class="active"{{/if}}><a href="index.php?_c=orders&_a=saledown">
+			<i class="icon-star"></i> 销售导出</a>
+		</li>
+        
+	</ul>	
+</div>

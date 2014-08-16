@@ -1,0 +1,101 @@
+<form id="sForm" name="sForm" enctype="multipart/form-data" action="index.php?_c=friendlinks&_a=add" method="post" class="form-search">
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="20%">标题：</td>
+    <td><input type="text" id="title" name="title" size="40" value="{{$info.title}}" /></td>
+  </tr>
+  <tr>
+    <td align="right" width="20%">图片：</td>
+    <td id="img_td">
+    {{if $info.img}}
+    <div class="addParts" style="float:left; margin-left:26px; margin-bottom:5px;">
+    <img src="{{$cdn_ymall}}{{$info.img}}" style="width:48px;"/>
+    <input type="hidden" name="img" value="{{$info.img}}"/>
+    {{if $info.file_id}}<input type="hidden" name="file_id" value="{{$info.file_id}}"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" y-action="drop_image" y-data="id={{$info.file_id}}" class="btn btn-danger">删除</a>
+    {{/if}}
+    </div>
+    {{else}}
+    <a href="#upload_modal" id='up_btn' role="button" class="btn btn-primary" data-toggle="modal">上传图片</a>
+    {{/if}}
+    </td>
+  </tr>
+  <tr>
+    <td align="right" width="20%">内容：</td>
+    <td><textarea id="desc" name="desc" rows="3" cols="35">{{$info.desc}}</textarea></td>
+  </tr>
+  <tr>
+    <td align="right" width="20%">URL：</td>
+    <td><input type="text" id="url" name="url" style="width:50%;" value="{{$info.url}}" /></td>
+  </tr>
+  <tr>
+    <td align="right" width="20%">权重：</td>
+    <td><input type="text" id="sort" name="sort" style="width:5%;" value="{{$info.sort}}" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">
+    <input type="hidden" name="id" value="{{$info.id}}" />
+    <input type="submit" value="提&nbsp;交" class="btn" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>
+</form>
+<div id="upload_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="image_upload" aria-hidden="true">
+	<form id="uploadForm" enctype="multipart/form-data" method="POST" action="index.php?_c=upload">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="image_upload">上传友情链接图片</h3>
+	</div>
+	<div class="modal-body">
+		<p><input type="file" name="upfile"></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button href="javascript:;" class="btn btn-primary" id="upload_btn">上传</button>
+	</div>
+	</form>
+</div>
+<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#sForm").delegate("a", "click", function(){
+		_this = $(this);		
+		switch(_this.attr("y-action")) {
+			case 'drop_image': 
+				drop_image(_this);
+				break;
+			default:
+			;
+		}
+	});
+	function drop_image(_this) {
+		if(confirm('确定删除?')){
+			var url = "index.php?_c=upload&_a=drop&" + _this.attr("y-data");
+			$.getJSON(url, function(ret) {			
+				if(ret.status == 200) {
+					_this.parents('.addParts').remove();
+					var html = '<a href="#upload_modal" id="up_btn" role="button" class="btn btn-primary" data-toggle="modal">上传图片</a>';
+					$('#img_td').html(html);
+				}
+				else {
+					alert(ret.msg);
+				}
+			});
+		}
+	}
+});
+$(document).ready(function() {
+	$('#upload_btn').click(function() {
+		$('#uploadForm').ajaxForm({
+			success: function(ret) {			
+				if(ret.status == 200) {
+					var html = '<div class="addParts" style="float:left; margin-left:26px; margin-bottom:5px;"><img src="' + ret.data.image_url + '" style="width:48px;"/><input type="hidden" name="img" value="' + ret.data.image_path + '"/><input type="hidden" name="file_id" value="' + ret.data.image_id + '"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" y-action="drop_image" y-data="id=' + ret.data.image_id + '" class="btn btn-danger">删除</a></div>';
+					$('#img_td').html(html);
+					$('#upload_modal').modal('hide');
+				}
+				else {
+					alert("上传失败，请重试");
+				}
+			}
+		});
+	});
+});
+</script>

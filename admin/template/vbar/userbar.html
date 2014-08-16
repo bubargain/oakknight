@@ -1,0 +1,36 @@
+<div id="content">
+<form method="GET" action="index.php">
+<p>
+<input type="hidden" name="_c" value="vbar" />
+<input type="hidden" name="_a" value="userbar" />
+类型:<select name="type">
+{{html_options options=$type_options selected=$smarty.get.type}}
+</select>
+bar_id:<input type="text" name="bar_id" value="{{$smarty.get.bar_id}}" class="span1"/>
+<span  class="input-append">
+<input class="btn" type="submit" value="搜索"></span>
+</p>
+</form>
+<table class="table">
+<tr>
+	<th>id</th>
+	<th class='span2'>名称</th>
+	<th class='span2'>用户</th>
+	<th>开始时间</th>
+	<th>开始时间</th>
+</tr>
+{{foreach from=$list item=item}}
+<tr>
+	<td>{{$item.id}}</td>
+	<td>
+			<img alt="" src="{{$CDN_YMALL}}{{$item.img}}" width="100px">
+			<p title='goods_name'>{{$item.title}}</p></td>
+	<td>{{$item.user_name}}<br /></td>
+	<td>{{$item.start_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+	<td>{{$item.end_time|date_format:"%Y-%m-%d %H:%M:%S"}}</td>
+</tr>
+{{/foreach}}
+</table>
+<p>{{$page_html}}</p>
+</div>
+<!-- contents end -->

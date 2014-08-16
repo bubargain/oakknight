@@ -1,0 +1,52 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="4"><div style="float:right;">{{if $smarty.get.tag}}<a href="index.php?_c=menu&_a=add&loc_id=14">添加新版菜单</a>{{else}}<a href="index.php?_c=menu&_a=add&loc_id=4">添加菜单</a>{{/if}} </div></td>
+  </tr>
+  <tr>
+      <th width="40%">菜单名称</th>
+      <th align="center" width="10%">排序</th>
+      <th align="center" width="20%">状态</th>
+      <th align="center" width="30%">操作</th>
+  </tr>
+  {{foreach names=menu_one from=$list item=row}}
+  <tr>
+      <td>{{$row.title}}</td>
+      <td align="center">
+	  {{if $smarty.foreach.menu_one.first}}
+          <img src="/img/classnoup.gif" width="11px" height="10px" />
+      {{else}}
+          <a href="index.php?_c=menu&_a=changeSortOrder&type=up&id={{$row.id}}" title="上移"><img src="/img/classup.gif" width="11px" height="10px" /></a>
+      {{/if}}
+          &nbsp;&nbsp;&nbsp;&nbsp;
+      {{if $smarty.foreach.menu_one.last}}
+          <img src="/img/classnodown.gif" width="11px" height="10px" />
+      {{else}}
+          <a href="index.php?_c=menu&_a=changeSortOrder&type=down&id={{$row.id}}" title="下移"><img src="/img/classdown.gif" width="11px" height="10px" /></a>
+      {{/if}}
+      </td>
+      <td align="center">{{if $row.status eq 1}}显示{{else}}隐藏{{/if}}</td>
+      <td align="center"><a href="index.php?_c=menu&_a=edit&id={{$row.id}}">修改</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="index.php?_c=menu&_a=delete&id={{$row.id}}" onclick="return window.confirm('确定删除?')">删除</a></td>
+  </tr>
+    {{foreach name=menu_two from=$row.list item=item}}
+  <tr>
+      <td>&nbsp;+&nbsp;{{$item.title}}</td>
+      <td align="center">
+      {{if $smarty.foreach.menu_two.first}}
+          <img src="/img/classnoup.gif" width="11px" height="10px" />
+      {{else}}
+          <a href="index.php?_c=menu&_a=changeSortOrder&type=up&id={{$item.id}}" title="上移"><img src="/img/classup.gif" width="11px" height="10px" /></a>
+      {{/if}}
+          &nbsp;&nbsp;&nbsp;&nbsp;
+      {{if $smarty.foreach.menu_two.last}}
+          <img src="/img/classnodown.gif" width="11px" height="10px" />
+      {{else}}
+          <a href="index.php?_c=menu&_a=changeSortOrder&type=down&id={{$item.id}}" title="下移"><img src="/img/classdown.gif" width="11px" height="10px" /></a>
+      {{/if}}
+      </td>
+      <td align="center">{{if $item.status eq 1}}显示{{else}}隐藏{{/if}}</td>
+      <td align="center"><a href="index.php?_c=menu&_a=edit&id={{$item.id}}">修改</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="index.php?_c=menu&_a=delete&id={{$item.id}}" onclick="return window.confirm('确定删除?')">删除</a></td>
+  </tr>
+  {{/foreach}}
+  {{/foreach}}
+</table>
+

@@ -1,0 +1,38 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="4">
+          <form id="tForm" name="tForm" action="index.php?_c=user&_a=verifycode" method="post" class="form-search">
+              <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="15%"></td>
+                  <td align="right" width="10%">手机号：</td>
+                  <td width="20%"><input type="text" id="phone" name="phone" size="10" style="width:90%;" /></td>
+                  <td align="right" width="10%">类型：</td>
+                  <td width="15%">
+                      <select id="type" name="type" style="width:75%;">
+                        <option value="">--状态--</option>
+                        <option value="login">--登录--</option>
+                        <option value="reg">--注册--</option>
+                      </select>
+                  </td>
+                  <td><input type="hidden" id="flag" name="flag" value="search"/><input type="submit" value="搜索" class="btn"/></td>
+                </tr>
+              </table>
+          </form>
+      </td>
+  </tr>
+  <tr>
+      <th align="center" width="25%">手机号</th>
+      <th align="center" width="25%">类型</th>
+      <th align="center" width="25%">验证码</th>
+      <th align="center" width="25%">最后更新日期</th>
+  </tr>
+  {{if $result}}
+  <tr>
+      <td align="center">{{$result.phone}}</td>
+      <td align="center">{{$result.type}}</td>
+      <td align="center">{{$result.code}}</td>
+      <td align="center">{{$result.ctime|date_format:"%Y-%m-%d"}}</td>
+  </tr>
+  {{/if}}
+</table>

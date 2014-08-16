@@ -1,0 +1,28 @@
+<form id="sForm" name="sForm" action="index.php?_c=gcategory&_a=add" method="post" class="form-search">
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="10%">分类名称：</td>
+    <td width="15%"><input type="text" id="cate_name" name="cate_name" style="width:80%" value="{{$info.cate_name}}" /></td>
+    <td align="right" width="10%">所属类别：</td>
+    <td width="15%">
+    	<select id="parent_id" name="parent_id" style="width:80%">
+        	{{$parent_id_str}}
+        </select>
+    </td>
+    <td align="right" width="10%">是否显示：</td>
+    <td width="10%">
+    	<select id="if_show" name="if_show" style="width:60%">
+        	<option value="1" {{if $info.if_show eq 1}} selected="selected"{{/if}}>--是--</option>
+            <option value="0" {{if $info.if_show neq '' && $info.if_show eq 0}} selected="selected"{{/if}}>--否--</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="6">
+    <input type="hidden" id="cate_id" name="cate_id" value="{{$info.cate_id}}" />
+    <input type="hidden" id="type" name="type" value="saveGcategory" />
+    <input type="hidden" id="isEdit" name="isEdit" value="{{$isEdit}}" />
+    <input type="submit" value="提&nbsp;交" class="btn" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>
+</form>

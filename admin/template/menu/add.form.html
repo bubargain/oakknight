@@ -1,0 +1,45 @@
+<form id="sForm" name="sForm" action="index.php?_c=menu&_a={{if $info.id}}edit{{else}}add{{/if}}" method="post" class="form-search">
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="10%">菜单名称：</td>
+    <td width="30%"><input type="text" id="title" name="title" style="width:90%;" value="{{$info.title}}" /></td>
+    <td align="right" width="10%">所属菜单：</td>
+    <td width="17%">
+    	<select id="parent_id" name="parent_id" style="width:100%;">
+            <option value="0">--所属分类--</option>
+			{{foreach from=$parent_options item=item}}
+			<option value="{{$item.id}}"{{if $info.parent_id eq $item.id}} selected{{/if}}>{{$item.title}}</option>
+			{{/foreach}}
+        </select>
+    </td>
+    <td align="right" width="7%">状态：</td>
+    <td colspan="3">
+    	<select id="status" name="status" style="width:40%;">
+        	<option value="1" {{if $info.status eq 1}} selected="selected"{{/if}}>--显示--</option>
+            <option value="0" {{if $info.status neq '' && $info.status eq 0}} selected="selected"{{/if}}>--隐藏--</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">菜单URL：</td>
+    <td colspan="3"><input type="text" id="url" name="url" style="width:90%;" value="{{$info.url}}" /></td>
+    <td align="right">target：</td>
+    <td colspan="3" align="left">
+    	<select id="utype" name="utype" style="width:40%;">
+        	<option value="" {{if $info.utype eq ''}} selected="selected"{{/if}}>--无--</option>
+            <option value="web" {{if $info.utype neq '' && $info.utype eq 'web'}} selected="selected"{{/if}}>--web--</option>
+       </select>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">菜单 alt：</td>
+    <td colspan="7"><input type="text" id="alt" name="alt" style="width:90%;" value="{{$info.alt}}" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="8">
+    <input type="hidden" id="id" name="id" value="{{$info.id}}" />
+    <input type="hidden" name="loc_id" value="{{$info.loc_id}}" />
+    <input type="submit" value="提&nbsp;交" class="btn" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>
+</form>

@@ -1,0 +1,30 @@
+<form action="index.php?_c=categorymenu&_a=add" method="post">
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="8%">分类名称：</td>
+    <td width="15%"><input type="text" id="title" name="title" size="20" value="{{$info.title}}" /></td>
+    <td align="right" width="8%">所属类别：</td>
+    <td width="10%">
+    	<select id="parent_id" name="parent_id">
+        	{{$parent_id_str}}
+        </select>
+    </td>
+    <td align="right" width="7%">状态：</td>
+    <td width="10%">
+    	<select id="status" name="status">
+        	<option value="1" {{if $info.status eq 1}} selected="selected"{{/if}}>--是--</option>
+            <option value="0" {{if $info.status neq '' && $info.status eq 0}} selected="selected"{{/if}}>--否--</option>
+        </select>
+    </td>
+    <td align="right" width="5%">url：</td>
+    <td><input type="text" id="url" name="url" size="35" value="{{$info.url}}" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="8">
+    <input type="hidden" id="id" name="id" value="{{$info.id}}" />
+    <input type="hidden" id="type" name="type" value="saveGcategory" />
+    <input type="hidden" id="isEdit" name="isEdit" value="{{$isEdit}}" />
+    <input type="submit" value="提&nbsp;交" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" /></td>
+  </tr>
+</table>
+</form>

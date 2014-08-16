@@ -1,0 +1,125 @@
+<header>
+	<section><a href="{{$refer}}"></a></section>
+	<section><div class="cWhite">礼物详情</div></section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content" id="content">
+    	{{if $params.images}}
+		<div class="detail-focus" id="f">
+			<ul>
+                {{foreach from = $params.images item = item}}
+                <li><img _src="{{$item.image_url}}"></li>
+                {{/foreach}}
+			</ul>
+			<div>
+            	{{section name=item loop = $params.images}}
+                <span></span>
+                {{/section}}
+            </div>
+            <em class="{{if $params.liked}}on{{/if}}"><span>{{$params.wishes}}</span><span style="display:none;">{{$params.goods_id}}</span></em>
+		</div>
+        {{/if}}
+		<div class="detail-info">
+			<h1>{{$params.goods_name}}</h1>
+			<span class="fl cGray">
+				<em class="cRed">￥{{$params.price}}</em>
+				您现在购买可以节省￥{{$params.pricex}}
+			</span>
+			{{if $params.stock}}<a href="index.php?_c=order&_a=confirm&id={{$params.goods_id}}" class="fr">立即购买</a>{{else}}<a href="javascript:alertMSG('太火爆，卖完了！');" class="fr">已经售罄</a>{{/if}}
+		</div>
+		<dl class="detail-txt">
+			<dt>{{$params.title_desc}}</dt>
+			<dd>{{$params.description}}</dd>
+		</dl>
+		<dl class="detail-att">
+			<dt>产品属性</dt>
+			<dd>
+            	{{if $params.more_property}}
+            	{{foreach from = $params.more_property item = item}}
+				<div>
+					<span class="cGray">{{$item.key}}</span>
+					<p>{{$item.value}}</p>
+				</div>
+                {{/foreach}}
+                {{/if}}
+			</dd>
+		</dl>
+		<dl class="detail-att">
+			<dt class="logisics">物流信息</dt>
+			<dd>
+				{{if $params.more_sale}}
+            	{{foreach from = $params.more_sale item = item}}
+				<div>
+					<span class="cGray">{{$item.key}}</span>
+					<p>{{$item.value}}</p>
+				</div>
+                {{/foreach}}
+                {{/if}}
+			</dd>
+		</dl>
+	</section>
+</section>
+<script type="text/javascript">
+(function() {
+    function i() {
+        c.animate({
+            "margin-left":-h * g
+        }), d.removeClass("on").eq(h).addClass("on"), e.eq(h).attr("src", e.eq(h).attr("_src"));
+    }
+    var a = $("#f"), b = a.find("li"), c = a.find("ul"), d = a.find("span"), e = a.find("img"), f = b.length - 1, g = b.eq(0).width(), h = 0;
+    a.swipeLeft(function(a) {
+        a.preventDefault(), h++, h > f && (h = f), i();
+    }), 
+	a.swipeRight(function(a) {
+        a.preventDefault(), h--, h < 0 && (h = 0), i();
+    }), i();
+})();
+(function(){
+	$("#content").find('em').click(function(){
+		var _this = $(this), num = _this.find('span').eq(0);	
+		var goods_id = _this.find('span').eq(1).eq(0).html();
+		if(_this.hasClass('on')){//取消喜欢	
+			$.ajax({
+				type: 'GET',
+				url: 'index.php?_c=love&_a=wishes',
+				data: {goods_id: goods_id},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG('已取消喜欢');
+						_this.removeClass('on');
+						num.html(data.ret.data);
+					}else{
+						alertMSG(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alertMSG('网速不给力哦～');
+				}
+		  });
+		}else{//添加喜欢
+			$.ajax({
+				type: 'GET',
+				url: 'index.php?_c=love&_a=wishes',
+				data: {type:'love',goods_id: goods_id},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG('已喜欢');
+						_this.addClass('on');
+						num.html(data.ret.data);
+					}else if(data.ret.status == 300){
+						window.location.href = data.ret.data;
+					}else{
+						alertMSG(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alertMSG('网速不给力哦～');
+				}
+		  });
+		}
+	})
+})();
+</script>

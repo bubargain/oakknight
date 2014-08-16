@@ -1,0 +1,50 @@
+<form id="sForm" name="sForm" action="index.php?_c=textlink&_a=add" method="post" class="form-search">
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="20%">标题：</td>
+    <td width="30%"><input type="text" name="title" value="{{$info.title}}" /></td>
+    <td width="10%" align="right">所属位置：</td>
+    <td>
+    	<select name="loc_id" style="width:50%;">
+        	<option value="">所属位置</option>
+            {{foreach from = $locationList item = item}}
+            <option value="{{$item.loc_id}}" {{if $item.loc_id eq $info.loc_id}} selected="selected"{{/if}}>{{$item.ukey}}</option>
+            {{/foreach}}
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">排序：</td>
+    <td colspan="3">
+    	<select name="sort" style="width:15%;">
+        	<option value="1" {{if $info.sort eq '1'}} selected="selected"{{/if}}>--左侧--</option>
+            <option value="2" {{if $info.sort eq '2'}} selected="selected"{{/if}}>--右侧--</option>
+      	</select>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">所属分类：</td>
+    <td>
+    	<select name="parent_id" style="width:50%;">
+        	<option value="0">无分类</option>
+        </select>
+    </td>
+    <td align="right">状态：</td>
+    <td>
+    	<select name="status" style="width:25%;">
+        	<option value="1" {{if $info.status eq '1'}} selected="selected"{{/if}}>--显示--</option>
+            <option value="0" {{if $info.status eq '0'}} selected="selected"{{/if}}>--隐藏--</option>
+      	</select>
+    </td>
+  </tr>
+  <tr>
+    <td align="right" width="20%">URL：</td>
+    <td colspan="3"><input type="text" id="url" name="url" style="width:70%;" value="{{$info.url}}" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="4">
+    <input type="hidden" id="id" name="id" value="{{$info.id}}" />
+    <input type="submit" value="提&nbsp;交" class="btn" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>
+</form>

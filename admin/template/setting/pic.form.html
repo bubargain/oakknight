@@ -1,0 +1,25 @@
+<script type="application/javascript">
+window.onload = function(){
+	var file = document.querySelector("#file input[type='file']");
+	var text = document.querySelector("#file input[type='text']");
+	file.addEventListener("change",assign,false);
+	function assign(){
+		text.value = file.value;
+	}
+}
+</script>
+<form id="sForm" name="sForm" enctype="multipart/form-data" action="index.php?_c=setting&_a=addPic" method="post" class="form-search">
+<table align="center" width="80%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="center">
+    <div id="file"><input type="text" value="未选择文件" readonly="readonly" /><input type="button" value="浏览" class="btn" /><input type="file" id="pic" name="pic" /></div>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">
+    <input type="hidden" id="startPicId" name="startPicId" value="{{$startPicId}}" />
+    <input type="hidden" id="type" name="type" value="uploadPic" />
+    <input type="submit" value="提&nbsp;交" class="btn" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>
+</form>

@@ -1,0 +1,1221 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \FirePHP</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+<li><a href="../namespaces/sprite.html"><i class="icon-th"></i> sprite</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/FirePHPCore.html"><i class="icon-folder-open"></i> FirePHPCore</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">218</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">2</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___sleep" title="__sleep :: When the object gets serialized only include specific object members."><span class="description">When the object gets serialized only include specific object members.</span><pre>__sleep()</pre></a></li>
+<li class="method public "><a href="#method_assertionHandler" title="assertionHandler :: FirePHP's assertion handler"><span class="description">FirePHP's assertion handler</span><pre>assertionHandler()</pre></a></li>
+<li class="method public "><a href="#method_detectClientExtension" title="detectClientExtension :: Check if FirePHP is installed on client"><span class="description">Check if FirePHP is installed on client</span><pre>detectClientExtension()</pre></a></li>
+<li class="method public "><a href="#method_dump" title="dump :: Dumps key and variable to firebug server panel"><span class="description">Dumps key and variable to firebug server panel</span><pre>dump()</pre></a></li>
+<li class="method public "><a href="#method_error" title="error :: Log object with label to firebug console"><span class="description">Log object with label to firebug console</span><pre>error()</pre></a></li>
+<li class="method public "><a href="#method_errorHandler" title="errorHandler :: FirePHP's error handler"><span class="description">FirePHP's error handler</span><pre>errorHandler()</pre></a></li>
+<li class="method public "><a href="#method_exceptionHandler" title="exceptionHandler :: FirePHP's exception handler"><span class="description">FirePHP's exception handler</span><pre>exceptionHandler()</pre></a></li>
+<li class="method public "><a href="#method_fb" title="fb :: Log varible to Firebug"><span class="description">Log varible to Firebug</span><pre>fb()</pre></a></li>
+<li class="method public "><a href="#method_getAllRequestHeaders" title="getAllRequestHeaders :: Get all request headers"><span class="description">Get all request headers</span><pre>getAllRequestHeaders()</pre></a></li>
+<li class="method public "><a href="#method_getEnabled" title="getEnabled :: Check if logging is enabled"><span class="description">Check if logging is enabled</span><pre>getEnabled()</pre></a></li>
+<li class="method public "><a href="#method_getInstance" title="getInstance :: Gets singleton instance of FirePHP"><span class="description">Gets singleton instance of FirePHP</span><pre>getInstance()</pre></a></li>
+<li class="method public "><a href="#method_getOption" title="getOption :: Get an option from the library"><span class="description">Get an option from the library</span><pre>getOption()</pre></a></li>
+<li class="method public "><a href="#method_getOptions" title="getOptions :: Get options from the library"><span class="description">Get options from the library</span><pre>getOptions()</pre></a></li>
+<li class="method public "><a href="#method_group" title="group :: Start a group for following messages."><span class="description">Start a group for following messages.</span><pre>group()</pre></a></li>
+<li class="method public "><a href="#method_groupEnd" title="groupEnd :: Ends a group you have started before"><span class="description">Ends a group you have started before</span><pre>groupEnd()</pre></a></li>
+<li class="method public "><a href="#method_info" title="info :: Log object with label to firebug console"><span class="description">Log object with label to firebug console</span><pre>info()</pre></a></li>
+<li class="method public "><a href="#method_init" title="init :: Creates FirePHP object and stores it for singleton access"><span class="description">Creates FirePHP object and stores it for singleton access</span><pre>init()</pre></a></li>
+<li class="method public "><a href="#method_jsonEncode" title="jsonEncode :: Encode an object into a JSON string"><span class="description">Encode an object into a JSON string</span><pre>jsonEncode()</pre></a></li>
+<li class="method public "><a href="#method_log" title="log :: Log object with label to firebug console"><span class="description">Log object with label to firebug console</span><pre>log()</pre></a></li>
+<li class="method public "><a href="#method_plugin" title="plugin :: Insight API wrapper"><span class="description">Insight API wrapper</span><pre>plugin()</pre></a></li>
+<li class="method public "><a href="#method_registerAssertionHandler" title="registerAssertionHandler :: Register FirePHP driver as your assert callback"><span class="description">Register FirePHP driver as your assert callback</span><pre>registerAssertionHandler()</pre></a></li>
+<li class="method public "><a href="#method_registerErrorHandler" title="registerErrorHandler :: Register FirePHP as your error handler"><span class="description">Register FirePHP as your error handler</span><pre>registerErrorHandler()</pre></a></li>
+<li class="method public "><a href="#method_registerExceptionHandler" title="registerExceptionHandler :: Register FirePHP as your exception handler"><span class="description">Register FirePHP as your exception handler</span><pre>registerExceptionHandler()</pre></a></li>
+<li class="method public "><a href="#method_setEnabled" title="setEnabled :: Enable and disable logging to Firebug"><span class="description">Enable and disable logging to Firebug</span><pre>setEnabled()</pre></a></li>
+<li class="method public "><a href="#method_setInstance" title="setInstance :: Set the instance of the FirePHP singleton"><span class="description">Set the instance of the FirePHP singleton</span><pre>setInstance()</pre></a></li>
+<li class="method public "><a href="#method_setLogToInsightConsole" title="setLogToInsightConsole :: Set an Insight console to direct all logging calls to"><span class="description">Set an Insight console to direct all logging calls to</span><pre>setLogToInsightConsole()</pre></a></li>
+<li class="method public "><a href="#method_setObjectFilter" title="setObjectFilter :: Specify a filter to be used when encoding an object"><span class="description">Specify a filter to be used when encoding an object</span><pre>setObjectFilter()</pre></a></li>
+<li class="method public "><a href="#method_setOption" title="setOption :: Set an option for the library"><span class="description">Set an option for the library</span><pre>setOption()</pre></a></li>
+<li class="method public "><a href="#method_setOptions" title="setOptions :: Set some options for the library"><span class="description">Set some options for the library</span><pre>setOptions()</pre></a></li>
+<li class="method public "><a href="#method_setProcessorUrl" title="setProcessorUrl :: "><span class="description">setProcessorUrl()
+        </span><pre>setProcessorUrl()</pre></a></li>
+<li class="method public "><a href="#method_setRendererUrl" title="setRendererUrl :: "><span class="description">setRendererUrl()
+        </span><pre>setRendererUrl()</pre></a></li>
+<li class="method public "><a href="#method_table" title="table :: Log a table in the firebug console"><span class="description">Log a table in the firebug console</span><pre>table()</pre></a></li>
+<li class="method public "><a href="#method_to" title="to :: Insight API wrapper"><span class="description">Insight API wrapper</span><pre>to()</pre></a></li>
+<li class="method public "><a href="#method_trace" title="trace :: Log a trace in the firebug console"><span class="description">Log a trace in the firebug console</span><pre>trace()</pre></a></li>
+<li class="method public "><a href="#method_warn" title="warn :: Log object with label to firebug console"><span class="description">Log object with label to firebug console</span><pre>warn()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method__escapeTrace" title="_escapeTrace :: Escape trace path for windows systems"><span class="description">Escape trace path for windows systems</span><pre>_escapeTrace()</pre></a></li>
+<li class="method protected "><a href="#method__escapeTraceFile" title="_escapeTraceFile :: Escape file information of trace for windows systems"><span class="description">Escape file information of trace for windows systems</span><pre>_escapeTraceFile()</pre></a></li>
+<li class="method protected "><a href="#method__standardizePath" title="_standardizePath :: Standardizes path for windows systems."><span class="description">Standardizes path for windows systems.</span><pre>_standardizePath()</pre></a></li>
+<li class="method protected "><a href="#method_encodeObject" title="encodeObject :: Encodes an object including members with
+protected and private visibility"><span class="description">Encodes an object including members with
+protected and private visibility</span><pre>encodeObject()</pre></a></li>
+<li class="method protected "><a href="#method_encodeTable" title="encodeTable :: Encodes a table by encoding each row and column with encodeObject()"><span class="description">Encodes a table by encoding each row and column with encodeObject()</span><pre>encodeTable()</pre></a></li>
+<li class="method protected "><a href="#method_getRequestHeader" title="getRequestHeader :: Get a request header"><span class="description">Get a request header</span><pre>getRequestHeader()</pre></a></li>
+<li class="method protected "><a href="#method_getUserAgent" title="getUserAgent :: Get user agent"><span class="description">Get user agent</span><pre>getUserAgent()</pre></a></li>
+<li class="method protected "><a href="#method_headersSent" title="headersSent :: Check if headers have already been sent"><span class="description">Check if headers have already been sent</span><pre>headersSent()</pre></a></li>
+<li class="method protected "><a href="#method_is_utf8" title="is_utf8 :: Returns true if $string is valid UTF-8 and false otherwise."><span class="description">Returns true if $string is valid UTF-8 and false otherwise.</span><pre>is_utf8()</pre></a></li>
+<li class="method protected "><a href="#method_newException" title="newException :: Returns a new exception"><span class="description">Returns a new exception</span><pre>newException()</pre></a></li>
+<li class="method protected "><a href="#method_setHeader" title="setHeader :: Send header"><span class="description">Send header</span><pre>setHeader()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="method private "><a href="#method_json_encode" title="json_encode :: encodes an arbitrary variable into JSON format"><span class="description">encodes an arbitrary variable into JSON format</span><pre>json_encode()</pre></a></li>
+<li class="method private "><a href="#method_json_name_value" title="json_name_value :: array-walking function for use in generating JSON-formatted name-value pairs"><span class="description">array-walking function for use in generating JSON-formatted name-value pairs</span><pre>json_name_value()</pre></a></li>
+<li class="method private "><a href="#method_json_utf82utf16" title="json_utf82utf16 :: convert a string from one UTF-8 char to one UTF-16 char"><span class="description">convert a string from one UTF-8 char to one UTF-16 char</span><pre>json_utf82utf16()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_convertAssertionErrorsToExceptions" title="$convertAssertionErrorsToExceptions :: Flag whether to convert PHP assertion errors to Exceptions"><span class="description">Flag whether to convert PHP assertion errors to Exceptions</span><pre>$convertAssertionErrorsToExceptions</pre></a></li>
+<li class="property protected "><a href="#property_enabled" title="$enabled :: Flag to enable/disable logging"><span class="description">Flag to enable/disable logging</span><pre>$enabled</pre></a></li>
+<li class="property protected "><a href="#property_inExceptionHandler" title="$inExceptionHandler :: Flag whether we are logging from within the exception handler"><span class="description">Flag whether we are logging from within the exception handler</span><pre>$inExceptionHandler</pre></a></li>
+<li class="property protected "><a href="#property_instance" title="$instance :: Singleton instance of FirePHP"><span class="description">Singleton instance of FirePHP</span><pre>$instance</pre></a></li>
+<li class="property protected "><a href="#property_logToInsightConsole" title="$logToInsightConsole :: The insight console to log to if applicable"><span class="description">The insight console to log to if applicable</span><pre>$logToInsightConsole</pre></a></li>
+<li class="property protected "><a href="#property_messageIndex" title="$messageIndex :: Wildfire protocol message index"><span class="description">Wildfire protocol message index</span><pre>$messageIndex</pre></a></li>
+<li class="property protected "><a href="#property_objectFilters" title="$objectFilters :: Filters used to exclude object members when encoding"><span class="description">Filters used to exclude object members when encoding</span><pre>$objectFilters</pre></a></li>
+<li class="property protected "><a href="#property_objectStack" title="$objectStack :: A stack of objects used to detect recursion during object encoding"><span class="description">A stack of objects used to detect recursion during object encoding</span><pre>$objectStack</pre></a></li>
+<li class="property protected "><a href="#property_options" title="$options :: Options for the library"><span class="description">Options for the library</span><pre>$options</pre></a></li>
+<li class="property protected "><a href="#property_throwAssertionExceptions" title="$throwAssertionExceptions :: Flag whether to throw PHP assertion errors that have been converted to Exceptions"><span class="description">Flag whether to throw PHP assertion errors that have been converted to Exceptions</span><pre>$throwAssertionExceptions</pre></a></li>
+<li class="property protected "><a href="#property_throwErrorExceptions" title="$throwErrorExceptions :: Flag whether to throw PHP errors that have been converted to ErrorExceptions"><span class="description">Flag whether to throw PHP errors that have been converted to ErrorExceptions</span><pre>$throwErrorExceptions</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="property private "><a href="#property_json_objectStack" title="$json_objectStack :: Keep a list of objects as we descend into the array so we can detect recursion."><span class="description">Keep a list of objects as we descend into the array so we can detect recursion.</span><pre>$json_objectStack</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_DUMP" title="DUMP :: Dumps a variable to firebug's server panel"><span class="description">Dumps a variable to firebug's server panel</span><pre>DUMP</pre></a></li>
+<li class="constant  "><a href="#constant_ERROR" title="ERROR :: Firebug ERROR level"><span class="description">Firebug ERROR level</span><pre>ERROR</pre></a></li>
+<li class="constant  "><a href="#constant_EXCEPTION" title="EXCEPTION :: Displays an exception in firebug console"><span class="description">Displays an exception in firebug console</span><pre>EXCEPTION</pre></a></li>
+<li class="constant  "><a href="#constant_GROUP_END" title="GROUP_END :: Ends a group in firebug console"><span class="description">Ends a group in firebug console</span><pre>GROUP_END</pre></a></li>
+<li class="constant  "><a href="#constant_GROUP_START" title="GROUP_START :: Starts a group in firebug console"><span class="description">Starts a group in firebug console</span><pre>GROUP_START</pre></a></li>
+<li class="constant  "><a href="#constant_INFO" title="INFO :: Firebug INFO level"><span class="description">Firebug INFO level</span><pre>INFO</pre></a></li>
+<li class="constant  "><a href="#constant_LOG" title="LOG :: Firebug LOG level"><span class="description">Firebug LOG level</span><pre>LOG</pre></a></li>
+<li class="constant  "><a href="#constant_TABLE" title="TABLE :: Displays an table in firebug console"><span class="description">Displays an table in firebug console</span><pre>TABLE</pre></a></li>
+<li class="constant  "><a href="#constant_TRACE" title="TRACE :: Displays a stack trace in firebug console"><span class="description">Displays a stack trace in firebug console</span><pre>TRACE</pre></a></li>
+<li class="constant  "><a href="#constant_VERSION" title="VERSION :: FirePHP version"><span class="description">FirePHP version</span><pre>VERSION</pre></a></li>
+<li class="constant  "><a href="#constant_WARN" title="WARN :: Firebug WARN level"><span class="description">Firebug WARN level</span><pre>WARN</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\FirePHP"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/FirePHP.html">FirePHP</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Sends the given data to the FirePHP Firefox Extension.</p>
+<div class="details">
+<div class="long_description"><p>The data can be displayed in the Firebug Console or in the
+"Server" request tab.</p>
+
+<p>For more information see: http://www.firephp.org/</p></div>
+<table class="table table-bordered">
+<tr>
+<th>copyright</th>
+<td>Copyright (C) 2007+ Christoph Dorn</td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:christoph@christophdorn.com">Christoph Dorn</a></td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="">[MIT License](http://www.opensource.org/licenses/mit-license.php)</a></td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/FirePHPCore.html">FirePHPCore</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___sleep"></a><div class="element clickable method public method___sleep" data-toggle="collapse" data-target=".method___sleep .collapse">
+<h2>When the object gets serialized only include specific object members.</h2>
+<pre>__sleep() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_assertionHandler"></a><div class="element clickable method public method_assertionHandler" data-toggle="collapse" data-target=".method_assertionHandler .collapse">
+<h2>FirePHP's assertion handler</h2>
+<pre>assertionHandler(string $file, integer $line, mixed $code) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Logs all assertions to your firebug console and then stops the script.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file</h4>
+<code>string</code><p>File source of assertion</p></div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>integer</code><p>Line source of assertion</p></div>
+<div class="subelement argument">
+<h4>$code</h4>
+<code>mixed</code><p>Assertion code</p></div>
+</div></div>
+</div>
+<a id="method_detectClientExtension"></a><div class="element clickable method public method_detectClientExtension" data-toggle="collapse" data-target=".method_detectClientExtension .collapse">
+<h2>Check if FirePHP is installed on client</h2>
+<pre>detectClientExtension() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a id="method_dump"></a><div class="element clickable method public method_dump" data-toggle="collapse" data-target=".method_dump .collapse">
+<h2>Dumps key and variable to firebug server panel</h2>
+<pre>dump(string $key, mixed $variable, $options) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\FirePHP::DUMP</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$variable</h4>
+<code>mixed</code>
+</div>
+<div class="subelement argument"><h4>$options</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_error"></a><div class="element clickable method public method_error" data-toggle="collapse" data-target=".method_error .collapse">
+<h2>Log object with label to firebug console</h2>
+<pre>error(\mixes $object, string $label, $options) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\FirePHP::ERROR</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$object</h4>
+<code>\mixes</code>
+</div>
+<div class="subelement argument">
+<h4>$label</h4>
+<code>string</code>
+</div>
+<div class="subelement argument"><h4>$options</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_errorHandler"></a><div class="element clickable method public method_errorHandler" data-toggle="collapse" data-target=".method_errorHandler .collapse">
+<h2>FirePHP's error handler</h2>
+<pre>errorHandler(integer $errno, string $errstr, string $errfile, integer $errline, array $errcontext) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Throws exception for each php error that will occur.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$errno</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$errstr</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$errfile</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$errline</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$errcontext</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_exceptionHandler"></a><div class="element clickable method public method_exceptionHandler" data-toggle="collapse" data-target=".method_exceptionHandler .collapse">
+<h2>FirePHP's exception handler</h2>
+<pre>exceptionHandler(<a href="http://php.net/manual/en/class.exception.php">\Exception</a> $exception) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Logs all exceptions to your firebug console and then stops the script.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$exception</h4>
+<code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_fb"></a><div class="element clickable method public method_fb" data-toggle="collapse" data-target=".method_fb .collapse">
+<h2>Log varible to Firebug</h2>
+<pre>fb(mixed $object) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\http://www.firephp.org/Wiki/Reference/Fb</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$object</h4>
+<code>mixed</code><p>The variable to be logged</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>Return TRUE if message was added to headers, FALSE otherwise</div>
+</div></div>
+</div>
+<a id="method_getAllRequestHeaders"></a><div class="element clickable method public method_getAllRequestHeaders" data-toggle="collapse" data-target=".method_getAllRequestHeaders .collapse">
+<h2>Get all request headers</h2>
+<pre>getAllRequestHeaders() : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getEnabled"></a><div class="element clickable method public method_getEnabled" data-toggle="collapse" data-target=".method_getEnabled .collapse">
+<h2>Check if logging is enabled</h2>
+<pre>getEnabled() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>TRUE if enabled</div>
+</div></div>
+</div>
+<a id="method_getInstance"></a><div class="element clickable method public method_getInstance" data-toggle="collapse" data-target=".method_getInstance .collapse">
+<h2>Gets singleton instance of FirePHP</h2>
+<pre>getInstance(boolean $autoCreate) : <a href="../classes/FirePHP.html">\FirePHP</a></pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$autoCreate</h4>
+<code>boolean</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/FirePHP.html">\FirePHP</a></code></div>
+</div></div>
+</div>
+<a id="method_getOption"></a><div class="element clickable method public method_getOption" data-toggle="collapse" data-target=".method_getOption .collapse">
+<h2>Get an option from the library</h2>
+<pre>getOption(string $name) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_getOptions"></a><div class="element clickable method public method_getOptions" data-toggle="collapse" data-target=".method_getOptions .collapse">
+<h2>Get options from the library</h2>
+<pre>getOptions() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>The currently set options</div>
+</div></div>
+</div>
+<a id="method_group"></a><div class="element clickable method public method_group" data-toggle="collapse" data-target=".method_group .collapse">
+<h2>Start a group for following messages.</h2>
+<pre>group(string $name, array $options) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Options:
+  Collapsed: [true|false]
+  Color:     [#RRGGBB|ColorName]</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>OPTIONAL Instructions on how to log the group</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_groupEnd"></a><div class="element clickable method public method_groupEnd" data-toggle="collapse" data-target=".method_groupEnd .collapse">
+<h2>Ends a group you have started before</h2>
+<pre>groupEnd() : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_info"></a><div class="element clickable method public method_info" data-toggle="collapse" data-target=".method_info .collapse">
+<h2>Log object with label to firebug console</h2>
+<pre>info(\mixes $object, string $label, $options) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\FirePHP::INFO</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$object</h4>
+<code>\mixes</code>
+</div>
+<div class="subelement argument">
+<h4>$label</h4>
+<code>string</code>
+</div>
+<div class="subelement argument"><h4>$options</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_init"></a><div class="element clickable method public method_init" data-toggle="collapse" data-target=".method_init .collapse">
+<h2>Creates FirePHP object and stores it for singleton access</h2>
+<pre>init() : <a href="../classes/FirePHP.html">\FirePHP</a></pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/FirePHP.html">\FirePHP</a></code></div>
+</div></div>
+</div>
+<a id="method_jsonEncode"></a><div class="element clickable method public method_jsonEncode" data-toggle="collapse" data-target=".method_jsonEncode .collapse">
+<h2>Encode an object into a JSON string</h2>
+<pre>jsonEncode(object $object, boolean $skipObjectEncode) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Uses PHP's jeson_encode() if available</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$object</h4>
+<code>object</code><p>The object to be encoded</p></div>
+<div class="subelement argument">
+<h4>$skipObjectEncode</h4>
+<code>boolean</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The JSON string</div>
+</div></div>
+</div>
+<a id="method_log"></a><div class="element clickable method public method_log" data-toggle="collapse" data-target=".method_log .collapse">
+<h2>Log object with label to firebug console</h2>
+<pre>log(\mixes $object, string $label, $options) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\FirePHP::LOG</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$object</h4>
+<code>\mixes</code>
+</div>
+<div class="subelement argument">
+<h4>$label</h4>
+<code>string</code>
+</div>
+<div class="subelement argument"><h4>$options</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_plugin"></a><div class="element clickable method public method_plugin" data-toggle="collapse" data-target=".method_plugin .collapse">
+<h2>Insight API wrapper</h2>
+<pre>plugin() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\Insight_Helper::plugin()</a></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_registerAssertionHandler"></a><div class="element clickable method public method_registerAssertionHandler" data-toggle="collapse" data-target=".method_registerAssertionHandler .collapse">
+<h2>Register FirePHP driver as your assert callback</h2>
+<pre>registerAssertionHandler(boolean $convertAssertionErrorsToExceptions, boolean $throwAssertionExceptions) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$convertAssertionErrorsToExceptions</h4>
+<code>boolean</code>
+</div>
+<div class="subelement argument">
+<h4>$throwAssertionExceptions</h4>
+<code>boolean</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>Returns the original setting or FALSE on errors</div>
+</div></div>
+</div>
+<a id="method_registerErrorHandler"></a><div class="element clickable method public method_registerErrorHandler" data-toggle="collapse" data-target=".method_registerErrorHandler .collapse">
+<h2>Register FirePHP as your error handler</h2>
+<pre>registerErrorHandler($throwErrorExceptions) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Will throw exceptions for each php error.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$throwErrorExceptions</h4></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>Returns a string containing the previously defined error handler (if any)</div>
+</div></div>
+</div>
+<a id="method_registerExceptionHandler"></a><div class="element clickable method public method_registerExceptionHandler" data-toggle="collapse" data-target=".method_registerExceptionHandler .collapse">
+<h2>Register FirePHP as your exception handler</h2>
+<pre>registerExceptionHandler() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>Returns the name of the previously defined exception handler,
+              or NULL on error.
+              If no previous handler was defined, NULL is also returned.</div>
+</div></div>
+</div>
+<a id="method_setEnabled"></a><div class="element clickable method public method_setEnabled" data-toggle="collapse" data-target=".method_setEnabled .collapse">
+<h2>Enable and disable logging to Firebug</h2>
+<pre>setEnabled(boolean $enabled) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$enabled</h4>
+<code>boolean</code><p>TRUE to enable, FALSE to disable</p></div>
+</div></div>
+</div>
+<a id="method_setInstance"></a><div class="element clickable method public method_setInstance" data-toggle="collapse" data-target=".method_setInstance .collapse">
+<h2>Set the instance of the FirePHP singleton</h2>
+<pre>setInstance(<a href="../classes/FirePHP.html">\FirePHP</a> $instance) : <a href="../classes/FirePHP.html">\FirePHP</a></pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$instance</h4>
+<code><a href="../classes/FirePHP.html">\FirePHP</a></code><p>The FirePHP object instance</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/FirePHP.html">\FirePHP</a></code></div>
+</div></div>
+</div>
+<a id="method_setLogToInsightConsole"></a><div class="element clickable method public method_setLogToInsightConsole" data-toggle="collapse" data-target=".method_setLogToInsightConsole .collapse">
+<h2>Set an Insight console to direct all logging calls to</h2>
+<pre>setLogToInsightConsole(object $console) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$console</h4>
+<code>object</code><p>The console object to log to</p></div>
+</div></div>
+</div>
+<a id="method_setObjectFilter"></a><div class="element clickable method public method_setObjectFilter" data-toggle="collapse" data-target=".method_setObjectFilter .collapse">
+<h2>Specify a filter to be used when encoding an object</h2>
+<pre>setObjectFilter(string $class, array $filter) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Filters are used to exclude object members.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$class</h4>
+<code>string</code><p>The class name of the object</p></div>
+<div class="subelement argument">
+<h4>$filter</h4>
+<code>array</code><p>An array of members to exclude</p></div>
+</div></div>
+</div>
+<a id="method_setOption"></a><div class="element clickable method public method_setOption" data-toggle="collapse" data-target=".method_setOption .collapse">
+<h2>Set an option for the library</h2>
+<pre>setOption(string $name, mixed $value) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_setOptions"></a><div class="element clickable method public method_setOptions" data-toggle="collapse" data-target=".method_setOptions .collapse">
+<h2>Set some options for the library</h2>
+<pre>setOptions(array $options) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Options:
+ - maxDepth: The maximum depth to traverse (default: 10)
+ - maxObjectDepth: The maximum depth to traverse objects (default: 5)
+ - maxArrayDepth: The maximum depth to traverse arrays (default: 5)
+ - useNativeJsonEncode: If true will use json_encode() (default: true)
+ - includeLineNumbers: If true will include line numbers and filenames (default: true)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>The options to be set</p></div>
+</div></div>
+</div>
+<a id="method_setProcessorUrl"></a><div class="element clickable method public method_setProcessorUrl" data-toggle="collapse" data-target=".method_setProcessorUrl .collapse">
+<h2>setProcessorUrl()
+        </h2>
+<pre>setProcessorUrl($URL) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$URL</h4></div>
+</div></div>
+</div>
+<a id="method_setRendererUrl"></a><div class="element clickable method public method_setRendererUrl" data-toggle="collapse" data-target=".method_setRendererUrl .collapse">
+<h2>setRendererUrl()
+        </h2>
+<pre>setRendererUrl($URL) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$URL</h4></div>
+</div></div>
+</div>
+<a id="method_table"></a><div class="element clickable method public method_table" data-toggle="collapse" data-target=".method_table .collapse">
+<h2>Log a table in the firebug console</h2>
+<pre>table(string $label, string $table, $options) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\FirePHP::TABLE</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$label</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$table</h4>
+<code>string</code>
+</div>
+<div class="subelement argument"><h4>$options</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_to"></a><div class="element clickable method public method_to" data-toggle="collapse" data-target=".method_to .collapse">
+<h2>Insight API wrapper</h2>
+<pre>to() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\Insight_Helper::to()</a></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_trace"></a><div class="element clickable method public method_trace" data-toggle="collapse" data-target=".method_trace .collapse">
+<h2>Log a trace in the firebug console</h2>
+<pre>trace(string $label) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\FirePHP::TRACE</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$label</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method_warn"></a><div class="element clickable method public method_warn" data-toggle="collapse" data-target=".method_warn .collapse">
+<h2>Log object with label to firebug console</h2>
+<pre>warn(\mixes $object, string $label, $options) : true</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\FirePHP::WARN</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$object</h4>
+<code>\mixes</code>
+</div>
+<div class="subelement argument">
+<h4>$label</h4>
+<code>string</code>
+</div>
+<div class="subelement argument"><h4>$options</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>true</code></div>
+</div></div>
+</div>
+<a id="method__escapeTrace"></a><div class="element clickable method protected method__escapeTrace" data-toggle="collapse" data-target=".method__escapeTrace .collapse">
+<h2>Escape trace path for windows systems</h2>
+<pre>_escapeTrace(array $trace) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$trace</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method__escapeTraceFile"></a><div class="element clickable method protected method__escapeTraceFile" data-toggle="collapse" data-target=".method__escapeTraceFile .collapse">
+<h2>Escape file information of trace for windows systems</h2>
+<pre>_escapeTraceFile(string $file) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$file</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__standardizePath"></a><div class="element clickable method protected method__standardizePath" data-toggle="collapse" data-target=".method__standardizePath .collapse">
+<h2>Standardizes path for windows systems.</h2>
+<pre>_standardizePath(string $path) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$path</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_encodeObject"></a><div class="element clickable method protected method_encodeObject" data-toggle="collapse" data-target=".method_encodeObject .collapse">
+<h2>Encodes an object including members with
+protected and private visibility</h2>
+<pre>encodeObject(object $object, $objectDepth, $arrayDepth, $maxDepth) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$object</h4>
+<code>object</code><p>The object to be encoded</p></div>
+<div class="subelement argument"><h4>$objectDepth</h4></div>
+<div class="subelement argument"><h4>$arrayDepth</h4></div>
+<div class="subelement argument"><h4>$maxDepth</h4></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>All members of the object</div>
+</div></div>
+</div>
+<a id="method_encodeTable"></a><div class="element clickable method protected method_encodeTable" data-toggle="collapse" data-target=".method_encodeTable .collapse">
+<h2>Encodes a table by encoding each row and column with encodeObject()</h2>
+<pre>encodeTable(array $table) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$table</h4>
+<code>array</code><p>The table to be encoded</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getRequestHeader"></a><div class="element clickable method protected method_getRequestHeader" data-toggle="collapse" data-target=".method_getRequestHeader .collapse">
+<h2>Get a request header</h2>
+<pre>getRequestHeader($name) : string | false</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$name</h4></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>false</code>
+</div>
+</div></div>
+</div>
+<a id="method_getUserAgent"></a><div class="element clickable method protected method_getUserAgent" data-toggle="collapse" data-target=".method_getUserAgent .collapse">
+<h2>Get user agent</h2>
+<pre>getUserAgent() : string | false</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>false</code>
+</div>
+</div></div>
+</div>
+<a id="method_headersSent"></a><div class="element clickable method protected method_headersSent" data-toggle="collapse" data-target=".method_headersSent .collapse">
+<h2>Check if headers have already been sent</h2>
+<pre>headersSent(string $filename, integer $linenum) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$linenum</h4>
+<code>integer</code>
+</div>
+</div></div>
+</div>
+<a id="method_is_utf8"></a><div class="element clickable method protected method_is_utf8" data-toggle="collapse" data-target=".method_is_utf8 .collapse">
+<h2>Returns true if $string is valid UTF-8 and false otherwise.</h2>
+<pre>is_utf8(mixed $str) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$str</h4>
+<code>mixed</code><p>String to be tested</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a id="method_newException"></a><div class="element clickable method protected method_newException" data-toggle="collapse" data-target=".method_newException .collapse">
+<h2>Returns a new exception</h2>
+<pre>newException(string $message) : <a href="http://php.net/manual/en/class.exception.php">\Exception</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></div>
+</div></div>
+</div>
+<a id="method_setHeader"></a><div class="element clickable method protected method_setHeader" data-toggle="collapse" data-target=".method_setHeader .collapse">
+<h2>Send header</h2>
+<pre>setHeader(string $name, string $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_json_encode"></a><div class="element clickable method private method_json_encode" data-toggle="collapse" data-target=".method_json_encode .collapse">
+<h2>encodes an arbitrary variable into JSON format</h2>
+<pre>json_encode(mixed $var) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$var</h4>
+<code>mixed</code><p>any number, boolean, string, array, or object to be encoded. see argument 1 to Services_JSON() above for array-parsing behavior. if var is a strng, note that encode() always expects it to be in ASCII or UTF-8 format!</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>JSON string representation of input var or an error if a problem occurs</div>
+</div></div>
+</div>
+<a id="method_json_name_value"></a><div class="element clickable method private method_json_name_value" data-toggle="collapse" data-target=".method_json_name_value .collapse">
+<h2>array-walking function for use in generating JSON-formatted name-value pairs</h2>
+<pre>json_name_value(string $name, mixed $value) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>name of key to use</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>reference to an array element to be encoded</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>JSON-formatted name-value pair, like '"name":value'</div>
+</div></div>
+</div>
+<a id="method_json_utf82utf16"></a><div class="element clickable method private method_json_utf82utf16" data-toggle="collapse" data-target=".method_json_utf82utf16 .collapse">
+<h2>convert a string from one UTF-8 char to one UTF-16 char</h2>
+<pre>json_utf82utf16(string $utf8) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Normally should be handled by mb_convert_encoding, but
+provides a slower PHP-only method for installations
+that lack the multibye string extension.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$utf8</h4>
+<code>string</code><p>UTF-8 character</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>UTF-16 character</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_convertAssertionErrorsToExceptions"> </a><div class="element clickable property protected property_convertAssertionErrorsToExceptions" data-toggle="collapse" data-target=".property_convertAssertionErrorsToExceptions .collapse">
+<h2>Flag whether to convert PHP assertion errors to Exceptions</h2>
+<pre>$convertAssertionErrorsToExceptions : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_enabled"> </a><div class="element clickable property protected property_enabled" data-toggle="collapse" data-target=".property_enabled .collapse">
+<h2>Flag to enable/disable logging</h2>
+<pre>$enabled : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_inExceptionHandler"> </a><div class="element clickable property protected property_inExceptionHandler" data-toggle="collapse" data-target=".property_inExceptionHandler .collapse">
+<h2>Flag whether we are logging from within the exception handler</h2>
+<pre>$inExceptionHandler : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_instance"> </a><div class="element clickable property protected property_instance" data-toggle="collapse" data-target=".property_instance .collapse">
+<h2>Singleton instance of FirePHP</h2>
+<pre>$instance : <a href="../classes/FirePHP.html">\FirePHP</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_logToInsightConsole"> </a><div class="element clickable property protected property_logToInsightConsole" data-toggle="collapse" data-target=".property_logToInsightConsole .collapse">
+<h2>The insight console to log to if applicable</h2>
+<pre>$logToInsightConsole : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_messageIndex"> </a><div class="element clickable property protected property_messageIndex" data-toggle="collapse" data-target=".property_messageIndex .collapse">
+<h2>Wildfire protocol message index</h2>
+<pre>$messageIndex : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_objectFilters"> </a><div class="element clickable property protected property_objectFilters" data-toggle="collapse" data-target=".property_objectFilters .collapse">
+<h2>Filters used to exclude object members when encoding</h2>
+<pre>$objectFilters : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_objectStack"> </a><div class="element clickable property protected property_objectStack" data-toggle="collapse" data-target=".property_objectStack .collapse">
+<h2>A stack of objects used to detect recursion during object encoding</h2>
+<pre>$objectStack : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_options"> </a><div class="element clickable property protected property_options" data-toggle="collapse" data-target=".property_options .collapse">
+<h2>Options for the library</h2>
+<pre>$options : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_throwAssertionExceptions"> </a><div class="element clickable property protected property_throwAssertionExceptions" data-toggle="collapse" data-target=".property_throwAssertionExceptions .collapse">
+<h2>Flag whether to throw PHP assertion errors that have been converted to Exceptions</h2>
+<pre>$throwAssertionExceptions : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_throwErrorExceptions"> </a><div class="element clickable property protected property_throwErrorExceptions" data-toggle="collapse" data-target=".property_throwErrorExceptions .collapse">
+<h2>Flag whether to throw PHP errors that have been converted to ErrorExceptions</h2>
+<pre>$throwErrorExceptions : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_json_objectStack"> </a><div class="element clickable property private property_json_objectStack" data-toggle="collapse" data-target=".property_json_objectStack .collapse">
+<h2>Keep a list of objects as we descend into the array so we can detect recursion.</h2>
+<pre>$json_objectStack </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_DUMP"> </a><div class="element clickable constant  constant_DUMP" data-toggle="collapse" data-target=".constant_DUMP .collapse">
+<h2>Dumps a variable to firebug's server panel</h2>
+<pre>DUMP : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_ERROR"> </a><div class="element clickable constant  constant_ERROR" data-toggle="collapse" data-target=".constant_ERROR .collapse">
+<h2>Firebug ERROR level</h2>
+<pre>ERROR : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Logs a message to firebug console, displays an error icon before the message and colors the line yellow. Also increments the firebug error count.</p></div></div></div>
+</div>
+<a id="constant_EXCEPTION"> </a><div class="element clickable constant  constant_EXCEPTION" data-toggle="collapse" data-target=".constant_EXCEPTION .collapse">
+<h2>Displays an exception in firebug console</h2>
+<pre>EXCEPTION : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Increments the firebug error count.</p></div></div></div>
+</div>
+<a id="constant_GROUP_END"> </a><div class="element clickable constant  constant_GROUP_END" data-toggle="collapse" data-target=".constant_GROUP_END .collapse">
+<h2>Ends a group in firebug console</h2>
+<pre>GROUP_END : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_GROUP_START"> </a><div class="element clickable constant  constant_GROUP_START" data-toggle="collapse" data-target=".constant_GROUP_START .collapse">
+<h2>Starts a group in firebug console</h2>
+<pre>GROUP_START : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_INFO"> </a><div class="element clickable constant  constant_INFO" data-toggle="collapse" data-target=".constant_INFO .collapse">
+<h2>Firebug INFO level</h2>
+<pre>INFO : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Logs a message to firebug console and displays an info icon before the message.</p></div></div></div>
+</div>
+<a id="constant_LOG"> </a><div class="element clickable constant  constant_LOG" data-toggle="collapse" data-target=".constant_LOG .collapse">
+<h2>Firebug LOG level</h2>
+<pre>LOG : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Logs a message to firebug console.</p></div></div></div>
+</div>
+<a id="constant_TABLE"> </a><div class="element clickable constant  constant_TABLE" data-toggle="collapse" data-target=".constant_TABLE .collapse">
+<h2>Displays an table in firebug console</h2>
+<pre>TABLE : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_TRACE"> </a><div class="element clickable constant  constant_TRACE" data-toggle="collapse" data-target=".constant_TRACE .collapse">
+<h2>Displays a stack trace in firebug console</h2>
+<pre>TRACE : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_VERSION"> </a><div class="element clickable constant  constant_VERSION" data-toggle="collapse" data-target=".constant_VERSION .collapse">
+<h2>FirePHP version</h2>
+<pre>VERSION : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_WARN"> </a><div class="element clickable constant  constant_WARN" data-toggle="collapse" data-target=".constant_WARN .collapse">
+<h2>Firebug WARN level</h2>
+<pre>WARN : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Logs a message to firebug console, displays an warning icon before the message and colors the line turquoise.</p></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-10T13:47:44+08:00.<br></footer></div>
+</div>
+</body>
+</html>

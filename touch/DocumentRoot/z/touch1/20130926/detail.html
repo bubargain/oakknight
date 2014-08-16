@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>假日时光</title>
+<meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="css/layout.css" rel="stylesheet" />
+<script src="/js/zepto/zepto.js"></script>
+<script src="/js/zepto/event.js"></script>
+<script src="/js/zepto/touch.js"></script>  
+<script src="/js/zepto/fx.js"></script>
+</head>
+<body>
+<section class="main">
+	<section class="content">
+        <div class="topic-focus" id="tf">
+            <ul>
+                <li>
+                    <div class="detail-topic">
+                        <img src="img/topic_detail_1.jpg" />
+                        <div class="detail-topic-text">
+                            <span>.1</span>
+                            <section>
+                            	<span>摄影家  时光空间记录者</span>
+                                <p>或许没有名车豪宅，但我拥有满满一背包的爱与梦想，记录那些与你与我们有关的时光，是我旅行的全部意义，带不走的只有忧伤，沿途美景投影在你的瞳孔中。</p>
+                            </section>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+                        <img _src="img/topic_detail_2.jpg" />
+                        <div class="detail-topic-text">
+                            <span>.2</span>
+                            <section>
+                            	<span>美食客 味觉回忆制造者</span>
+                                <p>为一碗粥在午夜穿过半个城市，在三万英尺的高空飞行只为赴一场美味之约，口腹之欲旺盛于是从未停下寻找的脚步，我是美食疯子也是执着的行者。</p>
+                            </section>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+                        <img _src="img/topic_detail_3.jpg" />
+                        <div class="detail-topic-text">
+                            <span>.3</span>
+                            <section>
+                            	<span>购物狂 精致生活设计师</span>
+                                <p>早晨在巴黎街头带走一只长茎玫瑰，傍晚将它放在查令十字街84号早已不存在的旧书店门前，整个世界都是购物狂的欲望街，设计生活的每个细节，这是最孤独的掌控欲。</p>
+                            </section>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+                        <img _src="img/topic_detail_4.jpg" />
+                        <div class="detail-topic-text">
+                            <span>.4</span>
+                            <section>
+                            	<span>享受咖 慢时光驾驶员</span>
+                                <p>离开熟悉的城市，时间与呼吸仿佛都变慢了下来，没有军训般的随团旅行，享受一分钟50次的悠然心跳，无计划就是最完美的行程表，走走停停，一不小心成了谁谁谁眼中的风景。</p>
+                            </section>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                	<div class="more-topic">
+                        <p>更多国庆礼物等您品鉴</p>
+                        <a href="http://touch.ymall.com/index.php?_c=goods&_a=search&tags=假日时光" class="cWhite more-btn1">查看更多相关礼物</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+	</section>
+</section>
+<script type="text/javascript">
+(function() {
+	var a = $("#tf"), b = a.find("li"), c = a.find("ul"), e = a.find("img"), f = b.length - 1, g = b.eq(0).width(), h = 0;
+	$('#tf').bind('touchmove', function(e) { e.preventDefault() });
+	listen_to('#tf')
+
+    function listen_to(el) {
+      $(el).swipeLeft(function(){
+		h++, h > f && (h = f), i();
+      })
+      .swipeRight(function(){
+		h--, h < 0 && (h = 0), i();		
+      })
+      .swipeUp(function(){
+		h++, h > f && (h = f), i();
+      })
+      .swipeDown(function(){
+		h--, h < 0 && (h = 0), i();
+      })
+    }
+    
+	function i() {
+        c.animate({
+            "margin-left":-h * g
+        }), e.eq(h).attr("src", e.eq(h).attr("_src"));
+    }
+})();
+</script>
+<img src="http://hm.baidu.com/hm.gif?si=01a63d97e20ae495f99ac7e53b572d1b&amp;et=0&amp;nv=1&amp;st=1&amp;v=wap-0-0.2&amp;rnd=6295301921" width="0" height="0" />
+</body>
+</html>

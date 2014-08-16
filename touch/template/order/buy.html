@@ -1,0 +1,242 @@
+<header>
+	<section><a href="{{$refer}}"></a></section>
+	<section><div class="cWhite">订单确认</div></section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+	<form id="buyForm" action="index.php?_c=order&_a=submit" method="post" class="form-search">
+		<div class="order">
+			<div class="order-pro" id="proSize">
+				<section><img src="{{$order.goods.default_thumb}}"></section>
+				<section>
+					<div>
+						<p>{{$order.goods.goods_name}}</p>
+						<span>￥{{$order.goods.price}}</span></div>
+					<div>
+						<p>购买数量：
+							<select name="quantity">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+                                <option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</p>
+                        <input type="hidden" id="ucpn_id" name="ucpn_id" value="0">
+						<span class="cBlue"></span> </div>
+				</section>
+			</div>
+			<div class="order-tit">
+				<section>使用优惠券：
+					<select></select>
+				</section>
+			</div>
+		
+			<div class="order-tit">
+				<section>收货人信息<span class="fr"><a href="index.php?_c=address&_a=index&isSel=select&goods_id={{$order.goods.goods_id}}" class="btn cWhite">更换地址</a></span></section>
+				<section></section>
+			</div>
+            {{if $address}}
+			<div class="order-form">
+				<section class="cGray">收货人姓名</section>
+				<section><div>{{$address.consignee}}<input type="hidden" id="consignee" name="consignee" value="{{$address.consignee}}" /></div></section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">收货人手机</section>
+				<section><div>{{$address.phone_mob}}<input type="hidden" id="phone_mob" name="phone_mob" value="{{$address.phone_mob}}" /></div></section>
+			</div>
+            <div class="order-form">
+				<section class="cGray">省市区</section>
+				<section><div>{{$address.region_name}}</div></section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">详细地址</section>
+				<section><div>{{$address.address}}</div><input type="hidden" id="address" name="address" value="{{$address.address}}" /></section>
+			</div>
+			<input type="hidden" name="region_id" id="new_region_id" value="{{$address.region_id}}">		
+		<input type="hidden" name="region_name" id="new_region_name" value="{{$address.region_name}}">
+            {{else}}
+			<div class="order-form">
+				<section class="cGray">收货人姓名</section>
+				
+				<section><input type="text" id="consignee" name="consignee" value="{{$address.consignee}}" /></section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">收货人手机</section>
+				<section><input type="text" id="phone_mob" name="phone_mob" value="{{$address.phone_mob}}" /></section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">所在省份</section>
+				<section>
+                    <select id="province">
+						{{foreach from=$region_options item=item}}
+						<option value="{{$item.region_id}}">{{$item.region_name}}</option>
+						{{/foreach}}
+                    </select>
+                </section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">所在城市</section>
+				<section>
+                	<select id="city">
+                    </select>
+                </section>
+			</div>
+			<div class="order-form">
+				<section class="cGray">所在区县</section>
+				<section>
+                	<select id="county">
+                    </select>
+                </section>
+			</div>
+            <div class="order-tit">
+            	<span id="current_region"></span>
+            </div>
+			<div class="order-form">
+				<section class="cGray">详细地址</section>
+				<section><textarea id="address" name="address">{{$address.address}}</textarea></section>
+			</div>
+			<input type="hidden" name="region_id" id="new_region_id" value="{{$address.region_id}}">		
+			<input type="hidden" name="region_name" id="new_region_name" value="{{$address.region_name}}">
+			<script type="text/javascript" src ='/js/region_selector.js'></script>
+            <script type="text/javascript">
+                var ymall_region = new region_selector({
+                    'prov' : 'province',
+                    'city' : 'city',
+                    'dist' : 'county',
+                    'region_name' : 'new_region_name',
+                    'region_id' : 'new_region_id'
+                });
+                ymall_region.init();
+            </script>
+            {{/if}}
+            <div class="order-tit">
+				<section >付款方式：
+				&nbsp;&nbsp;&nbsp;支付宝网页支付</section>
+			</div>
+			
+		</div>
+		<input type="hidden" name="addr_id" value="{{$address.addr_id}}">        
+        <input type="hidden" id="id" name="id" value="{{$order.goods.goods_id}}" />
+        <a id="sumitForm" href="javascript:;" class="cWhite order-btn">确认并付款</a>
+		</form>
+</section>
+
+<script type="text/javascript">
+var proData = {
+		price : {{$order.goods.price}},
+		coupon : {{$order.coupon_json}},
+		order_amount : {{$order.order_amount}}
+	};
+
+(function(){
+	var element = $("#proSize"), 
+		_select = element.find('select').eq(0), 
+		span = element.find('span'), 
+		couponElement = element.next(), 
+		couponSelect = couponElement.find('select').eq(0);
+	
+	var cur_price =_select.val() * proData.price, couponId = null;
+	
+	_select.bind('change',function(){
+		cur_price = this.value * proData.price;
+		span.eq(0).html('￥' + cur_price.toFixed(2));
+		check(cur_price);
+	});
+	
+	
+	
+	function check(price){
+		if(proData.coupon.length>0){
+			if(couponId){
+				var arr = couponSelect.val().split('|');
+				if(arr[2]>price){
+					alert('亲，购物金额满' + arr[2] + '才能使用当前优惠券哦~')
+				}
+			}
+			
+			var _theselect = couponSelect.get(0).options, status = false;
+			var valid_coupon = new Array(),unvalid_coupon= new Array();
+			couponElement.show();
+			_theselect.length = 0;
+			_theselect.add(new Option('未使用优惠券','0|0|0'));
+			$.each(proData.coupon,function(n,o){
+				var value = o.money + '|' + o.ucpn_id + '|' + o.min_order_amount;
+				
+				if( price >= o.min_order_amount){
+					valid_coupon.push( [o.alt,value,o.min_order_amount] );
+					
+				}else{
+					unvalid_coupon.push( [o.alt,value,o.min_order_amount] );
+				}
+				
+				
+			});
+			$.each(valid_coupon,function(n,o){
+				var option=new Option(o[0],o[1],true);
+				price<o[2] ? option.disabled = true : status = true;
+				_theselect.add(option);
+				
+			});
+			$.each(unvalid_coupon,function(n,o){
+				
+				var option=new Option(o[0] + '(满'+o[2]+'可用)',o[1]);
+				price<o[2] ? option.disabled = true : status = true;
+				_theselect.add(option);
+			});
+						
+			if(status){
+				change();
+			}else{
+				span.eq(1).html('');
+			}
+		}else{
+			couponElement.hide();
+		}
+		
+	}
+	
+	couponSelect.bind('change',change);
+	
+	function change(){
+		var arr = couponSelect.val().split('|'),
+		price = cur_price - arr[0];
+		proData.order_amount = price;
+
+		if(price < cur_price){
+			if(price <=0) price = 0.01;
+            span.eq(1).html('仅需支付￥' + price.toFixed(2));
+			span.eq(0).addClass('cGray');
+		}else{
+			span.eq(1).html('');
+			span.eq(0).removeClass('cGray');
+		}
+		couponId = arr[0]>0 ? arr[1] : 0;
+        $("#ucpn_id").val(couponId);
+	}
+	check(proData.price);
+	
+	$('#sumitForm').click(function(){
+		if(!$('#consignee').val()){
+			alertMSG('请输入收货人姓名');
+		}else if(!(/^0?(13|15|18|14)[0-9]{9}$/.test($('#phone_mob').val()))){
+			alertMSG('请输入正确的手机号');	
+		}else if(!$('#address').val()){
+			alertMSG('请输入详细地址');	
+		}else{
+			
+			if( proData.order_amount < 0.02 ){
+				alertMSG('为了保障您的订单安全，请至少支付0.01元哦~',2000,function(){$('#buyForm').submit();});		
+			}else{
+				$('#buyForm').submit();
+			}
+		}
+	});
+})();
+</script>

@@ -1,0 +1,33 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="4"><div style="float:right;"><a href="index.php?_c=menu&_a=add">添加菜单</a></div></td>
+  </tr>
+  <tr>
+      <th width="40%">菜单名称</th>
+      <th align="center" width="10%">排序</th>
+      <th align="center" width="20%">状态</th>
+      <th align="center" width="30%">操作</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+  <tr>
+      <td>{{$item.space}}{{$item.title}}</td>
+      <td align="center">
+      {{if $item.noUp}}
+          <img src="/img/classnoup.gif" width="11px" height="10px" />
+      {{else}}
+          <a href="index.php?_c=menu&_a=changeSortOrder&type=up&id={{$item.id}}&parent_id={{$item.parent_id}}&sort={{$item.sort}}" title="上移"><img src="/img/classup.gif" width="11px" height="10px" /></a>
+      {{/if}}
+          &nbsp;&nbsp;&nbsp;&nbsp;
+      {{if $item.noDown}}
+          <img src="/img/classnodown.gif" width="11px" height="10px" />
+      {{else}}
+          <a href="index.php?_c=menu&_a=changeSortOrder&type=down&id={{$item.id}}&parent_id={{$item.parent_id}}&sort={{$item.sort}}" title="下移"><img src="/img/classdown.gif" width="11px" height="10px" /></a>
+      {{/if}}
+      </td>
+      <td align="center">{{if $item.status eq 1}}显示{{else}}隐藏{{/if}}</td>
+      <td align="center"><a href="index.php?_c=menu&_a=edit&id={{$item.id}}">修改</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="index.php?_c=menu&_a=delete&id={{$item.id}}" onclick="return window.confirm('确定删除?')">删除</a></td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+</table>

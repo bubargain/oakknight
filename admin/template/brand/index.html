@@ -1,0 +1,30 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="7"><div style="float:right;"><a href="index.php?_c=brand&_a=add">添加品牌</a></div></td>
+  </tr>
+  <tr>
+      <th width="20%">品牌名称</th>
+      <th width="15%">品牌中文名称</th>
+      <th width="20%">品牌英文名称</th>
+      <th align="center" width="15%">品牌logo</th>
+      <th align="center" width="10%">排序</th>
+      <th align="center" width="10%">是否显示</th>
+      <th align="center" width="10%">操作</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = items}}
+  <tr>
+      <td align="center">{{$items.brand_name}}</td>
+      <td align="center">{{$items.brand_cname}}</td>
+      <td align="center">{{$items.brand_ename}}</td>
+      <td align="center"><img src="{{$cdn_ymall}}{{$items.brand_logo}}" alt="暂无图片" width="100px" /></td>
+      <td align="center">{{$items.sort_order}}</td>
+      <td align="center">{{if $items.if_show eq 1}}是{{else}}否{{/if}}</td>
+      <td align="center"><a href="index.php?_c=brand&_a=edit&brand_id={{$items.brand_id}}">修改</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="index.php?_c=brand&_a=delete&brand_id={{$items.brand_id}}" onclick="return window.confirm('确定删除?')">删除</a></td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+  <tr>
+      <td align="center" colspan="7">{{$page}}</td>
+  </tr>
+</table>

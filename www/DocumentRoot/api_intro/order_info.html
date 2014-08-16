@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Ymall.com礼物店商家后台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="/css/bootstrap.docs.css" rel="stylesheet">
+		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+	<script src="header.js" type="text/javascript" charset="utf-8"></script>
+	<div class="container">
+		<div class="row">
+		<div>
+			<dl>
+				<dd class="span4">订单详细接口</dd><dt class="span8">url：/order/info</dt>
+				<dd></dd><dt></dt>
+			<dl>
+		</div>
+		
+		<p>请求参数</p>
+			<table class="table">
+				<tr>
+					<th>字段</th>
+					<th>必选</th>
+					<th>类型及范围</th>
+					<th>说明</th>
+				</tr>
+				<tr>
+					<td>order_id</td>
+					<td>int</td>
+					<td>订单id</td>
+					<td></td>
+				</tr>
+			</table>
+			<p>响应参数</p>
+			<table class="table">
+				<tr>
+					<th>字段</th>
+					<th>必选</th>
+					<th>类型及范围</th>
+					<th>说明</th>
+				</tr>
+				<tr>
+					<td>->data->order_id</td>
+					<td>int</td>
+					<td>订单id</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->order_sn</td>
+					<td>int</td>
+					<td>order_sn</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->order_status</td>
+					<td>int</td>
+					<td>订单状态</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->order_status_txt</td>
+					<td>string</td>
+					<td>订单状态文本</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->order_time</td>
+					<td>string</td>
+					<td>订单状态最后变更时间戳</td>
+					<td></td>
+				</tr> 
+				<tr>
+					<td>->data->goods</td>
+					<td>array</td>
+					<td>订单商品信息</td>
+					<td></td>
+				</tr>
+				
+				<tr>
+					<td>->data->goods->order_id</td>
+					<td>int</td>
+					<td>order_id</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->goods->goods_name</td>
+					<td>string</td>
+					<td>goods_name</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->goods->price</td>
+					<td>int</td>
+					<td>price</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->goods->quantity</td>
+					<td>int</td>
+					<td>quantity</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->goods->goods_image</td>
+					<td>string</td>
+					<td>goods_image</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->coupon</td>
+					<td>array</td>
+					<td>订单优惠券</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->coupon->title</td>
+					<td>string</td>
+					<td>优惠标题</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->coupon->amount</td>
+					<td>float</td>
+					<td>优惠金额（正式）</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>->data->coupon->money</td>
+					<td>float</td>
+					<td>优惠面额</td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script src="footer.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+<div class="span2 bs-docs-sidebar">
+	<ul class="nav nav-list bs-docs-sidenav affix"  data-spy="affix" data-offset-top="20">
+        {{foreach from=$menu_list item=item}}
+		<li{{if $_tag eq $item.tag}} class="active"{{/if}}><a href="{{$item.url}}"><i class="icon-chevron-right"></i> {{$item.title}}</a></li>
+        {{/foreach}}
+	</ul>
+</div>

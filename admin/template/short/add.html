@@ -1,0 +1,11 @@
+﻿<!--contents begin-->
+<form class="form" method="post" action="index.php?_c=short&_a=add">
+<div>
+	<dl>
+		<dd class="span10"><b class="span2">url：</b><input class="span7" type="text" name="url" value="{{$info.url}}" placeholder="请输入url"></dd>
+	</dl>	
+	<dl class="clearfix"><dd class="span6 offset3"><button type="submit" class="btn btn-large btn-primary">保存</button></dd></dl>
+</div>
+</form>
+<p>{{if $short_url}}{{$short_url}}{{/if}}</p>
+<!-- contents end -->

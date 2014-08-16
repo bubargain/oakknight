@@ -1,0 +1,16 @@
+<form id="sForm" name="sForm" action="index.php?_c=setting&_a=agreement" method="post" class="form-horizontal">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="center">
+        <textarea id="uvalue" name="uvalue" rows="18" style="width:800px" placeholder='填写版本管理内容'>{{$info.uvalue}}</textarea>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+        <input type="hidden" id="type" name="type" value="saveAgreement" />
+        <input type="hidden" id="ukey" name="ukey" value="{{$ukey}}" />
+        {{if $info.ctime && $info.utime}}添加时间：{{$info.ctime|date_format:"%Y-%m-%d"}}&nbsp;&nbsp;&nbsp;&nbsp;更新时间：{{$info.utime|date_format:"%Y-%m-%d"}}&nbsp;&nbsp;&nbsp;&nbsp;{{/if}}<input type="submit" value="保&nbsp;存" class="btn" />
+    </td>
+  </tr>
+</table>
+</form>

@@ -1,0 +1,154 @@
+<?php
+namespace sprite\mvc;
+
+/**
+ * 简单的控制器基类
+ *
+ */
+class Controller {
+	
+	//当前controler的默认layout,子类可以重写
+	public $_response;
+	
+	protected $_request;
+	protected $_controller;
+	protected $_action;
+	
+	private $_templateDir;
+	private $_layoutDir;
+	private $_layout;
+	
+	public function __construct($request, &$response) {
+		$this->_request = $request;
+		$this->_response = $response;
+		$this->_controller = $response->_controller;
+		$this->_action = $response->_action;
+		$this->_templateDir = '../template/';
+		$this->_layout = 'default';
+	}
+	
+	/**
+	 * 设置默认的布局器
+	 * @param unknown_type $layout
+	 */
+	protected function setLayout($layout){
+		$this->_layout = $layout;
+	}
+	
+	
+	/**
+	 * 前置拦截器
+	 */
+	public function befor() {}
+
+	/**
+	 * 后置拦截器
+	 */
+	public function after() {}
+
+	
+	/**
+	 * 渲染模版文件
+	 * @param string $file 指定的模版文件
+	 */
+	protected function render($file=NULL) {
+		foreach (get_object_vars($this->_response) as $key=>$value) {
+			$$key = $value;
+		}
+		
+		$controller = strtolower($this->_controller);
+		$action = strtolower($this->_action);
+		
+		if ($file)
+			$action = $file;
+		
+		$template = $this->_templateDir.$controller.'/'.$action.'.php';
+		include $template;
+	}
+	
+	/**
+	 * 渲染模版布局文件
+	 * @param string $action_file 指定的布局文件
+	 */
+	protected function layout($action_file=NULL) {
+		foreach (get_object_vars($this->_response) as $key=>$value) {
+			$$key = $value;
+		}
+		$controller = strtolower($this->_controller);
+		$action = strtolower($this->_action);
+		
+		if (!$action_file)
+            		$action_file = $action;
+		
+		$_layout_content = $this->_templateDir.$controller.'/'.$action_file.'.php';
+			
+		$layout_template =   $this->_templateDir.'layout/'.$this->_layout.'.php';
+		include strtolower($layout_template);
+	}
+	
+	/**
+	 * 输出json
+	 * @param obj $array_or_obj
+	 */
+	public function renderJson($array_or_obj) {
+		header('Content-type: application/json');
+		echo json_encode($array_or_obj);
+	}
+	
+	/**
+	 * 输出字符串
+	 * @param string $string
+	 */
+	public function renderString($string) {
+        header ( "Content-type: text/html; charset=utf-8" );
+        echo $string;
+	}
+
+	
+	/**
+	 * 跳转 $url
+	 * @param string $url
+	 */
+	public function redirect($url) {
+		header("Location: $url");
+	}
+	
+	
+	/**
+	 * 渲染smarty模版文件
+	 * @param string $file 指定的模版文件
+	 */
+	public function renderSmarty($template_file =NULL) {
+		if( !$template_file ){
+			$template_file = $this->_action;
+		}
+		//get action template file path
+		$action_template = $this->_controller .'/'. $template_file .'.html';
+		$smarty =  new SmartyView($this->_response);
+		
+		$smarty->render(strtolower($action_template));
+	} 
+	
+	/**
+	 * 渲染smarty模版布局文件
+	 * @param string $action_file 指定的布局文件
+	 */
+	public function layoutSmarty($template_file = NULL) {
+		if( !$template_file ){
+			$template_file = $this->_action;
+		}
+		//主action相关内容
+		$action_template = $this->_controller .'/'. $template_file .'.html';
+		$this->_response->_layout_content = strtolower($action_template);
+
+		$smarty =  new SmartyView($this->_response);
+		$smarty->layout(strtolower($this->_layout));
+
+	}
+	
+
+	protected function isPost() {
+		return isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']=='POST';
+	}
+	
+}

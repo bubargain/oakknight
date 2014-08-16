@@ -1,0 +1,267 @@
+﻿
+<!--contents begin-->
+<div class="span10" id="content">
+<form class="form" method="post" action="index.php?_c=goods&_a={{if $info.goods_id}}edit&id={{$info.goods_id}}{{else}}add{{/if}}">
+<div class="well">
+	<h2 class="form-signin-heading">商品添加/编辑</h2>
+	<dl>
+		<dd class="span8"><b class="span1">商品名：</b><input class="span7" type="text" name="goods_name" value="{{$info.goods_name}}" placeholder="请输入商品名称"></dd>
+	</dl>
+	<dl>
+		<dd class="span4"><b class="span1">分类：</b>
+		<select name="cate_id">
+			{{foreach from=$gcategory item=item}}
+			<option value="{{$item.cate_id}}"{{if $info.cate_id eq $item.cate_id}} selected="true"{{/if}}>{{$item.cate_name}}</option>
+			{{/foreach}}
+		</select>
+		</dd>
+		<dd class="span4">
+		<b class="span1">品牌：</b><select name="brand_id">
+			{{foreach from=$brands item=item}}
+			<option value="{{$item.brand_id}}"{{if $info.brand_id eq $item.brand_id}} selected="true"{{/if}}>{{$item.brand_name}}</option>
+			{{/foreach}}
+		</select>
+		</dd>
+	</dl>
+	<dl>
+		<dd class="span4"><b class="span1">销售价：</b><input type="text" name="price" value="{{$info.price}}" placeholder="请输入销售价"></dd>
+		<dd class="span4"><b class="span1">市场价：</b><input type="text" name="market_price" value="{{$info.market_price}}" placeholder="请输入市场价"></dd>
+	</dl>
+	<dl>
+		<dd class="span4"><b class="span1">库存：</b><input type="text" name="stock" value="{{$info.stock}}" placeholder="请输入库存"></dd>
+		<dd class="span4"><b class="span1">sku：</b><input type="text" name="sku" value="{{$info.sku}}" placeholder="sku编号"></dd>
+	</dl>
+
+	<dl>
+        <dd class="span8 offset1">
+            <label class="checkbox span2"><input type="checkbox" name="status" value="8"{{if $info.status eq 8}} checked="true"{{/if}}>上架</label>
+            <label class="checkbox span2"><input type="checkbox" name="recommend" value="1"{{if $info.recommend eq 1}} checked="true"{{/if}}>推荐</label>
+            <label class="checkbox span2"><input type="checkbox" name="if_codpay" value="1" {{if $info.if_codpay eq 1}} checked="true"{{/if}}>货到付款</label>
+        </dd>
+	</dl>
+	<dl>
+        <dd class="span8 offset1">
+        <label class="span1"><input type="radio" name="sale_type" value="0" checked> 无</label>
+        {{foreach from=$_saleTypes item=item}}
+		<label class="span2"><input type="radio" name="sale_type" value="{{$item.key}}"{{if $info.sale_type eq $item.key}} checked{{/if}}> {{$item.title}}</label>
+        {{/foreach}}
+        </dd>
+	</dl>
+	<dl>
+		<dd class="span8"><b class="span1">标签：</b><input type="text" class="span7" name="tags" value="{{$info.tags}}" placeholder="标签"></dd>
+	</dl>
+	<dl>
+		<p class="span6 offset1"><a href="#upload_modal_one" role="button" class="btn" data-toggle="modal">上传封面（小）</a></p>
+		<div class="span3 offset1" id="thumb_image">
+			<img src="{{$CDN_YMALL}}{{$info.default_thumb}}">
+			<input type="hidden" name="default_thumb" value="{{$info.default_thumb}}">
+		</div>
+	</dl>
+	<dl>
+		<p class="span6 offset1"><a href="#upload_modal" role="button" class="btn" data-toggle="modal">上传图片</a></p>
+		<div id="image_list">
+		{{foreach from=$images item=item}}
+			<div class="span3 offset1">
+				<img src="{{$CDN_YMALL}}{{$item.image_url}}" width="200px;">
+				<a href="javascript:;" y-action="drop_image" y-data="id={{$item.image_id}}" class="btn btn-danger">删除</a>
+				&nbsp;&nbsp;<input type="radio" name="default_image" y-action="set_default" y-data="id={{$item.image_id}}" value="{{$item.image_url}}"{{if $item.image_url eq $info.default_image}} checked="true"{{/if}}>设成封面（大）
+			</div>
+		{{/foreach}}
+		</div>	
+	</dl>
+	<dl>
+		<dd class="span8">
+		<p><b class="span1">属性：</b><a href="javascript:;" class="btn btn-success" y-action="property_add">新增</a></p>
+		{{foreach from=$info.more_property key=key item=item}}
+		<p class="span7 offset1 input-append">
+		<input type="text" name="property_name[]" value="{{$key}}" placeholder="属性名">
+		<input type="text" name="property_value[]" value="{{$item}}" placeholder="属性值">
+		<a href="javascript:;" class="btn btn-danger" y-action="property_drop">删除</a></p>
+		{{/foreach}}
+		<p class="span7 offset1 input-append">
+		<input type="text" name="property_name[]" value="" placeholder="属性名">
+		<input type="text" name="property_value[]" value="" placeholder="属性值">
+		<a href="javascript:;" class="btn btn-danger" y-action="property_drop">删除</a></p>
+		</dd>
+	</dl>
+	<dl>
+		<dd class="span8">
+		<p><b class="span1"> 物流：</b><a href="javascript:;" class="btn btn-success" y-action="sale_add">新增</a></p>
+		{{foreach from=$info.more_sale key=key item=item}}
+		<p class="span7 offset1 input-append">
+		<input type="text" name="sale_name[]" class="span2" value="{{$key}}" placeholder="物流">
+		<input type="text" name="sale_value[]" class="span4" value="{{$item}}" placeholder="物流值">
+		<a href="javascript:;" class="btn btn-danger" y-action="sale_drop">删除</a></p>
+		{{/foreach}}
+		<p class="span7 offset1 input-append">
+		<input type="text" name="sale_name[]" class="span2" value="" placeholder="物流">
+		<input type="text" name="sale_value[]" class="span4" value="" placeholder="物流值">
+		<a href="javascript:;" class="btn btn-danger" y-action="sale_drop">删除</a></p>
+		</dd>
+	</dl>
+	<dl>
+		<dd class="span8"><b class="span1">分享：</b><textarea name="share_desc" class="span7">{{$info.share_desc}}</textarea></dd><dt>&nbsp;</dt>
+	</dl>
+	<dl>
+		<dd class="span8"><b class="span1">卖点：</b><input type="text" name="title_desc" class="span7" value="{{$info.title_desc}}" placeholder="卖点标题"></dd>
+	</dl>
+	<dl>
+		<dd class="span8"><b class="span1">描述：</b><textarea name="description" class="span7">{{$info.description}}</textarea></dd><dt>&nbsp;</dt>
+	</dl>
+	<dl class="clearfix"><dd class="span8"><button type="submit" class="btn btn-large btn-primary">保存</button></dd></dl>
+</div>
+</form>
+</div>
+<div id="upload_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="image_upload" aria-hidden="true">
+	<form id="uploadForm" enctype="multipart/form-data" method="POST" action="index.php?_c=upload&belong=2&item_id={{$info.goods_id}}">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="image_upload">商家上传图片</h3>
+	</div>
+	<div class="modal-body">
+		<p><input type="file" name="upfile"></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button href="javascript:;" class="btn btn-primary" id="upload_btn">上传</button>
+	</div>
+	</form>
+</div>
+<div id="upload_modal_one" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="thumb_upload" aria-hidden="true">
+	<form id="uploadForm_one" enctype="multipart/form-data" method="POST" action="index.php?_c=upload&belong=3">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="thumb_upload">商家上传图片</h3>
+	</div>
+	<div class="modal-body">
+		<p><input type="file" name="upfile"></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button href="javascript:;" class="btn btn-primary" id="thumb_btn">上传</button>
+	</div>
+	</form>
+</div>
+<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+(function(){
+	$("#content").delegate("a", "click", function(){
+		_this = $(this);		
+		switch(_this.attr("y-action")) {
+			case 'property_add': 
+				property_add(_this);
+				break;
+			case 'property_drop': 
+				property_drop(_this);
+				break;
+			case 'sale_add': 
+				sale_add(_this);
+				break;
+			case 'sale_drop': 
+				sale_drop(_this);
+				break;
+			case 'drop_image': 
+				drop_image(_this);
+				break;
+			default:
+			;
+		}
+	});
+
+	$("#content").delegate(":radio", "click", function(){
+		_this = $(this);		
+		switch(_this.attr("y-action")) {
+			case 'set_default': 
+				set_default(_this);
+				break;
+			default:
+			;
+		}
+	});
+
+	function set_default() {
+		var url = "index.php?_c=upload&_a=setdefault&" + _this.attr("y-data");
+		$.getJSON(url, function(ret) {			
+			;
+		});
+	}
+
+	function property_add(_this) {
+		var html = '<p class="span7 offset1 input-append">'
+					+ '<input type="text" name="property_name[]" value="" placeholder="属性名">'
+					+ '<input type="text" name="property_value[]" value="" placeholder="属性值">'
+					+ '<a href="javascript:;" class="btn btn-danger" y-action="property_drop">删除</a></p>';
+				
+		_this.parent().parent().append(html);
+	}
+
+	function property_drop(_this) {
+		_this.parent().remove();
+	}
+
+	function sale_add(_this) {
+		var html = '<p class="span7 offset1 input-append">'
+					+ '<input type="text" placeholder="物流" value="" class="span2" name="sale_name[]">'
+					+ '<input type="text" placeholder="物流值" value="" class="span4" name="sale_value[]">'
+					+ '<a y-action="sale_drop" class="btn btn-danger" href="javascript:;">删除</a></p>';
+				
+		_this.parent().parent().append(html);
+	}
+
+	function sale_drop(_this) {
+		_this.parent().remove();
+	}
+
+	function drop_image(_this) {
+		var url = "index.php?_c=upload&_a=drop&" + _this.attr("y-data");
+		$.getJSON(url, function(ret) {			
+			if(ret.status == 200) {
+				_this.parent().remove();
+			}
+			else {
+				alert('删除失败');
+			}
+		});
+	}
+})();
+
+$(document).ready(function() {
+	$('#upload_btn').click(function() {
+		$('#uploadForm').ajaxForm({
+			success: function(ret) {				
+				if(ret.status == 200) {
+					var html = '<div class="span3">'
+									+ '<img src="' + ret.data.image_url + '">'
+									+ '<input type="hidden" name="images[]" value="' + ret.data.image_id + '">'
+									+ '<a href="javascript:;" y-action="drop_image" y-data="id=' + ret.data.image_id + '" class="btn btn-danger">删除</a>'
+									+ '&nbsp;&nbsp;<input type="radio" name="default_image" y-action="set_default" y-data="id=' + ret.data.image_id + '" value="' + ret.data.image_path + '" class="btn btn-danger">设为默认'
+									+ '</div>';
+					$("#image_list").prepend(html);
+					$('#upload_modal').modal('hide');
+				}
+				else {
+					alert("上传失败，请重试");
+				}
+			}
+		});
+	});
+
+	$('#thumb_btn').click(function() {
+		$('#uploadForm_one').ajaxForm({
+			success: function(ret) {				
+				if(ret.status == 200) {
+					var str = '<img src="' + ret.data.image_url + '">'
+									+ '<input type="hidden" name="default_thumb" value="' + ret.data.image_path + '">';
+					$("#thumb_image").html(str);
+					$('#upload_modal_one').modal('hide');
+				}
+				else {
+					alert("上传失败，请重试");
+				}
+			}
+		});
+	});
+});
+
+</script>
+<!-- contents end -->

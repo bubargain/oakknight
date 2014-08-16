@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>请让我偷偷爱着你</title>
+<meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="css/layout.css" rel="stylesheet" />
+<script src="/js/zepto/zepto.js"></script>
+<script src="/js/zepto/event.js"></script>
+<script src="/js/zepto/touch.js"></script>  
+<script src="/js/zepto/fx.js"></script>
+</head>
+<body>
+<section class="main">
+	<section class="content">
+        <div class="topic-focus" id="tf">
+            <ul>
+                <li>
+                    <div class="detail-topic">
+                    	<img src="img/topic_detail_1.jpg">
+                        <div class="detail-topic-text">
+                            <span>.1</span>
+                            <p>想你却不敢见你，见了你心儿就跳个不停；跳个不停的心有太多话说不出，说不出口的话又怕被别人说了去。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+                        <img _src="img/topic_detail_2.jpg">
+                        <div class="detail-topic-text">
+                            <span>.2</span>
+                            <p>试着用最美丽的姿态捕捉暧昧的幻想，所有可能的甜蜜与伤害都是你不必品尝的糖果。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+						<img _src="img/topic_detail_3.jpg">
+                        <div class="detail-topic-text">
+                            <span>.3</span>
+                            <p>放弃一切或付出所有，如果能换到一些勇气，或是回到某个不小心拥抱的瞬间，我都愿意。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+						<img _src="img/topic_detail_4.jpg">
+                        <div class="detail-topic-text">
+                            <span>.4</span>
+                            <p>午夜0:05，距离昨天只一首歌时分，这伤人的思念竟是甜的。那份匿名的礼物藏了太多秘密和懦弱，对不起，我爱你。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                	<div class="more-topic">
+                        <p>更多与爱相关的礼物等您品鉴</p>
+                        <a href="http://m.ymall.com/api/goods/search?query=tags%3D%25E6%259A%2597%25E4%25B9%258B%25E6%2581%258B%25E8%25AF%25AD&title=暗之恋语" class="cWhite more-btn1">查看更多相关礼物</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+	</section>
+</section>
+<script type="text/javascript">
+(function() {
+	var a = $("#tf"), b = a.find("li"), c = a.find("ul"), e = a.find("img"), f = b.length - 1, g = b.eq(0).width(), h = 0;
+	$('#tf').bind('touchmove', function(e) { e.preventDefault() });
+	listen_to('#tf')
+
+    function listen_to(el) {
+      $(el).swipeLeft(function(){
+		h++, h > f && (h = f), i();
+      })
+      .swipeRight(function(){
+		h--, h < 0 && (h = 0), i();		
+      })
+      .swipeUp(function(){
+		h++, h > f && (h = f), i();
+      })
+      .swipeDown(function(){
+		h--, h < 0 && (h = 0), i();
+      })
+    }
+    
+	function i() {
+        c.animate({
+            "margin-left":-h * g
+        }), e.eq(h).attr("src", e.eq(h).attr("_src"));
+    }
+})();
+</script>
+<img src="http://hm.baidu.com/hm.gif?si=01a63d97e20ae495f99ac7e53b572d1b&amp;et=0&amp;nv=1&amp;st=1&amp;v=wap-0-0.2&amp;rnd=6295301921" width="0" height="0" />
+</body>
+</html>

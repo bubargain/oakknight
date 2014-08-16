@@ -1,0 +1,55 @@
+<header>
+	<section><a href="javascript:window.history.go(-1);"></a></section>
+	<section><div class="cWhite" style="padding-left:50px;">选择地址</div></section>
+	<section><a href="index.php?_c=address&_a=add&goods_id={{$goods_id}}" class="btn">新增地址</a></section>
+</header>
+<section class="main">
+	<section class="content">
+        {{if $list}}
+        <div class="order_list">
+            <ul class="address_list">
+                {{foreach from = $list item = item}}
+                <li>
+                    <a href="javascript:;">
+                        <div class="l">
+                            <span>{{$item.consignee}}&nbsp;&nbsp;{{$item.region_name}}<br>{{$item.address}}</span>
+                        </div>
+                        <div class="r">{{if $item.is_default}}√{{/if}}<span class="hide">{{$item.addr_id}}</span><span class="hide">{{$goods_id}}</span></div>
+                        <div class="clear"></div>
+                    </a>
+                </li>
+                {{/foreach}}
+            </ul>
+        </div>
+       
+        {{else}}
+        <div class="address-no"></div>
+        {{/if}}
+	</section>
+</section>
+<script type="text/javascript">
+(function(){
+	$(".address_list").find('a').click(function(){
+		var _this = $(this);
+		var addr_id = _this.find('span').eq(1).html();
+		var goods_id = _this.find('span').eq(2).html();
+		$.ajax({
+			type: 'GET',
+			url: 'index.php?_c=address&_a=seladdress',
+			data: {addr_id: addr_id},
+			dataType: 'json',
+			success: function(data){
+				if(data.ret.status == 200){
+					alertMSG(data.ret.data);
+					setTimeout("window.location.href='index.php?_c=order&_a=confirm&id=" + goods_id +'&addr_id=' + data.ret.addr_id + "&reBack=1'",1000);
+				}else{
+					alertMSG(data.ret.data);
+				}
+			},
+			error: function(xhr, type){
+			  alertMSG('网速不给力哦～');
+			}
+	  });
+	});
+})();
+</script>

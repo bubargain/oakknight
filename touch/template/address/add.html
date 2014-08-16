@@ -1,0 +1,101 @@
+<header>
+	<section><a href="javascript:window.history.go(-1);"></a></section>
+	<section><div class="cWhite">{{if $address}}修改收货地址{{else}}新增收货地址{{/if}}</div></section>
+	<section><a id="sumitForm" href="javascript:;" class="btn">完成</a></section>
+</header>
+<section class="main">
+	<section class="content">
+        <form id="addressForm" action="index.php?_c=address&_a=add" method="post" class="form-search">
+        <div class="order">
+            <div class="order-form">
+                <section class="cGray">收货人姓名</section>
+                <section><input type="text" id="consignee" name="consignee" value="{{$address.consignee}}" /></section>
+            </div>
+            <div class="order-form">
+                <section class="cGray">收货人手机</section>
+                <section><input type="text" id="phone_mob" name="phone_mob" value="{{$address.phone_mob}}" /></section>
+            </div>
+            <div class="order-form">
+                <section class="cGray">所在省份</section>
+                <section>
+                    <select id="province">
+                        {{foreach from=$region_options item=item}}
+                        <option value="{{$item.region_id}}">{{$item.region_name}}</option>
+                        {{/foreach}}
+                    </select>
+                </section>
+            </div>
+            <div class="order-form">
+                <section class="cGray">所在城市</section>
+                <section>
+                    <select id="city">
+                    </select>
+                </section>
+            </div>
+            <div class="order-form">
+                <section class="cGray">所在区县</section>
+                <section>
+                    <select id="county">
+                    </select>
+                </section>
+            </div>
+            <div class="order-tit">
+                <span id="current_region"></span>
+            </div>
+            <div class="order-form">
+                <section class="cGray">详细地址</section>
+                <section><textarea id="address" name="address">{{$address.address}}</textarea></section>
+            </div>
+        </div>
+        <input type="hidden" name="addr_id" value="{{$address.addr_id}}">
+        <input type="hidden" name="goods_id" value="{{$goods_id}}">
+        <input type="hidden" name="region_id" id="new_region_id" value="{{$address.region_id}}">		
+		<input type="hidden" name="region_name" id="new_region_name" value="{{$address.region_name}}">
+        </form>
+	</section>
+</section>
+<script type="text/javascript" src ='/js/region_selector.js'></script>
+<script type="text/javascript">
+var ymall_region = new region_selector({
+				'prov' : 'province',
+				'city' : 'city',
+				'dist' : 'county',
+				'region_name' : 'new_region_name',
+				'region_id' : 'new_region_id'
+			});
+ymall_region.init();
+(function(){
+	$('#sumitForm').click(function(){
+		if(!$('#consignee').val()){
+			alertMSG('请输入收货人姓名');
+		}else if(!(/^0?(13|15|18|14)[0-9]{9}$/.test($('#phone_mob').val()))){
+			alertMSG('请输入正确的手机号');	
+		}else if(!$('#current_region').text()){
+			alertMSG('请选择省市区');	
+		}else if(!$('#address').val()){
+			alertMSG('请输入详细地址');	
+		}else{
+			$.ajax({
+					type: 'POST',
+					url: 'index.php?_c=address&_a=add',
+					data: $('#addressForm').serialize(),
+					dataType: 'json',
+					success: function(data){
+						if(data.ret.status == 200){ //新增并跳转至地址详情页
+							alertMSG(data.ret.data);
+							setTimeout("window.location.href='index.php?_c=address&_a=detail&addr_id=" + data.ret.addr_id + "&reBack=1'",1000);
+						}else if(data.ret.status == 201){ //新增并跳转至订单确认页
+							alertMSG(data.ret.data);
+							setTimeout("window.location.href='index.php?_c=order&_a=confirm&addr_id=" + data.ret.addr_id + "&id=" + data.ret.goods_id + "&reBack=1'",1000);
+						}else{
+							alertMSG(data.ret.data);
+						}
+					},
+					error: function(xhr, type){
+					  alertMSG('网速不给力哦～');
+					}
+			  });
+		}
+	});
+})();
+</script>

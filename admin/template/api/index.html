@@ -1,0 +1,31 @@
+<div class="span9">
+	<h2>API 2.0</h2>
+	<table class="table table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>API名称</th>
+				<th>备注</th>
+				<th>维护人</th>
+			</tr>	
+		</thead>
+		<tbody>
+			{{foreach from=$apiContent item=arow}}
+				<tr>
+					<td>
+						{{$arow.api_id}}
+					</td>
+					<td>
+						<a href="index.php?_c=api&a=api&id={{$arow.api_id}}">{{$arow.name}}</a>
+					</td>
+					<td>
+						{{$arow.comments}}
+					</td>
+					<td>
+						{{$arow.author}}
+					</td>
+				</tr>
+			{{/foreach}}	
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>YMALL.COM</title>
+</head>
+
+<style type="text/css">
+
+@CHARSET "UTF-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	font-size:16px;
+	font-family:"微软雅黑", "黑体";
+}
+
+body
+{
+	color:#000000;
+	background-color:#FFF;
+}
+
+div
+{
+	margin:0px;
+	padding:0px;
+}
+
+.main
+{
+	width:1000px;
+	height:1400px;
+	background-image:url(/img/ymall_order_print.jpg);
+}
+
+.main .goods_list
+{
+	margin-top:94px;
+	display:inline;
+	float:left;
+	width:890px;
+	margin-left:99px;
+	height:448px;
+}
+
+.main .goods_list ul
+{
+	width:779px;
+	height:auto;
+	float:left;
+	background-color:#e5e5e5;
+	margin-top:5px;
+}
+
+.main .goods_list ul li
+{
+	list-style-type:none;
+	height:auto;
+	line-height:20px;
+	float:left;
+}
+
+.main .goods_list .li_model
+{
+	padding-left:8px;
+	width:120px;
+	overflow:hidden;
+}
+
+.main .goods_list .li_name
+{
+	width:420px;
+	padding-right:20px;
+	overflow:hidden;
+}
+
+.main .goods_list .li_quantity
+{
+	width:126px;
+}
+
+.main .goods_list .li_price
+{
+	width:126px;
+}
+
+.main .goods_list .li_amount
+{
+	width:78px;
+}
+
+.main .payment_info
+{
+	margin-top:4px;
+	display:inline;
+	float:left;
+	width:890px;
+	margin-left:99px;
+	height:244px;
+}
+
+.main .payment_info .payment_header
+{
+	width:100%;
+	height:auto;
+	float:left;
+}
+
+.main .payment_amount
+{
+	margin-top:5px;
+	display:inline;
+	float:left;
+	width:890px;
+	height:auto;
+}
+
+.main .payment_amount .ale
+{
+	display:inline;
+	float:left;
+	width:443px;
+	height:180px;
+}
+
+.main .payment_amount .are
+{
+	margin-top:30px;
+	display:inline;
+	float:left;
+	width:322px;
+	height:auto;
+}
+
+.main .payment_amount .are div
+{
+	width:100%;
+	height:22px;
+	line-height:22px;
+	float:left;
+}
+
+.main .payment_amount .are div span
+{
+	width:120px;
+	float:left;
+	height:22px;
+	line-height:22px;
+}
+
+.main .shipping_info
+{
+	margin-top:5px;
+	display:inline;
+	float:left;
+	width:800px;
+	margin-left:179px;
+	height:204px;
+}
+
+.main .shipping_info span
+{
+	width:100px;
+	float:left;
+}
+
+.main .youxiaoqi
+{
+	margin-top:5px;
+	display:inline;
+	float:left;
+	width:800px;
+	margin-left:165px;
+	height:auto;
+}
+
+
+</style>
+
+<body>
+
+<div class="main">
+	
+	<div class="header">
+		<div style="padding-left:508px; padding-top:112px;">{{$data.order_sn}}</div>
+		<div style="padding-left:476px; padding-top:4px;">{{$data.add_time|date_format:"%Y年%m月%d日 "}}</div>
+	</div>
+	
+	<div class="goods_list">
+				<ul class="list">
+			<li class="li_name">{{$data.goods_name}}&nbsp;   </li>
+			<li class="li_quantity">{{$data.quantity}}</li>
+			<li class="li_price">{{$data.price}}</li>
+			<li class="li_amount">{{$data.goods_amount}}</li>
+		</ul>
+			</div>
+	
+	<div class="payment_info">
+		<div class="payment_header">
+			<div style="padding-left:80px; width:100px; float:left;">网上支付</div>
+			<div style="padding-left:290px; width:100px; float:left;">{{$data.quantity}}件</div>
+			<div style="padding-left:130px; width:100px; float:left;">{{$data.price}}</div>
+		</div>
+		<div class="payment_amount">
+			<div class="ale">
+							</div>
+			<div class="are">
+				<div><span>商品金额总计：</span>{{$data.goods_amount}}</div>
+
+								
+								
+																	
+				
+				<div><span>代金券抵扣：</span></div>
+
+				<div><span>运费：</span>￥{{$data.shipping_fee}}</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<div class="shipping_info">
+				<div><span>收礼人：</span>{{$data.consignee}}</div>		<div><span>收货地址：</span>{{$data.region_name}}{{$data.address}}</div>		<div><span>邮编：</span>{{$data.zipcode}}</div>		<br/><div><span>收礼人手机：</span>{{$data.phone_mob}}</div>					</div>
+	
+	<div class="footer"></div>
+	
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Ymall.com礼物店 API</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="/css/bootstrap.docs.css" rel="stylesheet">
+		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+	<script src="header.js" type="text/javascript" charset="utf-8"></script>
+	<div class="container">
+	<div class="row">
+		<div>
+			<dl>
+				<dd class="span4">取得bar 接口</dd><dt class="span8">url：/bar/bars</dt>
+				<dd></dd><dt></dt>
+			<dl>
+		</div>
+		
+		<p>请求参数</p>
+			<table class="table">
+				<tr>
+					<th>字段</th>
+					<th>必选</th>
+					<th>类型及范围</th>
+					<th>说明</th>
+				</tr>
+			</table>
+			<p>响应参数</p>
+			<table class="table">
+				<tr>
+					<th>字段</th>
+					<th>必选</th>
+					<th>类型及范围</th>
+					<th>说明</th>
+				</tr>
+				<tr>
+					<td>200</td>
+					<td></td>
+					<td></td>
+					<td>更新成功</td>
+				</tr>
+				<tr>
+					<td>data->bar_id</td>
+					<td>int</td>
+					<td>系统bar id</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->title</td>
+					<td>string</td>
+					<td>bar 标题</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->img</td>
+					<td>int</td>
+					<td>bar 图片</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->target</td>
+					<td>int</td>
+					<td>前端处理方式 1：app内部显示(列表页) 2：iframe 页面跳转 3：app内部显示(单页页 v2.0.2+ )</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->url</td>
+					<td>string</td>
+					<td>target = 2 跳转页面地址</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->search</td>
+					<td>string</td>
+					<td>target = 1 搜索条件</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->utime</td>
+					<td>int</td>
+					<td>更新时间</td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		<div class="row">
+		<div>
+			<dl>
+				<dd class="span4">取得bar 接口</dd><dt class="span8">url：/bar/push（舍弃）</dt>
+				<dd></dd><dt></dt>
+			<dl>
+		</div>
+		
+		<p>请求参数</p>
+			<table class="table">
+				<tr>
+					<th>字段</th>
+					<th>必选</th>
+					<th>类型及范围</th>
+					<th>说明</th>
+				</tr>
+			</table>
+			<p>响应参数</p>
+			<table class="table">
+				<tr>
+					<th>字段</th>
+					<th>必选</th>
+					<th>类型及范围</th>
+					<th>说明</th>
+				</tr>
+				<tr>
+					<td>200</td>
+					<td></td>
+					<td></td>
+					<td>更新成功</td>
+				</tr>
+				<tr>
+					<td>data->id</td>
+					<td>int</td>
+					<td>用户bar id，更新使用</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->bar_id</td>
+					<td>int</td>
+					<td>系统bar id</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->user_id</td>
+					<td>int</td>
+					<td>user id</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->title</td>
+					<td>string</td>
+					<td>bar 标题</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->img</td>
+					<td>int</td>
+					<td>bar 图片</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->target</td>
+					<td>int</td>
+					<td>前端处理方式 1：app内部显示 2：iframe 页面跳转</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->url</td>
+					<td>string</td>
+					<td>target = 2 跳转页面地址</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>data->search</td>
+					<td>string</td>
+					<td>target = 1 搜索条件</td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		<div class="row">
+		<div>
+			<dl>
+				<dd class="span4">取得bar 接口</dd><dt class="span8">url：/bar/set（舍弃）</dt>
+				<dd></dd><dt></dt>
+			<dl>
+		</div>
+		
+		<p>请求参数</p>
+			<table class="table">
+				<tr>
+					<th>字段</th>
+					<th>必选</th>
+					<th>类型及范围</th>
+					<th>说明</th>
+				</tr>
+				<tr>
+					<td>id</td>
+					<td>int</td>
+					<td>用户bar id，更新使用</td>
+					<td></td>
+				</tr>
+			</table>
+			<p>响应参数</p>
+			<table class="table">
+				<tr>
+					<th>字段</th>
+					<th>必选</th>
+					<th>类型及范围</th>
+					<th>说明</th>
+				</tr>
+				<tr>
+					<td>200</td>
+					<td></td>
+					<td></td>
+					<td>更新成功</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script src="footer.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
+
+
+

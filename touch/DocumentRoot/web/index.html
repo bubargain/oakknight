@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<head>
+<title>礼物店网页版</title>
+<meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="m.css" rel="stylesheet" />
+</head>
+<body>
+<section class="main">
+	<section class="content">
+		<div class="detail-focus" id="f">
+			<ul>
+				<li><img src="img/3.jpg"></li>
+				<li><img src="img/2.jpg"></li>
+				<li><img src="img/1.jpg"></li>
+				<li><img src="img/4.jpg"></li>
+			</ul>
+			<div><span></span><span></span><span></span><span></span></div>
+		</div>
+		<div class="detail-info">
+			<h1>Ymall 镭射镜面幻彩渐变镭射镜面幻彩渐变镭射镜面幻彩渐变镭射镜面幻彩渐变 </h1>
+			<span class="fl cGray">
+				<em class="cRed">￥27060</em>
+				您现在购买可以节省￥30000
+			</span>
+			<a href="order.html" class="fr">立即购买</a>
+		</div>
+		<dl class="detail-txt">
+			<dt>玩出新花样  电光色镭射的神秘莫测</dt>
+			<dd>犹如一道躲闪不及的闪电，充满科幻感觉的电光色镭射元素就突然侵袭时尚界，成为了当下最受追捧的新元素，仿佛从宇宙深处而来，神秘莫测值得探索，高傲的姿态伴随着阳光，发出抵挡不住的耀眼光彩。</dd>
+		</dl>
+		<dl class="detail-att">
+			<dt>产品属性</dt>
+			<dd>
+				<div>
+					<span class="cGray">材　　质：</span>
+					<p>PU</p>
+				</div>
+				<div>
+					<span class="cGray">颜　　色：</span>
+					<p>粉色\黑色\</p>
+				</div>
+				<div>
+					<span class="cGray">尺　　寸：</span>
+					<p>长16CM  高13CM  厚9CM</p>
+				</div>
+				<div>
+					<span class="cGray">款　　型：</span>
+					<p>单肩包</p>
+				</div>
+				<div>
+					<span class="cGray">品　　牌：</span>
+					<p>Hodogram</p>
+				</div>			
+			</dd>
+		</dl>
+		<dl class="detail-att">
+			<dt class="logisics">物流信息</dt>
+			<dd>
+				<div>
+					<span class="cGray">发货时间：</span>
+					<p>17点前的付款订单当天发货，17点后第二天发货</p>
+				</div>
+				<div>
+					<span class="cGray">发货快递：</span>
+					<p>默认顺丰快递，顺丰不到地区改发圆通快递</p>
+				</div>
+			</dd>
+		</dl>
+	</section>
+</section>
+<!-- footer -->
+<footer>
+	<div><ins class="cGray">|</ins><a href="">关于礼物店</a><ins class="cGray">|</ins></div>
+	<p>Copyright 2013 版权所有 m.ymall.com</p>
+</footer>
+<script src ='img/j.js'></script>
+<script>
+function htmlMove(element){
+	var	oLi = element.find('li'),
+		oUl = element.find('ul'),
+		span = element.find('span'),
+		len = oLi.length-1, 
+		width = oLi.eq(0).width(),
+		n = 0;
+	element.swipeLeft(function(){
+		n++;
+		n>len&&(n = len)
+		_move()
+	});
+	element.swipeRight(function(){
+		n--;
+		n<0&&(n = 0)
+		_move()
+	});
+	function _move(){
+		oUl.animate({"margin-left":-n*width});
+		span.removeClass('on').eq(n).addClass('on')
+	}
+	_move();
+}
+htmlMove($('#f'));
+//swipe swipeLeft swipeRight swipeUp swipeDown doubleTap tap singleTap longTap
+</script>
+</body>
+</html>

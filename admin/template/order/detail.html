@@ -1,0 +1,157 @@
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td colspan="4">订单状态</td>
+  </tr>
+  <tr>
+    <td align="right" width="15%">订单号：</td>
+    <td width="35%">{{$info.order_sn}}</td>
+    <td align="right" width="15%">订单状态：</td>
+    <td width="35%">
+    	{{if $info.order_status eq 10}}待付款{{/if}}
+        {{if $info.order_status eq 11}}待发货{{/if}}
+        {{if $info.order_status eq 12}}已发货{{/if}}
+        {{if $info.order_status eq 13}}已收货{{/if}}
+        {{if $info.order_status eq 14}}已完成{{/if}}
+        {{if $info.order_status eq 100}}已关闭{{/if}}
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">订单金额计算</td>
+  </tr>
+  <tr>
+    <td colspan="4" class="borderNone">
+    	<table width="50%" border="0" cellspacing="0" cellpadding="5">
+          <tr>
+            <td align="right" width="30%">商品总价：</td>
+            <td>{{$info.goods_amount}}</td>
+          </tr>
+          <tr>
+            <td align="right">店铺优惠：</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="right">运费：</td>
+            <td>{{$info.shipping_fee}}</td>
+          </tr>
+            {{if $info.discount_amount}}
+            <tr>
+                <td align="right">优惠：</td>
+                <td>{{$info.discount_amount}}</td>
+            </tr>
+            {{/if}}
+          <tr>
+            <td align="right">订单总价：</td>
+            <td>{{$info.order_amount}}</td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">订单详情</td>
+  </tr>
+  <tr>
+    <td colspan="4" class="borderNone">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="5">
+          <tr>
+            <td align="right" width="15%">买家名称：</td>
+            <td width="35%">{{$info.buyer_name}}</td>
+            <td align="right" width="15%">卖家名称：</td>
+            <td>{{$info.seller_name}}</td>
+          </tr>
+          <tr>
+            <td align="right">支付方式：</td>
+            <td>{{$info.payment_name}}</td>
+            <td align="right">支付银行：</td>
+            <td>{{$info.payment_bank}}</td>
+          </tr>
+          <tr>
+            <td align="right">下单时间：</td>
+            <td>{{if $info.add_time}}{{$info.add_time|date_format:"%Y-%m-%d %H:%M:%S"}}{{/if}}</td>
+            <td align="right">支付时间：</td>
+            <td>{{if $info.pay_time}}{{$info.pay_time|date_format:"%Y-%m-%d %H:%M:%S"}}{{/if}}</td>
+          </tr>
+          <tr>
+            <td align="right">关闭时间：</td>
+            <td>{{if $info.closed_time}}{{$info.closed_time|date_format:"%Y-%m-%d %H:%M:%S"}}{{/if}}</td>
+            <td align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">收货人及发货信息</td>
+  </tr>
+  <tr>
+    <td colspan="4" class="borderNone">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="5">
+          <tr>
+            <td align="right" width="15%">收货人姓名：</td>
+            <td width="35%">{{$orderExtmInfo.consignee}}</td>
+            <td align="right" width="15%">所在地区：</td>
+            <td>{{$orderExtmInfo.region_name}}</td>
+          </tr>
+          <tr>
+            <td align="right">邮政编码：</td>
+            <td>{{$orderExtmInfo.zipcode}}</td>
+            <td align="right">电话号码：</td>
+            <td>{{$orderExtmInfo.phone_tel}}</td>
+          </tr>
+          <tr>
+            <td align="right">手机号码：</td>
+            <td>{{$orderExtmInfo.phone_mob}}</td>
+            <td align="right">详细地址：</td>
+            <td>{{$orderExtmInfo.address}}</td>
+          </tr>
+          <tr>
+            <td align="right">配送方式：</td>
+            <td>{{$info.shipping_type}}</td>
+            <td align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">商品信息</td>
+  </tr>
+  {{if $orderGoodsList}}
+  {{foreach from = $orderGoodsList item = item}}
+  <tr>
+    <td colspan="4" class="borderNone">
+    	<table width="50%" border="0" cellspacing="0" cellpadding="5">
+          <tr>
+            <td width="30%" rowspan="3" align="center"><img src="{{$cdn_ymall}}{{$item.goods_image}}" width="120px" /></td>
+            <td>{{$item.goods_name}}</td>
+          </tr>
+          <tr>
+            <td>编号：{{$item.sku}}</td>
+          </tr>
+          <tr>
+            <td>单价：{{$item.price}}&nbsp;&nbsp;数量：{{$item.quantity}}</td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+   <tr>
+    <td colspan="4">订单操作日志</td>
+  </tr>
+  {{if $orderLogList}}
+  <tr>
+    <td colspan="4" class="borderNone">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  		  {{foreach from = $orderLogList item = item}}
+          <tr>
+            <td><strong>{{$item.operator}}</strong>&nbsp;在&nbsp;<strong>{{$item.log_time|date_format:"%Y-%m-%d %H:%M:%S"}}</strong>&nbsp;将订单状态从&nbsp;<strong>{{$item.order_status}}</strong>&nbsp;改变为&nbsp;<strong>{{$item.changed_status}}</strong>&nbsp;原因：<strong>{{$item.remark}}</strong></td>
+          </tr>
+          {{/foreach}}
+        </table>
+    </td>
+  </tr>
+  {{/if}}
+  <tr>
+    <td align="center" colspan="4"><input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>

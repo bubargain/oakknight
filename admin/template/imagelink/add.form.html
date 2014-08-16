@@ -1,0 +1,185 @@
+<style type="text/css">
+#goodsForm { margin:0px;}
+#goodsForm table{ border:none; }
+#goodsForm td { border:none; font-size:12px;}
+</style>
+<form id="sForm" name="sForm" action="index.php?_c=imagelink&_a=add" method="post" class="form-search">
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="20%">图片：</td>
+    <td id="img_td" width="30%">
+    {{if $info.image_url}}
+    <div class="addParts" style="float:left; margin-left:26px; margin-bottom:5px;">
+    <img src="{{$cdn_ymall}}{{$info.image_url}}" style="width:48px;"/>
+    <input type="hidden" name="image_url" value="{{$info.image_url}}"/>
+    {{if $info.file_id}}<input type="hidden" name="file_id" value="{{$info.file_id}}"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" y-action="drop_image" y-data="id={{$info.file_id}}" class="btn btn-danger">删除</a>
+    {{/if}}
+    </div>
+    {{else}}
+    <a href="#upload_modal" id='up_btn' role="button" class="btn btn-primary" data-toggle="modal">上传图片</a>&nbsp;&nbsp;或者&nbsp;&nbsp;<a href="#upload_modal_goods" id='up_btn' role="button" class="btn btn-success btn-primary" data-toggle="modal">选择商品</a>
+    {{/if}}
+    </td>
+    <td align="right" width="10%">排序：</td>
+    <td><input type="text" name="sort" value="{{$info.sort}}" style="width:20%;"/></td>
+  </tr>
+  <tr>
+    <td align="right">标题：</td>
+    <td><input type="text" id="image_title" name="image_title" value="{{$info.title}}" /></td>
+    <td align="right">所属位置：</td>
+    <td>
+    	<select name="loc_id" style="width:50%;">
+        	<option value="">所属位置</option>
+            {{foreach from = $locationList item = item}}
+            <option value="{{$item.loc_id}}" {{if $item.loc_id eq $info.loc_id}} selected="selected"{{/if}}>{{$item.ukey}}</option>
+            {{/foreach}}
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">所属分类：</td>
+    <td>
+    	<select name="parent_id" style="width:50%;">
+        	<option value="0">无分类</option>
+        </select>
+    </td>
+    <td align="right">状态：</td>
+    <td>
+    	<select name="status" style="width:25%;">
+        	<option value="1" {{if $info.status eq '1'}} selected="selected"{{/if}}>--显示--</option>
+            <option value="0" {{if $info.status eq '0'}} selected="selected"{{/if}}>--隐藏--</option>
+      	</select>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">URL：</td>
+    <td colspan="3"><input type="text" id="url" name="url" style="width:70%;" value="{{$info.url}}" /></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="4">
+    <input type="hidden" id="id" name="id" value="{{$info.id}}" />
+    <input type="hidden" id="extra" name="extra" value='{{$info.extra}}' />
+    <input type="hidden" id="brand_id" name="brand_id" value='{{$info.brand_id}}' />
+    <input type="submit" value="提&nbsp;交" class="btn" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>
+</form>
+<!--上传图片-->
+<div id="upload_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="image_upload" aria-hidden="true">
+	<form id="uploadForm" enctype="multipart/form-data" method="POST" action="index.php?_c=upload">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="image_upload">上传图片</h3>
+	</div>
+	<div class="modal-body">
+		<p><input type="file" name="upfile"></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button href="javascript:;" class="btn btn-primary" id="upload_btn">上传</button>
+	</div>
+	</form>
+</div>
+<!--商品列表-->
+<div id="upload_modal_goods" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="image_upload" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3>选择商品</h3>
+	</div>
+	<div class="modal-body">
+		<table align="center" width="95%" border="0" cellspacing="0" cellpadding="2">
+          <tr>
+            <td>
+            	<form id="goodsForm" enctype="multipart/form-data" method="POST" action="index.php?_c=imagelink&_a=goods" class="form-search">
+                <table align="center" border="0" cellspacing="0" cellpadding="5">
+                  <tr>
+                    <td align="right" width="60px">商品分类：</td>
+                    <td width="120px">
+                    <select id="cate_id" name="cate_id" style="width:100%">
+                    	{{$cates_html}}
+                    </select>
+                    </td>
+                    <td align="right" width="40px">名称：</td>
+                    <td width="140px"><input type="text" name="goods_name" value="{{$goods_name}}" style="width:95%"></td>
+                    <td><button href="javascript:;" class="btn btn-primary" id="search_goods_btn">搜索</button></td>
+                  </tr>
+                </table>
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td id="goods_list" style="font-size:12px;"><p>输入商品名称查询商品</p></td>
+          </tr>
+        </table>
+	</div>
+	<div class="modal-footer">
+	</div>
+</div>
+<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#sForm").delegate("a", "click", function(){
+		_this = $(this);		
+		switch(_this.attr("y-action")) {
+			case 'drop_image': 
+				drop_image(_this);
+				break;
+			default:
+			;
+		}
+	});
+	function drop_image(_this) {
+		if(confirm('确定删除?')){
+			var url = "index.php?_c=upload&_a=drop&" + _this.attr("y-data");
+			$.getJSON(url, function(ret) {			
+				if(ret.status == 200) {
+					_this.parents('.addParts').remove();
+					var html = '<a href="#upload_modal" id="up_btn" role="button" class="btn btn-primary" data-toggle="modal">上传图片</a>';
+					$('#img_td').html(html);
+				}
+				else {
+					alert(ret.msg);
+				}
+			});
+		}
+	}
+});
+$(document).ready(function() {
+	$('#upload_btn').click(function() {
+		$('#uploadForm').ajaxForm({
+			success: function(ret) {			
+				if(ret.status == 200) {
+					var html = '<div class="addParts" style="float:left; margin-left:26px; margin-bottom:5px;"><img src="' + ret.data.image_url + '" style="width:48px;"/><input type="hidden" name="image_url" value="' + ret.data.image_path + '"/><input type="hidden" name="file_id" value="' + ret.data.image_id + '"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" y-action="drop_image" y-data="id=' + ret.data.image_id + '" class="btn btn-danger">删除</a></div>';
+					$('#img_td').html(html);
+					$('#upload_modal').modal('hide');
+				}
+				else {
+					alert("上传失败，请重试");
+				}
+			}
+		});
+	});
+	//获取商品列表
+	$('#search_goods_btn').click(function() {
+		$('#goodsForm').ajaxForm({
+			success: function(ret) {
+				$('#goods_list').html(ret);			
+			},
+			error: function(){
+				alert('抱歉出错了');
+			}
+		});
+	});
+	$("#goods_list").delegate("a", "click", function(){
+		var goods_info = jQuery.parseJSON($(this).attr("y-data"));
+		//显示商品图片
+		var html = '<div class="addParts" style="float:left; margin-left:26px; margin-bottom:5px;"><img src="{{$cdn_ymall}}' + goods_info.default_thumb + '" style="width:48px;"/><input type="hidden" name="image_url" value="' + goods_info.default_thumb + '"/></div>';
+		$('#img_td').html(html);
+		$('#upload_modal_goods').modal('hide');
+		//设置隐藏域的值
+		$('#extra').val($(this).attr("y-data"));
+		$('#image_title').val(goods_info.goods_name);
+		$('#brand_id').val(goods_info.brand_id);
+		$('#url').val('index.php?_c=goods&_a=detail&id='+goods_info.goods_id);
+	});
+});
+</script>

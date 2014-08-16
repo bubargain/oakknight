@@ -1,0 +1,400 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \sprite\db\BaseDao</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+<li><a href="../namespaces/sprite.html"><i class="icon-th"></i> sprite</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/FirePHPCore.html"><i class="icon-folder-open"></i> FirePHPCore</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">218</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">2</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
+        </span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_add" title="add :: 新增一条记录"><span class="description">新增一条记录</span><pre>add()</pre></a></li>
+<li class="method public "><a href="#method_beginTransaction" title="beginTransaction :: 启动当前连接的事务"><span class="description">启动当前连接的事务</span><pre>beginTransaction()</pre></a></li>
+<li class="method public "><a href="#method_commit" title="commit :: 提交当前已经启动的事务"><span class="description">提交当前已经启动的事务</span><pre>commit()</pre></a></li>
+<li class="method public "><a href="#method_delete" title="delete :: 按主键删除一条记录"><span class="description">按主键删除一条记录</span><pre>delete()</pre></a></li>
+<li class="method public "><a href="#method_deleteByWhere" title="deleteByWhere :: 按条件删除一条记录"><span class="description">按条件删除一条记录</span><pre>deleteByWhere()</pre></a></li>
+<li class="method public "><a href="#method_edit" title="edit :: 修改一条记录"><span class="description">修改一条记录</span><pre>edit()</pre></a></li>
+<li class="method public "><a href="#method_editByWhere" title="editByWhere :: 根据条件更新"><span class="description">根据条件更新</span><pre>editByWhere()</pre></a></li>
+<li class="method public "><a href="#method_exec" title="exec :: "><span class="description">exec()
+        </span><pre>exec()</pre></a></li>
+<li class="method public "><a href="#method_find" title="find :: 根据主键查找一条记录"><span class="description">根据主键查找一条记录</span><pre>find()</pre></a></li>
+<li class="method public "><a href="#method_findByField" title="findByField :: "><span class="description">findByField()
+        </span><pre>findByField()</pre></a></li>
+<li class="method public "><a href="#method_getLastError" title="getLastError :: "><span class="description">getLastError()
+        </span><pre>getLastError()</pre></a></li>
+<li class="method public "><a href="#method_getMasterInstance" title="getMasterInstance :: 取得子类的一个链接从库的实例
+调用此方法的子类上必需有静态属性::$_master"><span class="description">取得子类的一个链接从库的实例
+调用此方法的子类上必需有静态属性::$_master</span><pre>getMasterInstance()</pre></a></li>
+<li class="method public "><a href="#method_getSlaveInstance" title="getSlaveInstance :: 取得子类的一个链接从库的实例
+调用此方法的子类上必需有静态属性::$_slave"><span class="description">取得子类的一个链接从库的实例
+调用此方法的子类上必需有静态属性::$_slave</span><pre>getSlaveInstance()</pre></a></li>
+<li class="method public "><a href="#method_replace" title="replace :: 根据数据表里的 unique index 替换"><span class="description">根据数据表里的 unique index 替换</span><pre>replace()</pre></a></li>
+<li class="method public "><a href="#method_rollBack" title="rollBack :: 回滚事务"><span class="description">回滚事务</span><pre>rollBack()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_getMdbCfgName" title="getMdbCfgName :: "><span class="description">getMdbCfgName()
+        </span><pre>getMdbCfgName()</pre></a></li>
+<li class="method protected "><a href="#method_getPKey" title="getPKey :: "><span class="description">getPKey()
+        </span><pre>getPKey()</pre></a></li>
+<li class="method protected "><a href="#method_getPkeyWhere" title="getPkeyWhere :: "><span class="description">getPkeyWhere()
+        </span><pre>getPkeyWhere()</pre></a></li>
+<li class="method protected "><a href="#method_getSdbCfgName" title="getSdbCfgName :: "><span class="description">getSdbCfgName()
+        </span><pre>getSdbCfgName()</pre></a></li>
+<li class="method protected "><a href="#method_getTableName" title="getTableName :: "><span class="description">getTableName()
+        </span><pre>getTableName()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul><li class="property protected "><a href="#property__pdo" title="$_pdo :: "><span class="description">$_pdo</span><pre>$_pdo</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_MASTER" title="MASTER :: "><span class="description">MASTER</span><pre>MASTER</pre></a></li>
+<li class="constant  "><a href="#constant_SLAVE" title="SLAVE :: "><span class="description">SLAVE</span><pre>SLAVE</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\sprite\db\BaseDao"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/sprite.html">sprite</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/sprite.db.html">db</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/sprite.db.BaseDao.html">BaseDao</a>
+</li>
+</ul>
+<div class="element class"><div class="details">
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>__construct()
+        </h2>
+<pre>__construct(string $pdoconn_or_conntype) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pdoconn_or_conntype</h4>
+<code>string</code><p>传入参数为一个链接或指明链接类型，自动生成链接</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\sprite\db\Exception</code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_add"></a><div class="element clickable method public method_add" data-toggle="collapse" data-target=".method_add .collapse">
+<h2>新增一条记录</h2>
+<pre>add(array $vars) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$vars</h4>
+<code>array</code><p>行记录数组</p>
+</div>
+</div></div>
+</div>
+<a id="method_beginTransaction"></a><div class="element clickable method public method_beginTransaction" data-toggle="collapse" data-target=".method_beginTransaction .collapse">
+<h2>启动当前连接的事务</h2>
+<pre>beginTransaction() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_commit"></a><div class="element clickable method public method_commit" data-toggle="collapse" data-target=".method_commit .collapse">
+<h2>提交当前已经启动的事务</h2>
+<pre>commit() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_delete"></a><div class="element clickable method public method_delete" data-toggle="collapse" data-target=".method_delete .collapse">
+<h2>按主键删除一条记录</h2>
+<pre>delete(\sprite\db\unknown_type $pk_value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pk_value</h4>
+<code>\sprite\db\unknown_type</code><p>主键值</p>
+</div>
+</div></div>
+</div>
+<a id="method_deleteByWhere"></a><div class="element clickable method public method_deleteByWhere" data-toggle="collapse" data-target=".method_deleteByWhere .collapse">
+<h2>按条件删除一条记录</h2>
+<pre>deleteByWhere(\sprite\db\unknown_type $where) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$where</h4>
+<code>\sprite\db\unknown_type</code><p>条件</p>
+</div>
+</div></div>
+</div>
+<a id="method_edit"></a><div class="element clickable method public method_edit" data-toggle="collapse" data-target=".method_edit .collapse">
+<h2>修改一条记录</h2>
+<pre>edit(\sprite\db\unknown_type $pk_value, array $vars) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pk_value</h4>
+<code>\sprite\db\unknown_type</code><p>主键</p>
+</div>
+<div class="subelement argument">
+<h4>$vars</h4>
+<code>array</code><p>修改行记录数组</p>
+</div>
+</div></div>
+</div>
+<a id="method_editByWhere"></a><div class="element clickable method public method_editByWhere" data-toggle="collapse" data-target=".method_editByWhere .collapse">
+<h2>根据条件更新</h2>
+<pre>editByWhere(array $vars, string $where) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$vars</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$where</h4>
+<code>string</code><p>e.g. editByWhere(array('name'=>'hi'), 'id=1') == sql: update xxx set name='hi' where id=1;</p>
+</div>
+</div></div>
+</div>
+<a id="method_exec"></a><div class="element clickable method public method_exec" data-toggle="collapse" data-target=".method_exec .collapse">
+<h2>exec()
+        </h2>
+<pre>exec(string $sql) : \sprite\db\执行一条sql删除或修改的sql，返回记录受影响条数
+如果没有记录被修改，返回0
+其它的修改和删除，最好直接调用PDOext类的delete及update方法</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql</h4>
+<code>string</code><p>要执行的sql误句</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\sprite\db\执行一条sql删除或修改的sql，返回记录受影响条数
+如果没有记录被修改，返回0
+其它的修改和删除，最好直接调用PDOext类的delete及update方法</code></div>
+</div></div>
+</div>
+<a id="method_find"></a><div class="element clickable method public method_find" data-toggle="collapse" data-target=".method_find .collapse">
+<h2>根据主键查找一条记录</h2>
+<pre>find(string $pk_value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pk_value</h4>
+<code>string</code><p>主键的值</p>
+</div>
+</div></div>
+</div>
+<a id="method_findByField"></a><div class="element clickable method public method_findByField" data-toggle="collapse" data-target=".method_findByField .collapse">
+<h2>findByField()
+        </h2>
+<pre>findByField(\sprite\db\unknown_type $fieldName, \sprite\db\unknown_type $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$fieldName</h4>
+<code>\sprite\db\unknown_type</code><p>字段名</p>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>\sprite\db\unknown_type</code><p>字段值</p>
+</div>
+</div></div>
+</div>
+<a id="method_getLastError"></a><div class="element clickable method public method_getLastError" data-toggle="collapse" data-target=".method_getLastError .collapse">
+<h2>getLastError()
+        </h2>
+<pre>getLastError() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getMasterInstance"></a><div class="element clickable method public method_getMasterInstance" data-toggle="collapse" data-target=".method_getMasterInstance .collapse">
+<h2>取得子类的一个链接从库的实例
+调用此方法的子类上必需有静态属性::$_master</h2>
+<pre>getMasterInstance() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getSlaveInstance"></a><div class="element clickable method public method_getSlaveInstance" data-toggle="collapse" data-target=".method_getSlaveInstance .collapse">
+<h2>取得子类的一个链接从库的实例
+调用此方法的子类上必需有静态属性::$_slave</h2>
+<pre>getSlaveInstance() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_replace"></a><div class="element clickable method public method_replace" data-toggle="collapse" data-target=".method_replace .collapse">
+<h2>根据数据表里的 unique index 替换</h2>
+<pre>replace(array $vars) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$vars</h4>
+<code>array</code><p>修改行记录数组</p>
+</div>
+</div></div>
+</div>
+<a id="method_rollBack"></a><div class="element clickable method public method_rollBack" data-toggle="collapse" data-target=".method_rollBack .collapse">
+<h2>回滚事务</h2>
+<pre>rollBack() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getMdbCfgName"></a><div class="element clickable method protected method_getMdbCfgName" data-toggle="collapse" data-target=".method_getMdbCfgName .collapse">
+<h2>getMdbCfgName()
+        </h2>
+<pre>getMdbCfgName() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getPKey"></a><div class="element clickable method protected method_getPKey" data-toggle="collapse" data-target=".method_getPKey .collapse">
+<h2>getPKey()
+        </h2>
+<pre>getPKey() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getPkeyWhere"></a><div class="element clickable method protected method_getPkeyWhere" data-toggle="collapse" data-target=".method_getPkeyWhere .collapse">
+<h2>getPkeyWhere()
+        </h2>
+<pre>getPkeyWhere($pk_value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$pk_value</h4></div>
+</div></div>
+</div>
+<a id="method_getSdbCfgName"></a><div class="element clickable method protected method_getSdbCfgName" data-toggle="collapse" data-target=".method_getSdbCfgName .collapse">
+<h2>getSdbCfgName()
+        </h2>
+<pre>getSdbCfgName() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getTableName"></a><div class="element clickable method protected method_getTableName" data-toggle="collapse" data-target=".method_getTableName .collapse">
+<h2>getTableName()
+        </h2>
+<pre>getTableName() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property__pdo"> </a><div class="element clickable property protected property__pdo" data-toggle="collapse" data-target=".property__pdo .collapse">
+<h2>$_pdo</h2>
+<pre>$_pdo </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_MASTER"> </a><div class="element clickable constant  constant_MASTER" data-toggle="collapse" data-target=".constant_MASTER .collapse">
+<h2>MASTER</h2>
+<pre>MASTER </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_SLAVE"> </a><div class="element clickable constant  constant_SLAVE" data-toggle="collapse" data-target=".constant_SLAVE .collapse">
+<h2>SLAVE</h2>
+<pre>SLAVE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-10T13:47:44+08:00.<br></footer></div>
+</div>
+</body>
+</html>

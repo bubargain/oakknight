@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>爱的礼物</title>
+<meta content="target-densitydpi=320,width=640,user-scalable=no" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="css/layout.css" rel="stylesheet" />
+<script src="/js/zepto/zepto.js"></script>
+<script src="/js/zepto/event.js"></script>
+<script src="/js/zepto/touch.js"></script>  
+<script src="/js/zepto/fx.js"></script>
+</head>
+<body>
+<section class="main">
+	<section class="content">
+        <div class="topic-focus" id="tf">
+            <ul>
+                <li>
+                    <div class="detail-topic">
+                        <img src="img/topic_detail_1.jpg" />
+                        <div class="detail-topic-text">
+                            <span>.1</span>
+                            <p>看过太多爱情电影，听过太多伤心情歌，直到与你相遇的那天才恍然明白，爱有什么惊涛骇浪？</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+                        <img _src="img/topic_detail_2.jpg" />
+                        <div class="detail-topic-text">
+                            <span>.2</span>
+                            <p>只是与你牵手走过每个清晨、黄昏与夜晚，你的笑、你的好、你的得意、你的烦恼，让我为你分担、与你分享。平淡的每一天因为有牵挂而变得不同，爱让现实没那么残酷，梦想不那么遥远。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+                        <img _src="img/topic_detail_3.jpg" />
+                        <div class="detail-topic-text">
+                            <span>.3</span>
+                            <p>还记得我们初次相遇时的情景吗？时间带来了解与习惯，柔情从不减退，最斑斓的色彩也无法描绘和你在一起时的幸福，最悲伤的电影也表达不了与你分隔的苦楚。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="detail-topic">
+                        <img _src="img/topic_detail_4.jpg" />
+                        <div class="detail-topic-text">
+                            <span>.4</span>
+                            <p>直到世界尽头也不是终点，爱永不入眠，烟花下面的爱人啊，你是尘世中最动人的歌。</p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                	<div class="more-topic">
+                        <p>更多与爱相关的礼物等您品鉴</p>
+                        <a href="http://touch.ymall.com/index.php?_c=goods&_a=search&tags=爱的礼物" class="cWhite more-btn1">查看更多相关礼物</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+	</section>
+</section>
+<script type="text/javascript">
+(function() {
+	var a = $("#tf"), b = a.find("li"), c = a.find("ul"), e = a.find("img"), f = b.length - 1, g = b.eq(0).width(), h = 0;
+	$('#tf').bind('touchmove', function(e) { e.preventDefault() });
+	listen_to('#tf')
+
+    function listen_to(el) {
+      $(el).swipeLeft(function(){
+		h++, h > f && (h = f), i();
+      })
+      .swipeRight(function(){
+		h--, h < 0 && (h = 0), i();		
+      })
+      .swipeUp(function(){
+		h++, h > f && (h = f), i();
+      })
+      .swipeDown(function(){
+		h--, h < 0 && (h = 0), i();
+      })
+    }
+    
+	function i() {
+        c.animate({
+            "margin-left":-h * g
+        }), e.eq(h).attr("src", e.eq(h).attr("_src"));
+    }
+})();
+</script>
+<img src="http://hm.baidu.com/hm.gif?si=01a63d97e20ae495f99ac7e53b572d1b&amp;et=0&amp;nv=1&amp;st=1&amp;v=wap-0-0.2&amp;rnd=6295301921" width="0" height="0" />
+</body>
+</html>

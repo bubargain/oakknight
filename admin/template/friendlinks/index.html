@@ -1,0 +1,26 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="5" class="pushItem"><div style="float:right;"><a href="index.php?_c=friendlinks&_a=add">添加链接</a></div></td>
+  </tr>
+  <tr>
+      <th align="center" width="20%" class="pushItem">标题</th>
+      <th align="center" width="15%" class="pushItem">图片</th>
+      <th align="center" width="45%" class="pushItem">描述</th>
+      <th align="center" width="10%" class="pushItem">权重</th>
+      <th align="center" width="10%" class="pushItem">操作</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = items}}
+  <tr>
+      <td align="center" class="pushItem">{{$items.title}}</td>
+      <td align="center" class="pushItem"><img src="{{$cdn_ymall}}{{$items.img}}" alt="暂无图片" width="48px" /></td>
+      <td align="center" class="pushItem">{{$items.desc}}</td>
+      <td align="center" class="pushItem">{{$items.sort}}</td>
+      <td align="center" class="pushItem"><a href="index.php?_c=friendlinks&_a=edit&id={{$items.id}}">修改</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="index.php?_c=friendlinks&_a=delete&id={{$items.id}}" onclick="return window.confirm('确定删除?')">删除</a></td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+  <tr>
+      <td align="center" colspan="5" class="pushItem">{{$page}}</td>
+  </tr>
+</table>

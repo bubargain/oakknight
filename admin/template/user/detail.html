@@ -1,0 +1,70 @@
+<script type="application/javascript">
+$(function(){
+	//修改密码
+	$('#subEdit').click(function(){
+		var new_password = $('#new_password').val();
+		var renew_password = $('#renew_password').val();
+		if(new_password == ''){
+			alert('请输入新密码');
+		}else if(renew_password == ''){
+			alert('请再次输入新密码');
+		}else if(new_password != renew_password){
+			alert('两次密码不一致');
+		}else{
+			$('#sForm').submit();	
+		}
+		
+	});
+	
+});
+</script>
+<form id="sForm" name="sForm" action="index.php?_c=user&_a=editpassword" method="post" class="form-search">
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td width="20%" colspan="2" rowspan="7" align="center" valign="middle"><img src="{{$cdn_ymall}}{{$info.default_image}}" alt="会员头像" height="140px" /></td>
+    <td width="10%" align="right">用户id：</td>
+    <td width="26%">{{$info.user_id}}</td>
+    <td width="10%" align="right">用户名：</td>
+    <td>{{$info.user_name}}</td>
+  </tr>
+  <tr>
+    <td align="right">注册日期：</td>
+    <td>{{if $info.ctime}}{{$info.ctime|date_format:'%Y-%m-%d'}}{{/if}}</td>
+    <td align="right">昵称：</td>
+    <td>{{$info.nick_name}} {{if $info.utime}}{{$info.utime|date_format:'%Y-%m-%d'}}{{/if}}</td>
+  </tr>
+  <tr>
+    <td align="right">出生年月：</td>
+    <td>{{$info.birth_year}}-{{$info.birth_month}}-{{$info.birth_day}}</td>
+    <td align="right">设备id：</td>
+    <td>{{$info.uuid}}</td>
+  </tr>
+    <tr>
+        <td align="right">喜欢数：</td>
+        <td>{{$info.wishes}}</td>
+        <td align="right"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td align="right">下单数：</td>
+        <td>{{$info.orders}}</td>
+        <td align="right">支付数：</td>
+        <td>{{$info.sales}}</td>
+    </tr>
+  <tr>
+    <td align="right"><b>支付详细：</b></td>
+    <td colspan="3"><b>{{$order_str}}</b>&nbsp;&nbsp;<a href="index.php?_c=order&_a=index&buyer_id={{$info.user_id}}&order_status=1">查看订单日志</a>&nbsp;&nbsp;<a href="index.php?_c=wishgoods&_a=index&user_id={{$info.user_id}}">查看喜欢商品</a></td>
+  </tr>
+  <tr>
+    <td align="right">修改密码：</td>
+    <td colspan="3">
+    <input type="hidden" id="user_id" name="user_id" value="{{$info.user_id}}" />
+    新密码：<input type="password" id="new_password" name="new_password" style="width:20%" />&nbsp;&nbsp;再输一次新密码：<input type="password" id="renew_password" name="renew_password" style="width:20%" />&nbsp;&nbsp;<input type="button" id="subEdit" name="subEdit" value="提交" class="btn" />&nbsp;&nbsp;<input type="reset" value="重填" class="btn" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="6">
+    <input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>
+</form>

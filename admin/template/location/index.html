@@ -1,0 +1,53 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td align="center" colspan="6">
+          <form id="tForm" action="index.php?_c=location&_a=index" method="post" class="form-search">
+              <table align="center" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td align="right" width="50px">标识：</td>
+                  <td width="160px"><input type="text" name="ukey" value="{{$ukey}}" style="width:90%"></td>
+                  <td align="right" width="50px">类型：</td>
+                  <td width="120px">
+                 	<select name="type" style="width:90%">
+                        <option value="">类型</option>
+                        <option value="list" {{if $type eq 'list'}} selected="selected"{{/if}}>列表</option>
+                        <option value="info" {{if $type eq 'info'}} selected="selected"{{/if}}>内容</option>
+                    </select>
+                  </td>
+                  <td align="right" width="40px">状态：</td>
+                  <td width="90px">
+                  	<select name="status" style="width:100%">
+                    	<option value="">状态</option>
+                        <option value="1" {{if $status eq '1'}} selected="selected"{{/if}}>开启</option>
+                        <option value="0" {{if $status eq '0'}} selected="selected"{{/if}}>关闭</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="submit" value="查看" class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php?_c=location&_a=add" role="button" class="btn btn-primary" data-toggle="modal">添加</a>
+                  </td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+      <th width="10%" class="pushItem">ID</th>
+      <th align="center" class="pushItem" width="10%">标识</th>
+      <th align="center" class="pushItem" width="10%">类型</th>
+      <th align="center" class="pushItem" width="40%">描述</th>
+      <th align="center" class="pushItem" width="10%">状态</th>
+      <th align="center" class="pushItem" width="20%">操作</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+  <tr>
+      <td align="center" class="pushItem">{{$item.loc_id}}</td>
+      <td align="center" class="pushItem">{{$item.ukey}}</td>
+      <td align="center" class="pushItem">{{if $item.type eq 'list'}}列表{{else if $item.type eq 'info'}}内容{{/if}}</td>
+      <td align="center" class="pushItem">{{$item.info}}</td>
+      <td align="center" class="pushItem">{{if $item.status eq 1}}开启{{else}}<span style="color:#F00;">关闭</span>{{/if}}</td>
+      <td align="center" class="pushItem"><a href="index.php?_c=location&_a=add&loc_id={{$item.loc_id}}">修改</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="index.php?_c=location&_a=delete&loc_id={{$item.loc_id}}" onclick="return window.confirm('确定删除?')">删除</a></td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+</table>

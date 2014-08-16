@@ -1,0 +1,57 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td colspan="8">
+          <form id="tForm" name="tForm" action="index.php?_c=push&_a=index" method="post" class="form-search">
+              <table width="100%" border="0" cellspacing="0" cellpadding="1">
+                <tr>
+                  <td align="right" width="8%">发送状态：</td>
+                  <td width="14%">
+                      <select id="status" name="status" style="width:100%">
+                        <option value="">-选择状态-</option>
+                        <option value="1" {{if $status eq 1}} selected="selected"{{/if}}>-已发送-</option>
+                        <option value="0" {{if $statusType}} selected="selected"{{/if}}>-未发送-</option>
+                      </select>
+                  </td>
+                  <td align="right" width="8%">发送日期：</td>
+                  <td width="25%"><input type="text" name="start_time" id="start_time" style="width:38%;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'#F{$dp.$D(\'end_time\')||\'%y-%M-%d\'}'})">&nbsp;-&nbsp;<input type="text" name="end_time" id="end_time" style="width:38%;" class="Wdate"  
+    onClick="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'start_time\')}'})"></td>
+                  <td width="20%"><input type="submit" value="搜索" class="btn"/></td>
+                  <td align="right"><a href="index.php?_c=push&_a=push" class="btn btn-primary">发送PUSH</a></td>
+                </tr>
+              </table>  
+          </form>
+      </td>
+  </tr>
+  <tr>
+      <th align="center" width="5%">id</th>
+      <th align="center" width="13%">发送对象</th>
+      <th align="center" width="5%">用户数</th>
+      <th align="center" width="5%">push条数</th>
+      <th align="center" width="20%">条件</th>
+      <th align="center" width="30%">发送内容</th>
+      <th align="center" width="8%">状态</th>
+      <th align="center">发送时间</th>
+  </tr>
+  {{if $list}}
+  {{foreach from = $list item = item}}
+  <tr>
+      <td align="center" class="pushItem">{{$item.id}}</td>
+      <td align="center" class="pushItem">{{$item.type_str}}</td>
+      <td align="center" class="pushItem">{{$item.user_count}}</td>
+      <td align="center" class="pushItem">{{$item.push_count}}</td>
+      <td align="center" class="pushItem">{{if $item.extra.goods_id}}商品ID：<a target="_blank" href="index.php?_c=goods&_a=detail&goods_id={{$item.extra.goods_id}} ">{{$item.extra.goods_id}} >> 查看</a>{{/if}}</td>
+      <td class="pushItem">{{$item.message}}</td>
+      <td align="center" class="pushItem">{{if $item.status eq 1}}已发送{{else if $item.status eq 3}}发送失败{{else}}未发送{{/if}}</td>
+      <td align="center" class="pushItem">{{if $item.push_time}}{{$item.push_time|date_format:"%Y-%m-%d %H:%M:%S"}}{{/if}}</td>
+  </tr>
+  {{/foreach}}
+  {{/if}}
+  <tr>
+      <td align="center" colspan="8">
+      <div class="btnOperate">
+          {{$page}}
+      </div>
+      </td>
+  </tr>
+</table>

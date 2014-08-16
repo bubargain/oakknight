@@ -1,0 +1,41 @@
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td align="right" width="15%">店铺名称：</td>
+    <td width="35%">{{$info.store_name}}</td>
+    <td align="right" width="15%">电话：</td>
+    <td width="35%">{{$info.tel}}</td>
+  </tr>
+  <tr>
+    <td align="right">店铺地址：</td>
+    <td>{{$info.address}}</td>
+    <td align="right">邮编：</td>
+    <td>{{$info.zipcode}}</td>
+  </tr>
+  <tr>
+    <td align="right">店铺返点：</td>
+    <td>{{$info.praise_rate}}</td>
+    <td align="right">店铺等级：</td>
+    <td>{{$info.credit_value}}</td>
+  </tr>
+  <tr>
+    <td align="right">店铺状态：</td>
+    <td>{{if $info.state eq 1}}正常{{else}}关闭{{/if}}</td>
+    <td align="right">排序：</td>
+    <td>{{$info.sort_order}}</td>
+  </tr>
+  <tr>
+    <td align="right">关闭原因：</td>
+    <td>{{$info.close_reason}}</td>
+    <td align="right">店铺描述：</td>
+    <td>{{$info.description}}</td>
+  </tr>
+  <tr>
+    <td align="right">订单自动关闭天数：</td>
+    <td>{{$info.auto_closed_time}}&nbsp;天</td>
+    <td align="right">是否支持货到付款：</td>
+    <td>{{if $info.if_codpay eq 1}}是{{else}}否{{/if}}</td>
+  </tr>
+  <tr>
+    <td align="center" colspan="4"><input type="button" onclick="javascript:history.back();" value="返回" class="btn" /></td>
+  </tr>
+</table>

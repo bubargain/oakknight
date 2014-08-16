@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Ymall.com礼物店商家后台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="/css/bootstrap.docs.css" rel="stylesheet">
+		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.css" rel="stylesheet">
+		
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+	
+
+<!-- 订单详情页弹窗 -->
+
+<div id="myModal" class="container span9">
+			
+				<div class="modal-header">
+					<h3 id="myModalLabel" class='text-success'>订单详情</h3>
+				</div>
+				<div class="big-modal-body">
+					<div class="mall_contents">
+						<dl class="carInfo">
+							<dt>
+								<i>订单状态：<span class="text-error">{{$status}}</span></i>
+								<i>订单号：{{$order.order_sn}}</i>
+								<i>下单时间：{{$order.add_time|date_format:"%y年%m月%d日 %H点%M分"}}</i>
+								<i>配送时间：{{$order.ship_time|date_format:"%y年%m月%d日 %H点%M分"}}</i>
+							</dt>
+							
+						</dl>
+						<div class="carLine">
+							<table class='table table-hover'>
+								<tr>
+									<th width="343">商品名称</th>
+							
+									<th width="96">商品总价（元）</th>
+									<th width="96">商品运费</th>
+									<th width="96">订单总价（元）</th>
+									<th width="92">运输方式</th>
+								</tr>
+											<tr>
+									<td>
+										<dl class="carLine1Dl">
+											<dt><a href="#"><img  src="{{$CDN_YMALL}}{{$order.goods_image}}" width="78" height="68" /></a></dt>
+											<dd><i><a target="_blank" href="#">{{$order.goods_name}}<br />   </a></i></dd>
+										</dl>
+									</td>
+									<td>{{$order.goods_amount}}</td>
+							
+									<td>{{$order.shipping_fee}}</td>
+									<td>{{$order.order_amount}}</td>
+									<td>普通快递</td>
+								</tr>
+											
+							</table>
+							<div class="carLineTotal carLineBorBtm">
+								<div class="carLineTotalLeft">
+													
+								</div>
+								<div class="carLineTotalRight">
+									<dl class="totalCost" style="display:none;">
+										<dt>总额：</dt>
+										<dd>{{$order.order_amount}} {{if $info.discount_amount}}优惠：{{$info.discount_amount}}{{/if}}</dd>
+									</dl>
+                                </div>
+							</div>
+							
+						</div>
+						<div class="carLogistics">
+							<dl class="carLogisticsTit">
+								<h3 class='text-success'>物流信息</h3>
+								<dd></dd>
+							</dl>
+							<div class="carLogisticsCon">
+								<table class="table table-hover table-bordered">
+									<tr>
+										<th width="80">收货地址：</th>
+										<td>{{$order.region_name}}{{$order.address}}</td>
+									</tr>
+									<tr>
+										<th width="80">收货人：</th>
+										<td>{{$order.consignee}}&nbsp;手机:{{$order.phone_mob}}</td>
+									</tr>
+									<tr>
+										<th>发货方式：</th>
+										<td>普通快递</td>
+									</tr>
+									<tr>
+										<th>物流公司：</th>
+										<td>{{$order.shipping_name}}</td>
+									</tr>
+									<tr>
+										<th>运单号码：</th>
+										<td>{{$order.shipping_code}}</td>
+									</tr>
+									<tr>
+										<th>物流跟踪：</th>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					
+					
+				</div>
+				<div class="modal-header">
+					<h3 id="myModalLabel" class='text-success'>订单日志</h3>
+				</div>
+				<div style="min-height:30px">
+						<ul>
+						{{foreach from = $log item = item}}
+							<li>{{$item.operator}} 将订单由 "{{$item.order_status}}" 变为" {{$item.changed_status}}" ，备注： {{$item.remark}}  时间：{{$item.log_time|date_format:"%y年%m月%d日 %H点%M分"}} </li>
+						{{/foreach}}
+						</ul>	
+						<br/>
+				</div>
+					<script type="text/javascript">  
+						function shut(){  
+							 
+   							 window.opener=null;  
+   							 window.open('','_self');  
+   							 window.close();  
+						}  
+					</script> 
+				<div class="modal-footer">
+					<button class="btn" onclick="shut()">关闭</button>
+					<a class="btn btn-primary" id="upload_btn" target="blank" href="http://shop.ymall.com/index.php?_c=orders&_a=print_order&order_id={{$order.order_id}}">打印</a>
+				</div>
+			
+</div>
+
+		</div>
+	</div>
+
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

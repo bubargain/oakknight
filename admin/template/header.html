@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{$title}}</title>
+<link href="/css/bootstrap.docs.css" rel="stylesheet">
+<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<LINK href="/css/style.css" rel="stylesheet">
+<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+//导航栏效果
+$(function(){
+	var nav = $('#nav').children();
+	for (var i=0;i<nav.length;i++){
+		if (nav[i].className=="menu"){
+			nav[i].onmouseover = function(){fnNav(this,"block")};
+			nav[i].onmouseout = function(){fnNav(this,"none")};
+		}
+	}
+	function fnNav(obj,flag){
+		$(obj).find("dl")[0].style.display = flag;
+	}
+});
+</script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" >
+      <div class="navbar-inner">
+        <div class="container">
+          
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="dropdown">
+                  <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">商品管理<b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=gcategory&_a=index">商品分类</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=goods&_a=index">商品列表</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=wishgoods&_a=index">喜欢商品列表</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=wishgoods&_a=downlist">喜欢商品下载</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=actioncount&_a=share">分享商品统计</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=saletype">商品销售分类</a></li>
+                  </ul>
+              </li>
+        	  <li>
+                 <a href="index.php?_c=store&_a=index">店铺列表</a>
+              </li>
+              <li class="">
+                <a data-bootstro-step="2" data-bootstro-placement="bottom"  href="index.php?_c=brand&_a=index">品牌列表</a>
+              </li>
+              <li class="">
+                <a data-bootstro-step="5" data-bootstro-placement="bottom" class="bootstro" href="index.php?_c=user&_a=index">会员管理</a></a>
+              </li>
+              <li class="dropdown">
+                <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">分类菜单<b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+              		<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=menu&_a=index">旧版菜单管理</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=menu&tag=new">新版菜单管理</a></li>
+                </ul>
+              <li class="dropdown">
+				<a data-bootstro-step="6" data-bootstro-placement="bottom" class="bootstro" href="index.php?_c=order&_a=index">订单管理</a>
+              </li>
+              <li class="">
+                <a data-bootstro-step="6" data-bootstro-placement="bottom" class="bootstro" href="index.php?_c=push&_a=index">PUSH管理</a>
+              </li>
+              <li class="dropdown">
+                <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">数据统计 <b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">         
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=businessmodelcount&_a=index">统计-核心数据</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=actioncount&_a=index">统计-总行为统计</a></li>
+				  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=order&_a=saledatatable">统计-销售数据</a></li>
+                  
+				  <li class="divider"> </li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=goodsactioncount&_a=index">商务-商品行为统计</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=goods&_a=showGoodsSaleTable">商务-商品销售统计(在售)</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=goods&_a=gcategoryRate">商务-商品分类数量占比</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=goods&_a=gcategorySaleRate">商务-商品分类销售占比</a></li>           
+ 				  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=notify">商务-到货提醒</a></li>
+				  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=order&_a=saledown">商务-结算导出</a></li>
+				  
+				  <li class="divider"> </li>
+				  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=people&_a=useraction">人群-推广数据监控</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=people&_a=active">人群-活跃数据监测</a></li>
+				  <li class="divider"> </li>
+				  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=order&_a=reBuyOrder">用户-重复购买用户统计</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=people&_a=activeHot">用户-活跃用户统计</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=people&_a=userActiveLog">用户-活跃用户详细统计</a></li>
+				  				  
+				  <li class="divider"> </li>
+				  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=searchlog&_a=menu">内容-菜单统计top100</a></li>
+				  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=searchlog&_a=index">内容-搜索统计top100</a></li>
+				  
+				  <li class="divider"> </li>				  				  
+				  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=salecount&_a=index">其它-总销售统计</a></li>
+				  <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=goodsordercount&_a=index">其它-订单商品统计</a></li>
+                </ul>
+
+              </li>
+              <li class="dropdown">
+                  <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">其他管理<b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=setting&_a=agreement">注册须知</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=setting&_a=version">版本管理</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=setting&_a=bottompic">页尾图片</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=user&_a=verifycode">查询验证码</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=setting&_a=startpic">开机大图设置</a></li>					
+					<li class="divider"> </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=coupon&_a=index">优惠券管理</a></li>
+					<li class="divider"> </li>
+					
+                    <li role="presentation"><a  role="menuitem" tabindex="-1" href="index.php?_c=bar&_a=index">旧版Bar管理</a>                   
+                    <li role="presentation"><a  role="menuitem" tabindex="-1" href="index.php?_c=vbar&_a=index">新版Bar管理</a> 
+                    </li>
+					<li class="divider"> </li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=short">短链统计管理（入）</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=friendlinks&_a=count">短链统计（出）</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=friendlinks&_a=index">短链设置（出）</a></li>
+                    <li class="divider"> </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=location&_a=index">CMS-位置管理</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=textlink&_a=index">CMS-文字链接管理</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?_c=imagelink&_a=index">CMS-图片链接管理</a></li>					
+                  </ul>
+              </li>
+              <li class="">
+                <a data-bootstro-step="6" data-bootstro-placement="bottom" class="bootstro" href="index.php?_c=feedback&_a=index">留言反馈</a>
+              </li>
+              {{if $current_user_name}}
+              <li class="">
+                <a data-bootstro-step="6" data-bootstro-placement="bottom" class="bootstro" href="index.php?_c=login&_a=logout">退出</a>
+              </li>
+              {{/if}}
+            </ul>
+          </div>
+        </div>
+        </div>
+</div>
+<div class="container">
+    <h2 class="text-center text-info" style="height:40px; margin-bottom:10px;">{{$title}}</h2>

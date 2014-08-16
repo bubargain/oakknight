@@ -1,0 +1,77 @@
+<form id="refundForm" method="post">
+<header>
+	<section><a href="javascript:window.history.go(-1);"></a></section>
+	<section>
+		<div class="cWhite">退款申请</div>
+	</section>
+	<section></section>
+</header>
+<section class="main">
+	<section class="content">
+		<div class="refund" id="refund">
+			<textarea id="refund_desc" name="refund_desc" bak="请输入您的退款理由" class="cGray">请输入您的退款理由</textarea>
+            <input type="text" id="card_no" name="card_no" value="请输入您的支付宝账号" bak="请输入您的支付宝账号" class="cGray"/>
+            <input type="hidden" name="order_id" value="{{$order_id}}" />
+            <p>您的退款申请通过后，我们会把款项退回到该账号</p>
+            <br><br><br>
+            <a id="sumitForm" href="javascript:;" class="cWhite set-btn1">提交退款申请</a>
+		</div>
+	</section>
+</section>
+</form>
+<script type="text/javascript">
+(function(){
+	var element = $("#refundForm");
+	element.delegate('input','focus',function(){
+		var _this = $(this);
+		if(_this.val()==_this.attr('bak')){
+			_this.val('').addClass('on')
+		}
+	}).delegate('input','blur',function(){
+		var _this = $(this);
+		if(_this.val()==''){
+			_this.val(_this.attr('bak')).removeClass('on')
+		}
+	});
+	//
+	element.delegate('textarea','focus',function(){
+		var _this = $(this);
+		if(_this.val()==_this.attr('bak')){
+			_this.val('').addClass('on')
+		}
+	}).delegate('textarea','blur',function(){
+		var _this = $(this);
+		if(_this.val()==''){
+			_this.val(_this.attr('bak')).removeClass('on')
+		}
+	});
+	
+	$('#sumitForm').click(function(){
+		if(!$("#refund_desc").val() || $("#refund_desc").val() == '请输入您的退款理由'){
+			alertMSG('请输入您的退款理由');	
+		}else if(!$("#card_no").val() || $("#card_no").val()== '请输入您的支付宝账号'){
+			alertMSG('请输入您的支付宝账号');
+		}else if((!(/^0?(13|15|18|14)[0-9]{9}$/.test($('#card_no').val()))) && (!(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test($('#card_no').val())))){
+			alertMSG('请输入正确的支付宝账号');
+		}else{
+			$.ajax({
+				  type: 'POST',
+				  url: 'index.php?_c=refund&_a=apply',
+				  data: $('#refundForm').serialize(),
+				  dataType: 'json',
+				  success: function(data){
+					  if(data.ret.status == 200){
+						  alertMSG(data.ret.data);
+						  setTimeout(function(){ window.location.href = document.referrer +'&reBack=1'; },1000);
+					  }else{
+						  alertMSG(data.ret.data);
+					  }
+				  },
+				  error: function(xhr, type){
+					alertMSG('网速不给力哦～');
+				  }
+			});
+		}
+	});
+})()
+</script>
