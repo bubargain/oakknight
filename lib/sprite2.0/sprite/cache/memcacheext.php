@@ -17,9 +17,9 @@ class Memcacheext extends \Memcache {
         }
     }
 
-    public function set($key, $var, $flag = 0, $expire = 30) {
+    public function set($key, $var, $flag = MEMCACHE_COMPRESSED, $expire = 30) {
         $begin_microtime = Debug::getTime();
-        $ret = parent::set($key, $var, $flag, $expire);
+        $ret = parent::set($key, $var, MEMCACHE_COMPRESSED, $expire);
         Debug::cache($this->_hosts, $key, Debug::getTime() - $begin_microtime, $ret);
         return $ret;
     }
