@@ -28,7 +28,7 @@
             <div class="pro">
 				<div>{{if $item.sale_type_info.key}}<span style="top:{{$item.sale_type_info.small.y}}px; right:{{$item.sale_type_info.small.x}}px;">{{if $item.sale_type_info.small.img}}<img src="{{$item.sale_type_info.small.img}}">{{/if}}</span>{{/if}}<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img 
 
-class="lazy" data-original="http://thumb2.yokacdn.com/p?w=200&h=200&f={{$item.default_thumb}}" 
+class="lazy" data-original="{{$cdn_ymall}}{{$item.default_thumb}}" 
 
 src="img/default_img.png"></a></div>
 				<em class="cGray {{if $item.liked}}like{{/if}}"><span>{{$item.wishes}}</span>个人
