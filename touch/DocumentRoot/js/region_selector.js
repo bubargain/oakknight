@@ -1,5 +1,5 @@
 function region_selector(json) {
-	var opt_url = 'http://192.168.52.76/index.php?_c=region';
+	var opt_url = 'http://www.oakknight.com/index.php?_c=region';
 	var prov = $("#" + json['prov']) || null;
 	var city = $("#" + json['city']) || null;
 	var dist = $("#" + json['dist']) || null;

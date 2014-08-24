@@ -9,6 +9,7 @@ use \app\dao\VerifyCodeDao;
 use \app\dao\VerifyPhoneDao;
 use \app\common\util\MobileMessage;
 
+
 class VerifySrv extends BaseSrv {
     const USER_SEND_TIMES = 150;
     /**
@@ -64,7 +65,7 @@ class VerifySrv extends BaseSrv {
                 VerifyPhoneDao::getMasterInstance()->edit($info['id'], array('times'=>$info['times'] + 1, 'days'=>$info['days'] + 1, 'utime'=>$_time));
 
                 //取消发送手机验证码
-                //self::send($phone, $type, $data['code']);
+                self::send($phone, $type, $data['code']);
 
                 VerifyCodeDao::getMasterInstance()->commit();
             }
@@ -84,22 +85,30 @@ class VerifySrv extends BaseSrv {
         try{
             $mobileMessage = new MobileMessage();
             $mobileMessage->send($phone, $msg);
+
         }
         catch(\Exception $e) {
             throw $e;
         }
     }
 
+
+    /*
+     * @author daniel ma
+     * @date  2014/08/24
+     * @update :return data format
+     */
     private function getMessage($type, $code) {
         $list = array(
-            'login'=>'登录验证码：#CODE#。点击v.ymall.com免费体验。【YMALL礼物店】',
-            'reg'=>'注册验证码：#CODE#。点击v.ymall.com免费体验。【YMALL礼物店】',
-            'pwd'=>'忘记密码验证码：#CODE#。点击v.ymall.com免费体验。【YMALL礼物店】',
-            'default'=>'忘记密码验证码：#CODE#。点击v.ymall.com免费体验。【YMALL礼物店】',
+            'login'=>'登录验证码：',
+            'reg'=>'注册验证码：',
+            'pwd'=>'忘记密码验证码：',
+            'default'=>'忘记密码验证码：',
         );
 
         $msg = isset($list[$type]) ? $list[$type] : $list['default'];
-        return str_replace('#CODE#', $code, $msg);
+       // return str_replace('#CODE#', $code, $msg);
+        return array($code,'5');
     }
 
     /**

@@ -5,19 +5,67 @@
  * @desc depend on curl
  * http://chufa.lmobile.cn/submitdata/service.asmx/g_Submit
  */
+
+/**
+ * @author  daniel ma
+ * @data 2014-08-24
+ * @desc sms interface provide by yuntongxun.com
+ */
 namespace app\common\util;
+use \app\common\sms\CCPRestSDK;
+
+
 
 class MobileMessage {
-    const URL = "http://chufa.lmobile.cn/submitdata/service.asmx/g_Submit";
-
-    const S_NAME = "dlbjkmfs";      //提交账户
-    const S_PWD = "87654321";       //提交账户密码
-    const S_CORPID = "";            //企业代码
-    const S_PRDID = "1011818";      //产品编号
 
 
+    /**
+     * 发送模板短信
+     * @param to 手机号码集合,用英文逗号分开
+     * @param datas 内容数据 格式为数组 例如：array('Marry','Alon')，如不需替换请填 null
+     * @param $tempId 模板Id
+     */
+    public function send($to,$datas,$tempId=1)
+    {
+        // 初始化REST SDK
+        $accountSid=$_SERVER['sms']['accountSid'];
+        $accountToken=$_SERVER['sms']['accountToken'];
+        $appId=$_SERVER['sms']['appId'];
+        $serverIP=$_SERVER['sms']['serverIP'];
+        $serverPort=$_SERVER['sms']['serverPort'];
+        $softVersion=$_SERVER['sms']['softVersion'];
 
-    public function send($mobile, $msg) {
+
+        $rest = new CCPRestSDK($serverIP,$serverPort,$softVersion);
+        $rest->setAccount($accountSid,$accountToken);
+        $rest->setAppId($appId);
+
+        // 发送模板短信
+        //echo "[O&K]Sending TemplateSMS to $to <br/>";
+        $result = $rest->sendTemplateSMS($to,$datas,$tempId);
+        if($result == NULL ) {
+            //echo "result error!";
+            throw new \Exception('没有返回值,可能短信网关无法连接!', 400000);
+
+        }
+        if($result->statusCode!=0) {
+            throw new \Exception($result->statusMsg,$result->statusCode);
+            //echo "error code :" . $result->statusCode . "<br>";
+            //echo "error msg :" . $result->statusMsg . "<br>";
+            //TODO 添加错误处理逻辑
+        }else{
+           // echo "Sendind TemplateSMS success!<br/>";
+            // 获取返回信息
+            $smsmessage = $result->TemplateSMS;
+            //echo "dateCreated:".$smsmessage->dateCreated."<br/>";
+            //echo "smsMessageSid:".$smsmessage->smsMessageSid."<br/>";
+            //TODO 添加成功处理逻辑
+            return true;
+        }
+    }
+
+    //旧的短信接口
+    public function send_bk($mobile, $msg) {
 
         if(!$mobile || !$msg)
             throw new \Exception('phone and message must be needed!', 101);
