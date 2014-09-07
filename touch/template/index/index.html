@@ -1,162 +1,123 @@
-<header>
-	<section></section>
-	<section><div class="cWhite">OAK&KNIGHT</div></section>
-	<section><a href="index.php?_c=order&_a=index"><span id="paying_cnt" style="display:none;" class="red_point"></span></a></section>
-</header>
-<section class="main">
-	<section class="content" id="content">
-		{{if $focusMap_imageLink}}
-        <div class="home_foc" id="f">
-			<ul>
-                {{foreach from = $focusMap_imageLink item = item}}
-				{{if $item.url}}
-                	<li><a href="{{$item.url}}"><img _src="{{$cdn_ymall}}{{$item.image_url}}"/></a></li>
-                {{else}}
-                	<li><img _src="{{$cdn_ymall}}{{$item.image_url}}"/></li>
-                {{/if}}
-                {{/foreach}}
-			</ul>
-			<span class="cWhite"></span>
-		</div>
-        {{/if}}
-        <div class="home_tit">
-			<a href="index.php?_c=goods&_a=search" class="fr">查看 ></a><ins class="fleft cWhite">全部礼物</ins>
-		</div>
-		{{if $top_goods}}
-        <section class="home_pro">
-            {{foreach from=$top_goods item=item}}
-            <div class="pro">
-				<div>{{if $item.sale_type_info.key}}<span style="top:{{$item.sale_type_info.small.y}}px; right:{{$item.sale_type_info.small.x}}px;">{{if $item.sale_type_info.small.img}}<img src="{{$item.sale_type_info.small.img}}">{{/if}}</span>{{/if}}<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img 
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>OK生活</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link type="text/css" href="css/group.css" rel="stylesheet">
+   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+</head>
 
-class="lazy" data-original="{{$cdn_ymall}}{{$item.default_thumb}}" 
-
-src="img/default_img.png"></a></div>
-				<em class="cGray {{if $item.liked}}like{{/if}}"><span>{{$item.wishes}}</span>个人
-
-喜欢<span style="display:none;">{{$item.goods_id}}</span></em>
-				<p>{{$item.cate_name}} • {{$item.tags}} • {{$item.brand_name}}</p>
+	<div class="group_main" id="group_main">
+		<div class="group_head">
+			<h1>{{$title}}</h1>
+			
+			<!--搜索栏-->
+            <!--
+            <span class="menu"></span> 
+            <div class="menu_div">
+				<div class="arrow-outer"><div class="arrow-shadow"></div></div>  
+				<ul>   
+					<li><a href="javascript:void(0)">食品</a></li> 
+					<li><a href="javascript:void(0)">衣服</a></li> 
+					<li><a href="javascript:void(0)">家居</a></li> 
+					<li><a href="javascript:void(0)">玩具</a></li> 
+				</ul> 
 			</div>
-            {{/foreach}}
-		</section>
-        {{/if}}
-		{{if $giveHer_textLink}}
-        <div class="home_tit">
-			<a href="{{$giveHer_textLink.right.url}}" class="fr">{{$giveHer_textLink.right.title}}</a><ins class="fleft cWhite">{{$giveHer_textLink.left.title}}</ins>
+            -->
+			<a href="index.php?_c=order&_a=index" class="search"></a>
 		</div>
-        {{/if}}
-		{{if $giveHer_imageLink}}
-        <section class="home_pro">
-            {{foreach from = $giveHer_imageLink item = item}}
-            <div class="pro">
-				<div>{{if $item.sale_type_info.key}}<span style="top:{{$item.sale_type_info.small.y}}px; right:{{$item.sale_type_info.small.x}}px;">{{if $item.sale_type_info.small.img}}<img src="{{$item.sale_type_info.small.img}}">{{/if}}</span>{{/if}}<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img class="lazy" data-original="http://thumb2.yokacdn.com/p?w=200&h=200&f={{$cdn_ymall}}{{$item.image_url}}" src="img/default_img.png"></a></div>
-				<em class="cGray {{if $item.liked}}like{{/if}}"><span>{{$item.wishes}}</span>个人喜欢<span style="display:none;">{{$item.goods_id}}</span></em>
-				<p>{{$item.cate_name}} • {{$item.tags}} • {{$item.brand_name}}</p>
+		<div class="group_title"><a href="javascript:void(0)" class="group_titlea">原滋原味的欧洲体验</a></div>
+		<div class="group_content">
+			<div class="group_div" style="display:block">
+            {{foreach from = $live_deals item = item}}
+				<div class="group_item">
+					<div class="group_itemimg"><a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img src="{{$cdn_ymall}}{{$item.default_thumb}}"></a></div>
+					<div class="group_iteminfo">
+						<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}" class="group_itemdiv">
+							<h2>{{$item.goods_name}}</h2>
+							
+							<div class="grouptime" id="timer{{$item.goods_id}}">闪购时效：<em class="day">00</em>天<em class="hour">0</em>小时<em class="minute">00</em>分<em class="second">00</em>秒</div>
+							
+							<div class="groupprice"><span>￥{{$item.price}}</span></div>
+                            <p>拼柜进度：{{$item.sales}} / {{$item.stock}}</p>
+                            <p>当地零售价：￥{{$item.market_price}} <ee>起运地：{{$item.origin}}</ee></p>
+						</a>
+					</div>
+     
+				</div>
+                   <script type="text/javascript"> 
+                      $(document).ready(function(e){
+						
+						  
+						  countDown("{{$item.sale_time}}","#timer{{$item.goods_id}}",'{{$item.duration}}');
+					  });
+              		</script>
+			{{/foreach}}	
 			</div>
-            {{/foreach}}
-		</section>
-       {{/if}}
-       {{if $giveHim_textLink}}
-        <div class="home_tit">
-            <a href="{{$giveHim_textLink.right.url}}" class="fr">{{$giveHim_textLink.right.title}}</a><ins class="fleft cWhite">{{$giveHim_textLink.left.title}}</ins>
-        </div>
-        {{/if}}
-        {{if $giveHim_imageLink}}
-        <section class="home_pro">
-            {{foreach from = $giveHim_imageLink item = item}}
-            <div class="pro">
-                <div>{{if $item.sale_type_info.key}}<span style="top:{{$item.sale_type_info.small.y}}px; right:{{$item.sale_type_info.small.x}}px;">{{if $item.sale_type_info.small.img}}<img src="{{$item.sale_type_info.small.img}}">{{/if}}</span>{{/if}}<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img class="lazy" data-original="{{$cdn_ymall}}{{$item.image_url}}" src="img/default_img.png"></a></div>
-                <em class="cGray {{if $item.liked}}like{{/if}}"><span>{{$item.wishes}}</span>个人喜欢<span style="display:none;">{{$item.goods_id}}</span></em>
-                <p>{{$item.cate_name}} • {{$item.tags}} • {{$item.brand_name}}</p>
-            </div>
-            {{/foreach}}
-        </section>
-       {{/if}}
-	</section>
-</section>
-<script type="text/javascript" src="js/iscroll.js"></script>
-<script type="text/javascript" src="js/jquery_lazy.js"></script>
-<script type="text/javascript">
-(function() {
-    function i() {
-        c.animate({
-            "margin-left":-h * g
-        }), e.eq(h).attr("src", e.eq(h).attr("_src"));
-		d.html((h+1)+' / '+b.length);
-		
-    }
-    var a = $("#f"), b = a.find("li"), c = a.find("ul"), d = a.find("span"), e = a.find("img"), f = b.length - 1, g = b.eq(0).width(), h = 0;
-    a.swipeLeft(function(a) {
-        a.preventDefault(), h++, h > f && (h = f), i();
-    }), 
-	a.swipeRight(function(a) {
-        a.preventDefault(), h--, h < 0 && (h = 0), i();
-    }), i();
-})();
-
-(function(){
-	$("#content").find('em').click(function(){
-		var _this = $(this), num = _this.find('span').eq(0);	
-		var goods_id = _this.find('span').eq(1).eq(0).html();
-		if(_this.hasClass('like')){//取消喜欢	
-			$.ajax({
-				type: 'GET',
-				url: 'index.php?_c=love&_a=wishes',
-				data: {goods_id: goods_id},
-				dataType: 'json',
-				success: function(data){
-					if(data.ret.status == 200){
-						alertMSG('已取消喜欢');
-						_this.removeClass('like');
-						num.html(data.ret.data);
-					}else{
-						alertMSG(data.ret.data);
-					}
-				},
-				error: function(xhr, type){
-				  alertMSG('网速不给力哦～');
+			
+		</div>
+		<div class="group_banner"><img src="images/group2_73.jpg"></div>
+    	<!--<a href="javascript:void(0)" class="home"></a>-->
+	</div>
+    
+    <script type="text/javascript">  
+		$(document).ready(function(e) {
+			$(".menu_div a").click(function(){
+				$(".menu_div a").removeClass("menu_a");
+				$(this).addClass("menu_a");	
+			});
+			/*$(".group_title a").click(function(){
+				$(".group_title a").removeClass("group_titlea");
+				$(this).addClass("group_titlea");	
+				$(".group_div").hide();
+				$(".group_div").eq($(this).index()).show();
+			});
+			*/
+			$(".menu").toggle(function(){
+				$(".menu_div").show();
+			},function(){
+				$(".menu_div").hide();	
+			});
+			
+			$(".likestyle a").click(function(){
+				$(this).find("img").attr("src","images/03.png");	
+			});
+		});
+	
+		function countDown(time,id,days){
+			var day_elem = $(id).find('.day');
+			var hour_elem = $(id).find('.hour');
+			var minute_elem = $(id).find('.minute');
+			var second_elem = $(id).find('.second');
+			var end_time = new Date(parseInt(time)*1000+parseInt(days)*24*3600*1000).getTime(),//月份是实际月份-1
+			sys_second = (end_time-new Date().getTime())/1000;
+			var timer = setInterval(function(){
+				if (sys_second > 1) {
+					sys_second -= 1;
+					var day = Math.floor((sys_second / 3600) / 24);
+					var hour = Math.floor((sys_second / 3600) % 24);
+					var minute = Math.floor((sys_second / 60) % 60);
+					var second = Math.floor(sys_second % 60);
+					day_elem && $(day_elem).text(day);//计算天
+					$(hour_elem).text(hour<10?"0"+hour:hour);//计算小时
+					$(minute_elem).text(minute<10?"0"+minute:minute);//计算分钟
+					$(second_elem).text(second<10?"0"+second:second);//计算秒杀
+				} else { 
+					clearInterval(timer);
 				}
-		  });
-		}else{//添加喜欢
-			$.ajax({
-				type: 'GET',
-				url: 'index.php?_c=love&_a=wishes',
-				data: {type:'love',goods_id: goods_id},
-				dataType: 'json',
-				success: function(data){
-					if(data.ret.status == 200){
-						alertMSG('已喜欢');
-						_this.addClass('like');
-						num.html(data.ret.data);
-					}else if(data.ret.status == 300){
-						window.location.href = data.ret.data;
-					}else{
-						alertMSG(data.ret.data);
-					}
-				},
-				error: function(xhr, type){
-				  alertMSG('网速不给力哦～');
-				}
-		  });
+			}, 1000);
 		}
-	});
-	$("img.lazy").lazyload();
-})();
-
-(function(){		
-	$.ajax({
-		type: 'POST',
-		url: 'index.php?_c=user&_a=ajaxPaying',
-		data: {},
-		dataType: 'json',
-		success: function(ret){
-			if(ret.status == 200){
-				if(ret.paying > 0) {
-					$("#paying_cnt").show();
-				}
-			}
-		},
-		error: function(xhr, type){
-		}
-	});
-})();
-</script>
+    </script>  
+<footer>
+	
+	<div><a href="index.php">进入首页</a><ins class="cGray">|</ins><a href="index.php?_c=index&_a=about">联系我们</a><ins class="cGray">|</ins><a href="index.php?_c=feedback">意见反馈</a></div>
+	<p>Copyright 2013 版权所有 OAKKNIGHT.com <img src="{{$_hmtPixel}}" width="0" height="0" /></p>
+</footer>
+</body>
+</html>

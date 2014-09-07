@@ -85,7 +85,7 @@ class GoodsSrv extends BaseSrv {
 	            foreach($image as $i) {
 	                $info['images'][] = array('image_url'=>CDN_YMALL .$i['image_url']);
 	            }
-				$info['images'][] = array('image_url'=>'http://mp1.yokacdn.com/data/files/mobile/2013/10/14/13817465667967.jpg');
+				//$info['images'][] = array('image_url'=>'http://mp1.yokacdn.com/data/files/mobile/2013/10/14/13817465667967.jpg');
 	
 	            $tmp = $info['more_property'];
 	            $info['more_property'] = array();
@@ -98,8 +98,8 @@ class GoodsSrv extends BaseSrv {
 	
 	            $_idx = date('YmdH', time());
 	            foreach($tmp as $k=>$v) {
-	                if($k == '发货时间' && ($_idx >= '2013093018' && $_idx < '2013100800') )
-	                    $v = '十一国庆假日1-7号暂停发货，8号恢复正常';
+	                //if($k == '发货时间' && ($_idx >= '2013093018' && $_idx < '2013100800') )
+	                //    $v = '十一国庆假日1-7号暂停发货，8号恢复正常';
 	
 	                $info['more_sale'][] = array('key'=>$k, 'value'=>$v ) ;
 	            }

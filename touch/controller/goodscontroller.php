@@ -5,15 +5,15 @@ namespace touch\controller;
 class goodscontroller extends BaseController {
 	public function detail($request, $response) {
 		$goods_id = $request->id;
-		$response->refer = $this->getBackUrl('goods_detail','_c=goods&_a=detail', $request->reBack);
+		/*$response->refer = $this->getBackUrl('goods_detail','_c=goods&_a=detail', $request->reBack);
 		$_ = parse_url ( $response->refer ); // 需要处理非本站的外链，默认指定到首页
 		if (isset ( $_ ['host'] ) && ! in_array ( $_ ['host'], array (
-				't.ymall.com',
-				'touch.ymall.com' 
+				'www.oakknight.com'
 		) )) {
-			// $response->refer = 'index.php';
+			 $response->refer = 'index.php';
 		}
 		unset ( $_ );
+		*/
 		if ($goods_id) {
 			$info = \app\service\GoodsSrv::info ( intval ( $goods_id ) );
 			if ($info) {
@@ -34,7 +34,12 @@ class goodscontroller extends BaseController {
 				}
 				$response->title = $info ['share_title'];
 				$response->params = $info;
-				$this->layoutSmarty ( 'index' );
+				
+				//$this->layoutSmarty ( 'details' );
+				$action_template = $this->_controller .'/details.html';
+				$smarty =  new \sprite\mvc\SmartyView($this->_response);
+				$smarty->render(strtolower($action_template));
+				
 			} else {
 				self::showError ( '您要查看的商品已经穿越了～' );
 			}
@@ -98,5 +103,6 @@ class goodscontroller extends BaseController {
 		$response->ret = $ret;
 		$response->title = $request->tags ? $request->tags : '全部礼物';
 		$this->layoutSmarty ( 'search' );
+		
 	}
 }

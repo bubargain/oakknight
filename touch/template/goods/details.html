@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>OK生活</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link type="text/css" href="css/group.css" rel="stylesheet">
+   <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+</head>
+<body>
+	<div class="group_main" id="group_main">
+		<div class="group_head">
+			<h1>本期特卖商品</h1>
+			 
+			<!--<div class="menu_div">
+            <span class="menu"></span>
+				<div class="arrow-outer"><div class="arrow-shadow"></div></div>  
+				<ul>   
+					<li><a href="javascript:void(0)">食品</a></li> 
+					<li><a href="javascript:void(0)">衣服</a></li> 
+					<li><a href="javascript:void(0)">家居</a></li> 
+					<li><a href="javascript:void(0)">玩具</a></li> 
+				</ul> 
+			</div>
+            -->
+			<a href="index.php?_c=order&_a=index" class="search"></a>
+		</div>
+		<div class="groupinfo">
+			<div class="groupinfoimg"><img src="{{$params.default_thumb}}"></div>
+			<div class="groupinfodiv">
+				<div><h2 class="l">{{$params.goods_name}}</h2><a href="javascript:void(0)" class="r">品牌/设计师介绍></a></div>
+				<div class="groupprice"><span>￥{{$params.price}}</span><br>海外价格：{{$params.market_price}}</div>
+				<p class="groupinfop">
+                <!--<em class="{{if $params.liked}}on{{/if}}"> 收藏（{{$params.wishes}}）</em> -->
+                <a href="index.php?_c=order&_a=confirm&id={{$params.goods_id}}">立即购买</a>
+                </p>
+			</div>
+			<div class="groupinfodiv2">
+				<div class="infotitle"><img src="images/group2_58.jpg" width="24">商品详情</div>
+				<div class="info_div">品牌：JACADI<br>原产地：{{$params.origin}}&nbsp;&nbsp;&nbsp;库存状态：{{$params.wharehouse}}<br>国外售价：￥{{$params.market_price}}<br></div>
+				<div class="info_content">
+					<!--<div><h2>品牌/设计师介绍</h2><img src="images/group_04.jpg"></div>-->
+					{{foreach from = $params.images item = item}}
+                    <div class="info_item l"><img src="{{$item.image_url}}"></div>
+					{{/foreach}}
+				</div>
+			</div>
+			<div class="menu_bottom">
+				<a href="javascript:void(0)"><img src="images/group2_97.jpg"><br>欧洲原产</a>
+				<a href="javascript:void(0)"><img src="images/group2_94.jpg"><br>海关单齐全</a>
+				<a href="javascript:void(0)"><img src="images/group2_88.jpg"><br>全程保险</a>
+				<a href="javascript:void(0)"><img src="images/group2_91.jpg"><br>熊猫快递</a>
+			</div>
+		</div>
+	</div>
+	<p class="groupinfop groupbtn">
+        <!-- <em class="{{if $params.liked}}on{{/if}}">
+            <a href="javascript:void(0)">收藏（15）</a>
+        </em>
+        -->
+        <a href="index.php?_c=order&_a=confirm&id={{$params.goods_id}}">立即购买</a>
+    </p>
+
+    <script type="text/javascript">  
+		$("#group_main").bind('scrollstart', function () {
+			//$(".groupinfodiv p").addClass("groupbtn");
+			if(document.body.scrollTop>350){
+				$(".groupbtn").show();	
+			}else{
+				$(".groupbtn").hide();	
+			};
+		});  
+		//$("#group_main").bind("scrollstop", function () {
+			//$(".groupinfodiv p").removeClass("groupbtn");
+		//}); 
+		$(document).ready(function(e) {
+			$(".ui-loader").hide();
+			$(".menu_div a").click(function(){
+				$(".menu_div a").removeClass("menu_a");
+				$(this).addClass("menu_a");	
+			});
+			$(".menu").toggle(function(){
+				$(".menu_div").show();
+			},function(){
+				$(".menu_div").hide();	
+			});
+			$(".groupinfop a:last-child").click(function(){
+				$(this).css("opacity","0.7");	
+			});
+		});
+		
+	//添加喜欢
+	(function(){
+	$("#content").find('em').click(function(){
+		var _this = $(this), num = _this.find('span').eq(0);	
+		var goods_id = _this.find('span').eq(1).eq(0).html();
+		if(_this.hasClass('on')){//取消喜欢	
+			$.ajax({
+				type: 'GET',
+				url: 'index.php?_c=love&_a=wishes',
+				data: {goods_id: goods_id},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG('已取消喜欢');
+						_this.removeClass('on');
+						num.html(data.ret.data);
+					}else{
+						alertMSG(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alertMSG('网速不给力哦～');
+				}
+		  });
+		}else{//添加喜欢
+			$.ajax({
+				type: 'GET',
+				url: 'index.php?_c=love&_a=wishes',
+				data: {type:'love',goods_id: goods_id},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG('已喜欢');
+						_this.addClass('on');
+						num.html(data.ret.data);
+					}else if(data.ret.status == 300){
+						window.location.href = data.ret.data;
+					}else{
+						alertMSG(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alertMSG('网速不给力哦～');
+				}
+		  });
+		}
+	})
+})();
+    </script>  
+    
+    <footer>
+	
+	<div><a href="index.php">进入首页</a><ins class="cGray">|</ins><a href="index.php?_c=index&_a=about">联系我们</a><ins class="cGray">|</ins><a href="index.php?_c=feedback">意见反馈</a></div>
+	<p>Copyright 2013 版权所有 OAKKNIGHT.com <img src="{{$_hmtPixel}}" width="0" height="0" /></p>
+</footer>
+</body>
+</html>

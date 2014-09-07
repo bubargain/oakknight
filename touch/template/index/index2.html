@@ -1,0 +1,162 @@
+<header>
+	<section></section>
+	<section><div class="cWhite">OAK&KNIGHT</div></section>
+	<section><a href="index.php?_c=order&_a=index"><span id="paying_cnt" style="display:none;" class="red_point"></span></a></section>
+</header>
+<section class="main">
+	<section class="content" id="content">
+		{{if $focusMap_imageLink}}
+        <div class="home_foc" id="f">
+			<ul>
+                {{foreach from = $focusMap_imageLink item = item}}
+				{{if $item.url}}
+                	<li><a href="{{$item.url}}"><img _src="{{$cdn_ymall}}{{$item.image_url}}"/></a></li>
+                {{else}}
+                	<li><img _src="{{$cdn_ymall}}{{$item.image_url}}"/></li>
+                {{/if}}
+                {{/foreach}}
+			</ul>
+			<span class="cWhite"></span>
+		</div>
+        {{/if}}
+        <div class="home_tit">
+			<a href="index.php?_c=goods&_a=search" class="fr">查看 ></a><ins class="fleft cWhite">全部礼物</ins>
+		</div>
+		{{if $top_goods}}
+        <section class="home_pro">
+            {{foreach from=$top_goods item=item}}
+            <div class="pro">
+				<div>{{if $item.sale_type_info.key}}<span style="top:{{$item.sale_type_info.small.y}}px; right:{{$item.sale_type_info.small.x}}px;">{{if $item.sale_type_info.small.img}}<img src="{{$item.sale_type_info.small.img}}">{{/if}}</span>{{/if}}<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img 
+
+class="lazy" data-original="{{$cdn_ymall}}{{$item.default_thumb}}" 
+
+src="img/default_img.png"></a></div>
+				<em class="cGray {{if $item.liked}}like{{/if}}"><span>{{$item.wishes}}</span>个人
+
+喜欢<span style="display:none;">{{$item.goods_id}}</span></em>
+				<p>{{$item.cate_name}} • {{$item.tags}} • {{$item.brand_name}}</p>
+			</div>
+            {{/foreach}}
+		</section>
+        {{/if}}
+		{{if $giveHer_textLink}}
+        <div class="home_tit">
+			<a href="{{$giveHer_textLink.right.url}}" class="fr">{{$giveHer_textLink.right.title}}</a><ins class="fleft cWhite">{{$giveHer_textLink.left.title}}</ins>
+		</div>
+        {{/if}}
+		{{if $giveHer_imageLink}}
+        <section class="home_pro">
+            {{foreach from = $giveHer_imageLink item = item}}
+            <div class="pro">
+				<div>{{if $item.sale_type_info.key}}<span style="top:{{$item.sale_type_info.small.y}}px; right:{{$item.sale_type_info.small.x}}px;">{{if $item.sale_type_info.small.img}}<img src="{{$item.sale_type_info.small.img}}">{{/if}}</span>{{/if}}<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img class="lazy" data-original="http://thumb2.yokacdn.com/p?w=200&h=200&f={{$cdn_ymall}}{{$item.image_url}}" src="img/default_img.png"></a></div>
+				<em class="cGray {{if $item.liked}}like{{/if}}"><span>{{$item.wishes}}</span>个人喜欢<span style="display:none;">{{$item.goods_id}}</span></em>
+				<p>{{$item.cate_name}} • {{$item.tags}} • {{$item.brand_name}}</p>
+			</div>
+            {{/foreach}}
+		</section>
+       {{/if}}
+       {{if $giveHim_textLink}}
+        <div class="home_tit">
+            <a href="{{$giveHim_textLink.right.url}}" class="fr">{{$giveHim_textLink.right.title}}</a><ins class="fleft cWhite">{{$giveHim_textLink.left.title}}</ins>
+        </div>
+        {{/if}}
+        {{if $giveHim_imageLink}}
+        <section class="home_pro">
+            {{foreach from = $giveHim_imageLink item = item}}
+            <div class="pro">
+                <div>{{if $item.sale_type_info.key}}<span style="top:{{$item.sale_type_info.small.y}}px; right:{{$item.sale_type_info.small.x}}px;">{{if $item.sale_type_info.small.img}}<img src="{{$item.sale_type_info.small.img}}">{{/if}}</span>{{/if}}<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img class="lazy" data-original="{{$cdn_ymall}}{{$item.image_url}}" src="img/default_img.png"></a></div>
+                <em class="cGray {{if $item.liked}}like{{/if}}"><span>{{$item.wishes}}</span>个人喜欢<span style="display:none;">{{$item.goods_id}}</span></em>
+                <p>{{$item.cate_name}} • {{$item.tags}} • {{$item.brand_name}}</p>
+            </div>
+            {{/foreach}}
+        </section>
+       {{/if}}
+	</section>
+</section>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/jquery_lazy.js"></script>
+<script type="text/javascript">
+(function() {
+    function i() {
+        c.animate({
+            "margin-left":-h * g
+        }), e.eq(h).attr("src", e.eq(h).attr("_src"));
+		d.html((h+1)+' / '+b.length);
+		
+    }
+    var a = $("#f"), b = a.find("li"), c = a.find("ul"), d = a.find("span"), e = a.find("img"), f = b.length - 1, g = b.eq(0).width(), h = 0;
+    a.swipeLeft(function(a) {
+        a.preventDefault(), h++, h > f && (h = f), i();
+    }), 
+	a.swipeRight(function(a) {
+        a.preventDefault(), h--, h < 0 && (h = 0), i();
+    }), i();
+})();
+
+(function(){
+	$("#content").find('em').click(function(){
+		var _this = $(this), num = _this.find('span').eq(0);	
+		var goods_id = _this.find('span').eq(1).eq(0).html();
+		if(_this.hasClass('like')){//取消喜欢	
+			$.ajax({
+				type: 'GET',
+				url: 'index.php?_c=love&_a=wishes',
+				data: {goods_id: goods_id},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG('已取消喜欢');
+						_this.removeClass('like');
+						num.html(data.ret.data);
+					}else{
+						alertMSG(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alertMSG('网速不给力哦～');
+				}
+		  });
+		}else{//添加喜欢
+			$.ajax({
+				type: 'GET',
+				url: 'index.php?_c=love&_a=wishes',
+				data: {type:'love',goods_id: goods_id},
+				dataType: 'json',
+				success: function(data){
+					if(data.ret.status == 200){
+						alertMSG('已喜欢');
+						_this.addClass('like');
+						num.html(data.ret.data);
+					}else if(data.ret.status == 300){
+						window.location.href = data.ret.data;
+					}else{
+						alertMSG(data.ret.data);
+					}
+				},
+				error: function(xhr, type){
+				  alertMSG('网速不给力哦～');
+				}
+		  });
+		}
+	});
+	$("img.lazy").lazyload();
+})();
+
+(function(){		
+	$.ajax({
+		type: 'POST',
+		url: 'index.php?_c=user&_a=ajaxPaying',
+		data: {},
+		dataType: 'json',
+		success: function(ret){
+			if(ret.status == 200){
+				if(ret.paying > 0) {
+					$("#paying_cnt").show();
+				}
+			}
+		},
+		error: function(xhr, type){
+		}
+	});
+})();
+</script>

@@ -9,31 +9,36 @@ class indexcontroller extends BaseController {
 		parent::__construct ( $request, $response );
 	}
 	public function index($request, $response) {
-		$cache = CacheManager::getInstance ();
+		/*$cache = CacheManager::getInstance ();
 		
 		$key = 'touch_index_page';
 		
 		$ret = $cache->get ( $key );
 		
 		if (! $ret) {
+			*/
 			// memcache 赋值
-			$ret ['focuseMap_imageLink'] = self::getImageLinks ( 'focusMap', 4 );
+			//$ret ['focuseMap_imageLink'] = self::getImageLinks ( 'focusMap', 4 );
 			$ret ['top_goods'] = self::topGoods ( 4 );
-			$ret ['getTextLinks'] = self::getTextLinks ( 'giveHer' );
-			$ret ['giveHer_imageLink'] = self::getImageLinks ( 'giveHer' );
-			$ret ['giveHim_textLink'] = self::getTextLinks ( 'giveHim' );
-			$ret ['giveHim_imageLink'] = self::getImageLinks ( 'giveHim' );
-			$cache->set ( $key, $ret, 1, 5 * 60 );
-		}
+			//$ret ['getTextLinks'] = self::getTextLinks ( 'giveHer' );
+			//$ret ['giveHer_imageLink'] = self::getImageLinks ( 'giveHer' );
+			//$ret ['giveHim_textLink'] = self::getTextLinks ( 'giveHim' );
+			//$ret ['giveHim_imageLink'] = self::getImageLinks ( 'giveHim' );
+		//	$cache->set ( $key, $ret, 1, 5 * 60 );
+		//}
 		$response->title = 'OAK&KNIGHT';
 		$response->cdn_ymall = CDN_YMALL;
-		$response->focusMap_imageLink = $ret ['focuseMap_imageLink'];
-		$response->top_goods = $ret ['top_goods'];
-		$response->giveHer_textLink = $ret ['getTextLinks'];
-		$response->giveHer_imageLink = $ret ['giveHer_imageLink'];
-		$response->giveHim_textLink = $ret ['giveHim_textLink'];
-		$response->giveHim_imageLink = $ret ['giveHim_imageLink'];
-		$this->layoutSmarty ( 'index' );
+		//$response->focusMap_imageLink = $ret ['focuseMap_imageLink'];
+		$response->live_deals = $ret ['top_goods'];
+		//var_dump($ret ['top_goods']);die();
+		//$response->giveHer_textLink = $ret ['getTextLinks'];
+		//$response->giveHer_imageLink = $ret ['giveHer_imageLink'];
+
+        //$this->layoutSmarty ( 'index' );
+       $action_template = $this->_controller .'/index.html';
+		$smarty =  new \sprite\mvc\SmartyView($this->_response);
+		$smarty->render(strtolower($action_template));
+		
 	}
 	public function about($request, $response) {
 		$response->title = '联系我们';

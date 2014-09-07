@@ -18,8 +18,11 @@ class SearchSrv extends BaseSrv {
 	public function search ($params, $sort = 'default',$page=1,$skip=10)
 	{
 		$limit= ($page-1)*skip .','.$skip;
-		$list = \app\dao\GoodsDao::getSlaveInstance ()->getList($params,$limit);
-		 return array('count'=>count($list), 'list'=>$list);
+		$sql= "select * from ym_goods left join ym_goods_statistics on ym_goods.goods_id = ym_goods_statistics.goods_id where status=12";
+		//$list = \app\dao\GoodsDao::getSlaveInstance ()->getList($params,$limit);
+		$list = \app\dao\GoodsDao::getSlaveInstance ()->getpdo()->getRows($sql);
+		//var_dump($list);die();
+		return array('count'=>count($list), 'list'=>$list);
 	}
 	
 }
