@@ -27,6 +27,8 @@ class MobileMessage {
      */
     public function send($to,$datas,$tempId=1)
     {
+    	//测试期间，暂时关闭
+    	
         // 初始化REST SDK
         $accountSid=$_SERVER['sms']['accountSid'];
         $accountToken=$_SERVER['sms']['accountToken'];
@@ -62,6 +64,8 @@ class MobileMessage {
             //TODO 添加成功处理逻辑
             return true;
         }
+        
+    	return true;
     }
 
     //旧的短信接口
