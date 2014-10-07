@@ -34,21 +34,33 @@
 			<div class="groupinfoimg"><img src="{{$params.default_thumb}}"></div>
 			<div class="groupinfodiv">
 				<div><h2 class="l">{{$params.goods_name}}</h2><a href="javascript:void(0)" class="r">品牌/设计师介绍></a></div>
-				<div class="groupprice"><span>￥{{$params.price}}</span><br>海外价格：{{$params.market_price}}</div>
+				<div class="groupprice"><span>￥{{$params.price}}</span><br>海外价格：{{$params.market_price}} 欧元</div>
 				<p class="groupinfop">
                 <!--<em class="{{if $params.liked}}on{{/if}}"> 收藏（{{$params.wishes}}）</em> -->
-                <a href="index.php?_c=order&_a=confirm&id={{$params.goods_id}}">立即购买</a>
+                <a href="index.php?_c=order&_a=confirm&id={{$params.goods_id}}">立即抢购</a>
                 </p>
 			</div>
 			<div class="groupinfodiv2">
 				<div class="infotitle"><img src="images/group2_58.jpg" width="24">商品详情</div>
-				<div class="info_div">品牌：JACADI<br>原产地：{{$params.origin}}&nbsp;&nbsp;&nbsp;库存状态：{{$params.wharehouse}}<br>国外售价：￥{{$params.market_price}}<br></div>
+				<div class="info_div">
+            
+                {{foreach from = $params.more_property item = item}}
+                    {{$item.key}}: {{$item.value}}<br>
+				{{/foreach}}
+                </div>
 				<div class="info_content">
 					<!--<div><h2>品牌/设计师介绍</h2><img src="images/group_04.jpg"></div>-->
 					{{foreach from = $params.images item = item}}
                     <div class="info_item l"><img src="{{$item.image_url}}"></div>
 					{{/foreach}}
 				</div>
+                <div class="info_div">
+            	<table>
+                {{foreach from = $params.more_sale item = item}}
+                    <tr><td width="20%">{{$item.key}}</td><td> {{$item.value}}</td></tr>
+				{{/foreach}}
+                </table>
+                </div>
 			</div>
 			<div class="menu_bottom">
 				<a href="javascript:void(0)"><img src="images/group2_97.jpg"><br>欧洲原产</a>

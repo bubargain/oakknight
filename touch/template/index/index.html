@@ -2,14 +2,15 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>OK生活</title>
+<title>欧欧菁品</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link type="text/css" href="css/group.css" rel="stylesheet">
- 
+ <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
 </head>
 
 	<div class="group_main" id="group_main">
@@ -31,7 +32,7 @@
             -->
 			<a href="index.php?_c=order&_a=index" class="search"></a>
 		</div>
-		<div class="group_title"><a href="javascript:void(0)" class="group_titlea">原滋原味的欧洲体验</a></div>
+		<div class="group_title"><a href="javascript:void(0)" class="group_titlea">最高品质的关爱</a></div>
 		<div class="group_content">
 			<div class="group_div" style="display:block">
             {{foreach from = $live_deals item = item}}
@@ -45,7 +46,7 @@
 							
 							<div class="groupprice"><span>￥{{$item.price}}</span></div>
                             <p>拼柜进度：{{$item.sales}} / {{$item.stock}}</p>
-                            <p>当地零售价：￥{{$item.market_price}} <ee>起运地：{{$item.origin}}</ee></p>
+                            <p>当地零售价：{{$item.market_price}} 欧<ee>起运地：{{$item.origin}}</ee></p>
 						</a>
 					</div>
      
@@ -55,6 +56,7 @@
 						
 						  
 						  countDown("{{$item.sale_time}}","#timer{{$item.goods_id}}",'{{$item.duration}}');
+						  
 					  });
               		</script>
 			{{/foreach}}	
@@ -64,6 +66,8 @@
 		<div class="group_banner"><img src="images/group2_73.jpg"></div>
     	<!--<a href="javascript:void(0)" class="home"></a>-->
 	</div>
+    
+    
     
     <script type="text/javascript">  
 		$(document).ready(function(e) {
@@ -90,6 +94,7 @@
 		});
 	
 		function countDown(time,id,days){
+			
 			var day_elem = $(id).find('.day');
 			var hour_elem = $(id).find('.hour');
 			var minute_elem = $(id).find('.minute');
