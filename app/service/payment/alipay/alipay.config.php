@@ -20,11 +20,11 @@
  
 //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 //合作身份者id，以2088开头的16位纯数字
-$alipay_config['partner']		= '2088101989241025';
+$alipay_config['partner']		= '2088311424843552';
 
 //安全检验码，以数字和字母组成的32位字符
 //如果签名方式设置为“MD5”时，请设置该参数
-$alipay_config['key']			= '1312145';
+$alipay_config['key']			= 'yqq6zyvp9wi0s1xn3socm3g93ewlnw25';
 
 //商户的私钥（后缀是.pen）文件相对路径
 //如果签名方式设置为“0001”时，请设置该参数
@@ -39,7 +39,7 @@ $alipay_config['ali_public_key_path']= 'ali-key/alipay_public_key.pem';
 
 
 //签名方式 不需修改
-$alipay_config['sign_type']    = '0001';
+$alipay_config['sign_type']    = 'MD5';
 
 //$alipay_config['sign_type'] ="RSA";
 
