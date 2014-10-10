@@ -20,8 +20,8 @@ class AlipayPaymentSrv extends BasePaymentSrv {
 		parent::__construct ( $config );
 		
 		$this->_config ['partner'] = array (
-				'partner' => '2088101989241025',
-				'seller' => 'shopadmin@yoka.com' 
+				'partner' => '2088311424843552',
+				'seller' => 'ceo@kitetea.com'
 		);
 	}
 	
@@ -160,7 +160,7 @@ class AlipayPaymentSrv extends BasePaymentSrv {
 		
 		// **req_data详细信息**
 		
-		if ($_SERVER ['SERVER_NAME'] == 'mobile.ymall.com' || $_SERVER ['SERVER_NAME'] == 'm.ymall.com' ) {
+		if ($_SERVER ['SERVER_NAME'] == 'www.oakknight.com'  ) {
 			// 服务器异步通知页面路径
 			$notify_url = $_SERVER ['ROOT_DOMAIN'] . "/api/payment/webnotify";
 			// 需http://格式的完整路径，不允许加?id=123这类自定义参数
@@ -176,7 +176,7 @@ class AlipayPaymentSrv extends BasePaymentSrv {
 		}
 		
 		// 卖家支付宝帐户
-		$seller_email = "shopadmin@yoka.com";
+		$seller_email = "ceo@kitetea.com";
 		// 必填
 		
 		// 商户订单号

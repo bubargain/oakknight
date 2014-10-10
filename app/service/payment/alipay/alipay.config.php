@@ -39,7 +39,7 @@ $alipay_config['ali_public_key_path']= 'ali-key/alipay_public_key.pem';
 
 
 //签名方式 不需修改
-$alipay_config['sign_type']    = 'MD5';
+$alipay_config['sign_type']    = '0001';
 
 //$alipay_config['sign_type'] ="RSA";
 
