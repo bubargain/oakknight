@@ -12,7 +12,7 @@ class paymentController extends BaseController {
 	public function __construct($request, $response) {
 		parent::__construct ( $request, $response );
 		
-		$this->alipay_config ['partner'] = '2088101989241025';
+		$this->alipay_config ['partner'] = ALIPAY_ID;
 		
 		// 安全检验码，以数字和字母组成的32位字符
 		// 如果签名方式设置为“MD5”时，请设置该参数
@@ -58,6 +58,8 @@ class paymentController extends BaseController {
 			if (! $order || $order ['order_status'] != OrderSrv::UNPAY_ORDER)
 				throw new \Exception ( '不存在或不可支付状态', 5000 );
 			
+			//var_dump($request->type);die();	
+				
 			$info = PaymentDao::getSlaveInstance ()->find ( array (
 					'payment_code' => $request->type,
 					'enabled' => 1 
