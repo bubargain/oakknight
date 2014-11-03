@@ -51,8 +51,8 @@ class MobileMessage {
 
         }
         if($result->statusCode!=0) {
-            throw new \Exception($result->statusMsg,$result->statusCode);
-            //echo "error code :" . $result->statusCode . "<br>";
+            throw new \Exception($result->statusMsg,400001);
+            //echo "您的发送频率过快，请稍后再试";die();
             //echo "error msg :" . $result->statusMsg . "<br>";
             //TODO 添加错误处理逻辑
         }else{
