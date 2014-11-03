@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>{{$params.goods_name}} --欧欧菁品</title>
+<title>{{$params.goods_name}} -- 欧欧菁品</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
@@ -17,24 +17,24 @@
 		<div class="group_head">
 			<h1>本期特卖商品</h1>
 			 
-			<!--<div class="menu_div">
+			<div class="menu_div">
             <span class="menu"></span>
 				<div class="arrow-outer"><div class="arrow-shadow"></div></div>  
 				<ul>   
-					<li><a href="javascript:void(0)">食品</a></li> 
+					<!--<li><a href="javascript:void(0)">食品</a></li> 
 					<li><a href="javascript:void(0)">衣服</a></li> 
 					<li><a href="javascript:void(0)">家居</a></li> 
 					<li><a href="javascript:void(0)">玩具</a></li> 
-				</ul> 
+				</ul> -->
 			</div>
-            -->
-			<a href="index.php?_c=order&_a=index" class="search"></a>
+           
+		<a href="index.php?_c=order&_a=index" class="search"></a>
 		</div>
 		<div class="groupinfo">
 			<div class="groupinfoimg"><img src="{{$params.default_thumb}}"></div>
 			<div class="groupinfodiv">
-				<div><h2 class="l">{{$params.goods_name}}</h2><a href="javascript:void(0)" class="r">品牌/设计师介绍></a></div>
-				<div class="groupprice"><span>￥{{$params.price}}</span><br>海外价格：{{$params.market_price}} 欧元</div>
+				<div><h2 class="l">{{$params.goods_name}}</h2><a href="{{$params.share_desc}}" class="r">海外原品链接></a></div>
+				<div class="groupprice"><span>￥{{$params.price}}</span><br>海外价格：{{$params.market_price}} 欧元  &nbsp;&nbsp; （汇率：{{$currency_rate}}）</div>
 				<p class="groupinfop">
                 <!--<em class="{{if $params.liked}}on{{/if}}"> 收藏（{{$params.wishes}}）</em> -->
                 <a href="index.php?_c=order&_a=confirm&id={{$params.goods_id}}">立即抢购</a>

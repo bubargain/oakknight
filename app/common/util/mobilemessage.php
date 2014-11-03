@@ -25,7 +25,7 @@ class MobileMessage {
      * @param datas 内容数据 格式为数组 例如：array('Marry','Alon')，如不需替换请填 null
      * @param $tempId 模板Id
      */
-    public function send($to,$datas,$tempId=1)
+    public function send($to,$datas,$tempId=5175)
     {
     	//测试期间，暂时关闭
     	

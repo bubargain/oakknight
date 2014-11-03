@@ -28,6 +28,7 @@ class indexcontroller extends BaseController {
 		//}
 		$response->title = 'OAK&KNIGHT';
 		$response->cdn_ymall = CDN_YMALL;
+		$response->currency_rate = EUROTORMB;
 		//$response->focusMap_imageLink = $ret ['focuseMap_imageLink'];
 		$response->live_deals = $ret ['top_goods'];
 		//var_dump($ret ['top_goods']);die();

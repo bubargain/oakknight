@@ -151,12 +151,13 @@ class GoodsController extends BaseController {
             $response->cates_html = self::getCateLevelHtml();
             $response->CDN_YMALL = CDN_YMALL;
             $default['more_sale'] = array(
-                '配送费用'=>'免运费',
+                '配送费用'=>'免',
+				'关税'=>'免',
                 '送货范围'=>'仅限中国大陆地区',
-                '发货时间'=>'周一至周六17点前付款当日发货，之后次日发货，周日休息，遇法定节假日另行通知',
-                '支付提醒'=>'因限额而支付失败时，请先给支付宝账号充值，再用支付宝余额进行支付',
-                '发货快递'=>'默认圆通或申通快递',
-                '客服电话'=>'400-080-1888',
+          
+                '发货快递'=>'空运拼箱',
+                '客服微信'=>'oakknight(欧欧）',
+				'支付提醒'=>'因限额而支付失败时，请先给支付宝账号充值，再用支付宝余额进行支付',
             );
 
             $response->info = $default;

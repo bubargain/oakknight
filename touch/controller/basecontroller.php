@@ -85,7 +85,7 @@ class BaseController extends Controller {
 	}
 	public function checkLogin($url = '') {
 		if (! $this->has_login) {
-			$goto = TOUCH_YMALL . '/index.php?_c=login';
+			$goto = TOUCH_OAK . '/index.php?_c=login';
 			if ($url)
 				$goto .= '&refer=' . urlencode ( $url );
 			$this->redirect ( $goto );
@@ -108,7 +108,7 @@ class BaseController extends Controller {
 			}
 		}
 		if (! $ret_url) {
-			$ret_url = TOUCH_YMALL . '/index.php';
+			$ret_url = TOUCH_OAK . '/index.php';
 		}
 		return htmlspecialchars_decode ( $ret_url );
 	}

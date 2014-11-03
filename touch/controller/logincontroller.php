@@ -34,7 +34,7 @@ class logincontroller extends BaseController {
 				$this->showError ( "无效登录" );
 			}
 		} else {
-			$response->TOUCH_YMALL = TOUCH_YMALL;
+			$response->TOUCH_OAK = TOUCH_OAK;
 			$response->id = $request->id;
 			$response->style = $request->style;
 			$response->phone = $request->phone;

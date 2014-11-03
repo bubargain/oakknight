@@ -34,7 +34,7 @@ class goodscontroller extends BaseController {
 				}
 				$response->title = $info ['share_title'];
 				$response->params = $info;
-				
+				$response->currency_rate = EUROTORMB;
 				//$this->layoutSmarty ( 'details' );
 				$action_template = $this->_controller .'/details.html';
 				$smarty =  new \sprite\mvc\SmartyView($this->_response);
