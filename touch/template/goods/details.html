@@ -48,7 +48,11 @@
                     {{$item.key}}: {{$item.value}}<br>
 				{{/foreach}}
                 </div>
+                <div class="info_div">
+                	{{$params.description}}
+                </div>
 				<div class="info_content">
+                	
 					<!--<div><h2>品牌/设计师介绍</h2><img src="images/group_04.jpg"></div>-->
 					{{foreach from = $params.images item = item}}
                     <div class="info_item l"><img src="{{$item.image_url}}"></div>
