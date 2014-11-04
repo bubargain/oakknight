@@ -36,7 +36,7 @@
 			<div class="group_div" style="display:block">
             {{foreach from = $live_deals item = item}}
 				<div class="group_item">
-					<div class="group_itemimg"><a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img src="{{$cdn_ymall}}{{$item.default_thumb}}"></a></div>
+					<div class="group_itemimg"><a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img lowsrc="images/logo_oak.png" src="{{$cdn_ymall}}{{$item.default_thumb}}"></a></div>
 					<div class="group_iteminfo">
 						<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}" class="group_itemdiv">
 							<h2>{{$item.goods_name}}</h2>
