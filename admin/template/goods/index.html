@@ -194,6 +194,7 @@
             $('.checkitem:checked').each(function(){items.push(this.value)});
             if(items.length){
                 var url = "index.php?_c=goods&_a=ajaxBatchApproval&ids=" + items.join();
+                alert(url);
                 $("#goods_approval_list").html('');
                 $.getJSON(url, function(data) {
                     if( data.status ) {

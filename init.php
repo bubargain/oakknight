@@ -38,7 +38,7 @@ $_REQUEST['debug'] = 'yoka-inc4';
 if((defined('YEPF_IS_DEBUG') && YEPF_IS_DEBUG) || (isset($_REQUEST['debug']) && strpos($_REQUEST['debug'], YEPF_DEBUG_PASS) !== false))
 {
 	//Debug模式将错误打开
-	ini_set('display_errors', true);
+	ini_set('display_errors', false);
 	//设置错误级别
 	error_reporting(YEPF_ERROR_LEVEL);
 	//Debug开关打开

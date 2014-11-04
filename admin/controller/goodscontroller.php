@@ -329,20 +329,20 @@ class GoodsController extends BaseController {
 					$_sale_time = $_time;
 				}   
 
-                $where = 'goods_id='.$v.' and status=8';
+                $where = 'goods_id='.$v.' and status in(0,8, 24)';
                 $goodsDao->editStatus( 24, $where, $_sale_time );
             }
 
             self::autoSaleGoods();//同步审核一次
 
-            $this->renderJson(array('status'=>200, 'retval'=>'ok'));
+            $this->renderJson(array('status'=>200, 'retval'=>$ids));
         }
         else {
             $ids = $request->get('ids');
             $goods_ids = explode(',', $ids);
 			$params = array();
 			$params[] = 'goods_id in('.implode(',', $goods_ids).')';
-			$params[] = 'status in(8, 24)';
+			$params[] = 'status in(0,8, 24)';
 			$limit = '0,' . count($goods_ids);
 			$list = GoodsDao::getSlaveInstance()->getList( $params, $limit );
 			
