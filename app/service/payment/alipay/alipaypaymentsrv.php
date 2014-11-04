@@ -20,7 +20,7 @@ class AlipayPaymentSrv extends BasePaymentSrv {
 		parent::__construct ( $config );
 		
 		$this->_config ['partner'] = array (
-				'partner' => '2088311424843552',
+				'partner' => ALIPAY_ID,
 				'seller' => 'ceo@kitetea.com'
 		);
 	}
@@ -103,7 +103,8 @@ class AlipayPaymentSrv extends BasePaymentSrv {
 				
 				// 注意：
 				// 该种交易状态只在一种情况下出现——开通了高级即时到账，买家付款成功后。
-				
+				$orderSrc = new \app\service\OrderSrv (); // 更改状态
+				$orderSrc->pay ( $ret );
 				// 调试用，写文本函数记录程序运行情况是否正常
 				// logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
 				
@@ -160,7 +161,7 @@ class AlipayPaymentSrv extends BasePaymentSrv {
 		
 		// **req_data详细信息**
 		
-		if ($_SERVER ['SERVER_NAME'] == 'www.oakknight.com'  ) {
+		if ($_SERVER ['SERVER_NAME'] == TOUCH_OAK  ) {
 			// 服务器异步通知页面路径
 			$notify_url = $_SERVER ['ROOT_DOMAIN'] . "/api/payment/webnotify";
 			// 需http://格式的完整路径，不允许加?id=123这类自定义参数
@@ -169,10 +170,10 @@ class AlipayPaymentSrv extends BasePaymentSrv {
 			$call_back_url = $_SERVER ['ROOT_DOMAIN'] . "/api/payment/webcallback";
 		} else {
 			// 服务器异步通知页面路径
-			$notify_url = TOUCH_YMALL . "/api/payment/webnotify";
+			$notify_url = TOUCH_OAK . "/api/payment/webnotify";
 			// 需http://格式的完整路径，不允许加?id=123这类自定义参数
 			// $call_back_url = 'touch.ymall.com'. "/api/payment/webcallback";
-			$call_back_url = TOUCH_YMALL . "/api/payment/webcallback";
+			$call_back_url = TOUCH_OAK . "/api/payment/webcallback";
 		}
 		
 		// 卖家支付宝帐户
