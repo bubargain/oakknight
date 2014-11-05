@@ -16,50 +16,11 @@ a{text-decoration:none;outline:none;-webkit-user-select: none;-webkit-tap-highli
 a:hover{text-decoration:none;outline:none}
 .l{float:left}
 .r{float:right}
-.group_main{max-width: 640px;margin: 0 auto;overflow: hidden}
-.group_head {
-	background:#00b3ba;
-	height:47px;
-	position:relative;
-	color:#fff;
-	padding:20px 0 20px 20px;
-}
-.group_head section:first-child {
-	min-width:90px;
-	display:inline-block;
-	float:left;
-}
-.group_head section:first-child a {
-	display:inline-block;
-	background:url(/img/m.png) 0 7px no-repeat;
-	width:87px;
-	height:47px;
-}
-.group_head div {
-	display:inline-block;
-	line-height:47px;
-	font-size:28px;
-	color:#FFF;
-	margin:0 100px 0 150px;
-	alignment-adjust:central;
-	
-}
-.group_head section:last-child {
-	display:inline-block;
-	min-width:90px;
-	float:right;
-	text-align:right;
-}
-.group_head section:last-child a {
-	display:inline-block;
-	border-left:1px solid #666;
-	height:47px;
-	background:url(/img/m.png) 20px -675px no-repeat;
-	width:80px;
-	margin-top:-17px;
-	opacity:0.8;
-	position:relative;
-}
+.group_main{max-width: 640px;margin: 0 auto;overflow: hidden; }
+.group_head{position:relative;background:#00b3ba;font-size:22px;color:#fff;padding:20px 0 20px 20px;}
+.group_head div{ text-align:center; }
+.group_head .rebutton {float:left;background:url(/img/m.png) 0 0px no-repeat;width:87px;height:47px;}
+.group_head h1 {line-height: 47px;text-align: center;color:#fff;font-size:22px;-webkit-box-flex:1;text-overflow:ellipsis;}
 .group_head .menu,.group_head .search,.head_back{width:63px;height:30px;position: absolute;display:block;top:10px;background-size:63px 30px}
 .head_back{background-image:url(../images/group2_19.png);left:0;top:11px;display:block}
 .group_head .menu{background-image:url(../images/group_07.png);left:0;top:11px;display:block}
