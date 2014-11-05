@@ -10,7 +10,7 @@ use sprite\mvc\SmartyView;
 // 初始项目相关框架
 include __DIR__ . '/../../init.php';
 
-//require("hm.php"); //百度统计代码
+require("hm.php"); //百度统计代码
 
 // 初始化smarty配置
 $smarty = SmartyView::getSmarty();
@@ -27,9 +27,9 @@ $smarty->compile_dir = ROOT_PATH . "/../tmp/touch/templates_c";
 $smarty->registerClass( 'tpl', '\app\common\util\SmartyTpl' ); // 注册smarty
 
 /* 百度统计代码 */
-//$_hmt = new _HMT("01a63d97e20ae495f99ac7e53b572d1b");
-//$_hmtPixel = $_hmt->trackPageView();
-//$smarty->assign("_hmtPixel", $_hmtPixel);
+$_hmt = new _HMT("4576c0805ab6ecca633ca31b6e94b95b");
+$_hmtPixel = $_hmt->trackPageView();
+$smarty->assign("_hmtPixel", $_hmtPixel);
 
 // 加载controlller执行
 $request = Request::getInstance();
