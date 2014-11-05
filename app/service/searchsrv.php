@@ -18,7 +18,7 @@ class SearchSrv extends BaseSrv {
 	public function search ($params, $sort = 'default',$page=1,$skip=10)
 	{
 		$limit= ($page-1)*skip .','.$skip;
-		$sql= "select * from ym_goods left join ym_goods_statistics on ym_goods.goods_id = ym_goods_statistics.goods_id where status=12";
+		$sql= "select * from ym_goods left join ym_goods_statistics on ym_goods.goods_id = ym_goods_statistics.goods_id where status=12 order by ym_goods.sale_type desc";
 		//$list = \app\dao\GoodsDao::getSlaveInstance ()->getList($params,$limit);
 		$list = \app\dao\GoodsDao::getSlaveInstance ()->getpdo()->getRows($sql);
 		//var_dump($list);die();

@@ -23,8 +23,17 @@
 		<div class="groupinfo">
 			<div class="groupinfoimg"><img src="{{$params.default_thumb}}"></div>
 			<div class="groupinfodiv">
+           	 {{if $params.sale_type eq 0}}
 				<div><h2 class="l">{{$params.goods_name}}</h2><a href="{{$params.share_desc}}" class="r">海外原品链接></a></div>
-				<div class="groupprice"><span>￥{{$params.price}}</span><br>海外价格：{{$params.market_price}} 欧元  &nbsp;&nbsp; （汇率：{{$currency_rate}}）</div>
+				<div class="groupprice"><span>￥{{$params.price}}</span>
+                
+                <br>海外价格：{{$params.market_price}} 欧元  &nbsp;&nbsp; （汇率：{{$currency_rate}}）
+                {{else}}
+                <div><h2 class="l">{{$params.goods_name}}</h2><a href="{{$params.share_desc}}" class="r">参考价链接></a></div>
+				<div class="groupprice"><span>￥{{$params.price}}</span>
+                 <br>市场价格 {{$params.market_price}} 元
+                 {{/if}}
+                </div>
 				<p class="groupinfop">
                 <!--<em class="{{if $params.liked}}on{{/if}}"> 收藏（{{$params.wishes}}）</em> -->
                 <a href="index.php?_c=order&_a=confirm&id={{$params.goods_id}}">立即抢购</a>
