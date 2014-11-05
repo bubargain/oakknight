@@ -34,7 +34,27 @@
 		</div>
 		<div class="group_title"><a href="javascript:void(0)" class="group_titlea">最高品质的关爱</a></div>
 		<div class="group_content">
+			
+			{{if $top_goods}}
+        <section class="home_pro">
+            {{foreach from=$top_goods item=item}}
+            <div class="pro">
+				<div>{{if $item.sale_type_info.key}}<span style="top:{{$item.sale_type_info.small.y}}px; right:{{$item.sale_type_info.small.x}}px;">{{if $item.sale_type_info.small.img}}<img src="{{$item.sale_type_info.small.img}}">{{/if}}</span>{{/if}}<a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img 
+
+class="lazy" data-original="{{$cdn_ymall}}{{$item.default_thumb}}" 
+
+src="img/default_img.png"></a></div>
+				<em class="cGray {{if $item.liked}}like{{/if}}"><span>{{$item.wishes}}</span>个人
+
+喜欢<span style="display:none;">{{$item.goods_id}}</span></em>
+				<p>{{$item.cate_name}} • {{$item.tags}} • {{$item.brand_name}}</p>
+			</div>
+            {{/foreach}}
+		</section>
+        {{/if}}
+			
 			<div class="group_div" style="display:block">
+			
             {{foreach from = $live_deals item = item}}
 				<div class="group_item">
 					<div class="group_itemimg"><a href="index.php?_c=goods&_a=detail&id={{$item.goods_id}}"><img lowsrc="images/logo_oak.png" src="{{$cdn_ymall}}{{$item.default_thumb}}"></a></div>
@@ -43,10 +63,17 @@
 							<h2>{{$item.goods_name}}</h2>
 							
 							<div class="grouptime" id="timer{{$item.goods_id}}">闪购时效：<em class="day">00</em>天<em class="hour">0</em>小时<em class="minute">00</em>分<em class="second">00</em>秒</div>
-							
+						{{if $item.sale_type eq 0}}
 							<div class="groupprice"><span>{{($item.price/$currency_rate)|string_format:"%.1f"}} 欧</span></div>
                             <p>拼柜进度：{{$item.sales}} / {{$item.stock}}</p>
+                            
                             <p>欧洲零售价：{{$item.market_price|string_format:"%.1f"}} 欧<ee>起运地：{{$item.origin}}</ee></p>
+                         {{else}}
+                         	<div class="groupprice"><span>{{$item.price|string_format:"%.1f"}} 元</span></div>
+                            <p>拼柜进度：{{$item.sales}} / {{$item.stock}}</p>
+                            
+                            <p>市场价：{{$item.market_price|string_format:"%.1f"}}元<ee>起运地：{{$item.origin}}</ee></p>
+                         {{/if}}
 						</a>
 					</div>
      
