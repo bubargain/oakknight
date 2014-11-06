@@ -65,12 +65,12 @@ src="img/default_img.png"></a></div>
 							<div class="grouptime" id="timer{{$item.goods_id}}">闪购时效：<em class="day">00</em>天<em class="hour">0</em>小时<em class="minute">00</em>分<em class="second">00</em>秒</div>
 						{{if $item.sale_type eq 0}}
 							<div class="groupprice"><span>{{($item.price/$currency_rate)|string_format:"%.1f"}} 欧</span></div>
-                            <p>拼柜进度：{{$item.sales}} / {{$item.stock}}</p>
+                            <p>拼柜进度：：仅剩 <font color="#FF0000">{{$item.stock}} </font>件</p>
                             
                             <p>欧洲零售价：{{$item.market_price|string_format:"%.1f"}} 欧<ee>起运地：{{$item.origin}}</ee></p>
                          {{else}}
                          	<div class="groupprice"><span>{{$item.price|string_format:"%.1f"}} 元</span></div>
-                            <p>拼柜进度：{{$item.sales}} / {{$item.stock}}</p>
+                            <p>拼柜进度：仅剩 <font color="#FF0000">{{$item.stock}}</font>件 </p>
                             
                             <p>市场价：{{$item.market_price|string_format:"%.1f"}}元<ee>起运地：{{$item.origin}}</ee></p>
                          {{/if}}
